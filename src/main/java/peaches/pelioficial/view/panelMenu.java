@@ -33,12 +33,14 @@ import peaches.pelioficial.model.Actor;
 import peaches.pelioficial.model.Cinta;
 import peaches.pelioficial.model.Director;
 import peaches.pelioficial.model.Genero;
+import peaches.pelioficial.model.ListaDeEspera;
 import peaches.pelioficial.model.Pelicula;
 import peaches.pelioficial.model.Prestamo;
 import peaches.pelioficial.model.Socio;
 import peaches.pelioficial.service.ActorService;
 import peaches.pelioficial.service.CintaService;
 import peaches.pelioficial.service.DirectorService;
+import peaches.pelioficial.service.ListaEsperaService;
 import peaches.pelioficial.service.PeliculaService;
 import peaches.pelioficial.service.PrestamoService;
 import peaches.pelioficial.service.SocioService;
@@ -59,6 +61,7 @@ public class panelMenu extends javax.swing.JPanel {
         ActorService actorService = new ActorService(DatabaseConnector.conectar());
         CintaService cintaService = new CintaService();
         PrestamoService prestamoService = new PrestamoService(DatabaseConnector.conectar());
+        ListaEsperaService listaEsperaService = new ListaEsperaService();
         private framePrincipal framePrincipal;
         
         private Set<Director> directoresSeleccionados = new HashSet<>();
@@ -69,6 +72,8 @@ public class panelMenu extends javax.swing.JPanel {
         private List<Genero> listaGeneros = peliculaService.obtenerTodosLosGeneros();
         private Prestamo prestamoSeleccionado;
         private List<Genero> generosSeleccionadosPeliculas = new ArrayList<>();
+        
+        private int peliculaLDESeleccionadaId = -1; // Inicializa con -1 para indicar que no hay selección
         
     /**
      * Creates new form panelMenu
@@ -447,6 +452,37 @@ public class panelMenu extends javax.swing.JPanel {
         actualizarUIConGenerosSeleccionadosPeliculas();
     }
     
+    private void cargarDatosEnTablaListaEspera(int peliculaId) {
+        DefaultTableModel modelo = (DefaultTableModel) tableListaDeEspera.getModel();
+        modelo.setRowCount(0); // Limpiar la tabla
+
+        List<ListaDeEspera> listaEspera = listaEsperaService.obtenerListaEsperaPararPelicula(peliculaId);
+
+        for (ListaDeEspera le : listaEspera) {
+            modelo.addRow(new Object[]{
+                le.getIdListaEspera(), 
+                le.getIdSocio(), 
+                le.getNombreSocio(), 
+                le.getFechaSolicitud().toString() // Asegúrate de formatear la fecha como prefieras
+            });
+        }
+    }
+    
+    private void cargarDatosEnTablaListaEsperaCompleta() {
+        DefaultTableModel modelo = (DefaultTableModel) tableListaDeEspera.getModel();
+        modelo.setRowCount(0); // Limpia la tabla
+
+        List<ListaDeEspera> listaEsperaCompleta = listaEsperaService.obtenerTodaListaDeEspera();
+        for (ListaDeEspera le : listaEsperaCompleta) {
+            modelo.addRow(new Object[]{
+                le.getIdListaEspera(),
+                le.getIdSocio(),
+                le.getNombreSocio(),
+                le.getFechaSolicitud().toString() // o el formato de fecha que prefieras
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -462,7 +498,7 @@ public class panelMenu extends javax.swing.JPanel {
         btnDirectores = new javax.swing.JButton();
         btnregistrarsocio = new javax.swing.JButton();
         btnPrestamos = new javax.swing.JButton();
-        btndevoluciones = new javax.swing.JButton();
+        btnListaDeEspera = new javax.swing.JButton();
         btnActores = new javax.swing.JButton();
         btnPeliculas = new javax.swing.JButton();
         btnCintas = new javax.swing.JButton();
@@ -520,14 +556,15 @@ public class panelMenu extends javax.swing.JPanel {
         txtBuscarPrestamo = new javax.swing.JTextField();
         lblSocioSeleccionadoPrestamo = new javax.swing.JLabel();
         lblCintaSeleccionadaPrestamo = new javax.swing.JLabel();
-        pDevoluciones = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtIdPrestamo = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
-        txtFechaEntrega = new javax.swing.JTextField();
-        jSeparator9 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        pListaDeEspera = new javax.swing.JPanel();
+        btnSeleccionarPeliculaLDE = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableListaDeEspera = new javax.swing.JTable();
+        lblPeliculaSeleccionadaLDE = new javax.swing.JLabel();
+        txtIdSocioLDE = new javax.swing.JTextField();
+        btnAgregarSocioLDE = new javax.swing.JButton();
+        btnNotificarSocioLDE = new javax.swing.JButton();
+        btnEliminarListaLDE = new javax.swing.JButton();
         pDirectores = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtNombreDirector = new javax.swing.JTextField();
@@ -628,17 +665,17 @@ public class panelMenu extends javax.swing.JPanel {
         });
         jPanel1.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 250, 40));
 
-        btndevoluciones.setBackground(new java.awt.Color(0, 0, 0));
-        btndevoluciones.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        btndevoluciones.setForeground(new java.awt.Color(255, 255, 255));
-        btndevoluciones.setText("DEVOLUCIONES");
-        btndevoluciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btndevoluciones.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnListaDeEspera.setBackground(new java.awt.Color(0, 0, 0));
+        btnListaDeEspera.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnListaDeEspera.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaDeEspera.setText("LISTA DE ESPERA");
+        btnListaDeEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnListaDeEspera.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btndevolucionesMouseClicked(evt);
+                btnListaDeEsperaMouseClicked(evt);
             }
         });
-        jPanel1.add(btndevoluciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 250, 40));
+        jPanel1.add(btnListaDeEspera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 250, 40));
 
         btnActores.setBackground(new java.awt.Color(0, 0, 0));
         btnActores.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -1071,67 +1108,69 @@ public class panelMenu extends javax.swing.JPanel {
 
         tabbedPane.addTab("tab2", pPrestamos);
 
-        pDevoluciones.setBackground(new java.awt.Color(255, 255, 255));
-        pDevoluciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pListaDeEspera.setBackground(new java.awt.Color(255, 255, 255));
+        pListaDeEspera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel13.setText("ID Prestamo");
-        pDevoluciones.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 110, 20));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel14.setText("Fecha de Entrega:");
-        pDevoluciones.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 20));
-
-        txtIdPrestamo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtIdPrestamo.setForeground(new java.awt.Color(204, 204, 204));
-        txtIdPrestamo.setText("Codigo");
-        txtIdPrestamo.setBorder(null);
-        txtIdPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarPeliculaLDE.setText("Seleccionar Pelicula");
+        btnSeleccionarPeliculaLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdPrestamoActionPerformed(evt);
+                btnSeleccionarPeliculaLDEActionPerformed(evt);
             }
         });
-        pDevoluciones.add(txtIdPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, 30));
-        txtIdPrestamo.setForeground(Color.GRAY);
-        txtIdPrestamo.addFocusListener(new Placeholders("Codigo", new Color(204, 204, 204), Color.BLACK));
+        pListaDeEspera.add(btnSeleccionarPeliculaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        pDevoluciones.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 210, 20));
+        tableListaDeEspera.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID Lista Espera", "ID Socio", "Nombre Socio", "Fecha Solicitud"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        txtFechaEntrega.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtFechaEntrega.setForeground(new java.awt.Color(204, 204, 204));
-        txtFechaEntrega.setText("dd/mm/yy");
-        txtFechaEntrega.setBorder(null);
-        txtFechaEntrega.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFechaEntregaFocusLost(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        txtFechaEntrega.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane7.setViewportView(tableListaDeEspera);
+
+        pListaDeEspera.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 500, 110));
+
+        lblPeliculaSeleccionadaLDE.setText("...");
+        pListaDeEspera.add(lblPeliculaSeleccionadaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 170, -1));
+        pListaDeEspera.add(txtIdSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
+
+        btnAgregarSocioLDE.setText("Agregar Socio");
+        btnAgregarSocioLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaEntregaActionPerformed(evt);
+                btnAgregarSocioLDEActionPerformed(evt);
             }
         });
-        pDevoluciones.add(txtFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 160, 30));
-        txtFechaEntrega.setForeground(Color.GRAY);
-        txtFechaEntrega.addFocusListener(new Placeholders("dd/mm/yy", new Color(204, 204, 204), Color.BLACK));
+        pListaDeEspera.add(btnAgregarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
 
-        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        pDevoluciones.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 210, 20));
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("SOLICITAR");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNotificarSocioLDE.setText("Notificar Socio");
+        btnNotificarSocioLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNotificarSocioLDEActionPerformed(evt);
             }
         });
-        pDevoluciones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 220, 30));
+        pListaDeEspera.add(btnNotificarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
 
-        tabbedPane.addTab("tab3", pDevoluciones);
+        btnEliminarListaLDE.setText("Eliminar de la Lista");
+        btnEliminarListaLDE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarListaLDEActionPerformed(evt);
+            }
+        });
+        pListaDeEspera.add(btnEliminarListaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, -1, -1));
+
+        tabbedPane.addTab("tab3", pListaDeEspera);
 
         pDirectores.setBackground(new java.awt.Color(255, 255, 255));
         pDirectores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1552,9 +1591,10 @@ public class panelMenu extends javax.swing.JPanel {
         actualizarTablaPrestamos();
     }//GEN-LAST:event_btnPrestamosMouseClicked
 
-    private void btndevolucionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndevolucionesMouseClicked
-         tabbedPane.setSelectedIndex(2);
-    }//GEN-LAST:event_btndevolucionesMouseClicked
+    private void btnListaDeEsperaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListaDeEsperaMouseClicked
+        tabbedPane.setSelectedIndex(2);
+        cargarDatosEnTablaListaEsperaCompleta();
+    }//GEN-LAST:event_btnListaDeEsperaMouseClicked
 
     private void btnDirectoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDirectoresMouseClicked
         tabbedPane.setSelectedIndex(3); 
@@ -1575,18 +1615,6 @@ public class panelMenu extends javax.swing.JPanel {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelBarraMousePressed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtFechaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEntregaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaEntregaActionPerformed
-
-    private void txtIdPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPrestamoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdPrestamoActionPerformed
 
     private void txtNombreSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreSocioActionPerformed
         // TODO add your handling code here:
@@ -1824,9 +1852,6 @@ validacionNumerica(evt); // TODO add your handling code here:
     private void txtNombreDirectorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreDirectorKeyTyped
 validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreDirectorKeyTyped
-
-    private void txtFechaEntregaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaEntregaFocusLost
-    }//GEN-LAST:event_txtFechaEntregaFocusLost
 
     private void btnPeliculasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeliculasMouseClicked
         tabbedPane.setSelectedIndex(5); 
@@ -2263,6 +2288,88 @@ validacionTexto(evt);        // TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Por favor, seleccione un préstamo para eliminar.");
         }
     }//GEN-LAST:event_btnEliminarPrestamoActionPerformed
+
+    private void btnSeleccionarPeliculaLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPeliculaLDEActionPerformed
+        // Obtener la lista de películas (deberías obtenerla de tu base de datos o similar)
+        List<Pelicula> listaPeliculas = obtenerListaPeliculas();
+
+        // Crear y mostrar el diálogo
+        SeleccionPeliculaDialog dialogoSeleccion = new SeleccionPeliculaDialog(JFrame.getFrames()[0], true, listaPeliculas);
+        dialogoSeleccion.setVisible(true);
+
+        // Obtener la película seleccionada
+        Pelicula peliculaSeleccionada = dialogoSeleccion.getPeliculaSeleccionada();
+        if (peliculaSeleccionada != null) {
+            lblPeliculaSeleccionadaLDE.setText(peliculaSeleccionada.getTitulo());
+            // Actualiza la interfaz de usuario de 'panelListaDeEspera' según sea necesario
+            // Por ejemplo, mostrar el título de la película seleccionada en algún campo de texto o etiqueta
+            peliculaLDESeleccionadaId = peliculaSeleccionada.getPeliculaId();
+        }
+    }//GEN-LAST:event_btnSeleccionarPeliculaLDEActionPerformed
+
+    private void btnAgregarSocioLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSocioLDEActionPerformed
+        // Obtén el ID del socio del campo de texto
+        String idSocioTexto = txtIdSocioLDE.getText();
+        if (idSocioTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, introduce el ID del socio.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int idSocio;
+        try {
+            idSocio = Integer.parseInt(idSocioTexto);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "El ID del socio debe ser un número.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (peliculaLDESeleccionadaId == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una película primero.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Aquí llamarías al método de tu servicio que se encarga de agregar al socio a la lista de espera
+        boolean exito = listaEsperaService.agregarSocioAListaEspera(peliculaLDESeleccionadaId, idSocio);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Socio agregado a la lista de espera con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            cargarDatosEnTablaListaEsperaCompleta();
+        } else {
+            // Manejo de errores si el socio no pudo ser agregado
+            JOptionPane.showMessageDialog(this, "No se pudo agregar al socio a la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAgregarSocioLDEActionPerformed
+
+    private void btnNotificarSocioLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotificarSocioLDEActionPerformed
+        int filaSeleccionada = tableListaDeEspera.getSelectedRow();
+        if(filaSeleccionada == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int idSocio = (int) tableListaDeEspera.getValueAt(filaSeleccionada, 1);
+        
+        JOptionPane.showMessageDialog(this, "El socio con ID " + idSocio + " ha sido notificado.", "Notificacion", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnNotificarSocioLDEActionPerformed
+
+    private void btnEliminarListaLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarListaLDEActionPerformed
+        int filaSeleccionada = tableListaDeEspera.getSelectedRow();
+        if(filaSeleccionada == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int listaEsperaId = (int) tableListaDeEspera.getValueAt(filaSeleccionada, 0);
+        
+        boolean exito = listaEsperaService.eliminarDeListaEspera(listaEsperaId);
+        
+        if(exito){
+            JOptionPane.showMessageDialog(this, "Socio eliminado de la lista de espera con exito.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            cargarDatosEnTablaListaEsperaCompleta();
+        }else{
+            JOptionPane.showMessageDialog(this, "No se puedo eliminar el socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarListaLDEActionPerformed
     void validacionTexto(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 
@@ -2297,6 +2404,7 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JButton btnAgregarDirector;
     private javax.swing.JButton btnAgregarPelicula;
     private javax.swing.JButton btnAgregarPrestamo;
+    private javax.swing.JButton btnAgregarSocioLDE;
     private javax.swing.JButton btnBuscarCinta;
     private javax.swing.JButton btnBuscarPeliculaCinta;
     private javax.swing.JButton btnBuscarSocio;
@@ -2311,25 +2419,25 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JButton btnEliminarActor;
     private javax.swing.JButton btnEliminarCinta;
     private javax.swing.JButton btnEliminarDirector;
+    private javax.swing.JButton btnEliminarListaLDE;
     private javax.swing.JButton btnEliminarPelicula;
     private javax.swing.JButton btnEliminarPrestamo;
     private javax.swing.JButton btnEliminarSocio;
     private javax.swing.JButton btnGenerosSocios;
+    private javax.swing.JButton btnListaDeEspera;
+    private javax.swing.JButton btnNotificarSocioLDE;
     private javax.swing.JButton btnPeliculas;
     private javax.swing.JButton btnPrestamos;
     private javax.swing.JButton btnRegistrarSocio;
-    private javax.swing.JButton btndevoluciones;
+    private javax.swing.JButton btnSeleccionarPeliculaLDE;
     private javax.swing.JButton btnregistrarsocio;
     private javax.swing.JComboBox<Director> cboDirectoresPelicula;
     private javax.swing.JComboBox<String> cboEstadoCinta;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2359,25 +2467,25 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblActoresSeleccionados;
     private javax.swing.JLabel lblCintaSeleccionadaPrestamo;
     private javax.swing.JLabel lblDirectoresSeleccionados;
     private javax.swing.JLabel lblGenerosSeleccionados;
     private javax.swing.JLabel lblGenerosSeleccionadosPeliculas;
+    private javax.swing.JLabel lblPeliculaSeleccionadaLDE;
     private javax.swing.JLabel lblSocioSeleccionadoPrestamo;
     private javax.swing.JPanel pActores;
     private javax.swing.JPanel pCintas;
-    private javax.swing.JPanel pDevoluciones;
     private javax.swing.JPanel pDirectores;
+    private javax.swing.JPanel pListaDeEspera;
     private javax.swing.JPanel pPeliculas;
     private javax.swing.JPanel pPrestamos;
     private javax.swing.JPanel pSocios;
@@ -2388,6 +2496,7 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JTable tableActores;
     private javax.swing.JTable tableCintas;
     private javax.swing.JTable tableDirectores;
+    private javax.swing.JTable tableListaDeEspera;
     private javax.swing.JTable tablePeliculas;
     private javax.swing.JTable tablePrestamos;
     private javax.swing.JTable tableSocios;
@@ -2398,11 +2507,10 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JTextField txtBuscarPrestamo;
     private javax.swing.JTextField txtBuscarSocio;
     private javax.swing.JTextField txtDireccionSocio;
-    private javax.swing.JTextField txtFechaEntrega;
     private javax.swing.JTextField txtIdCinta;
     private javax.swing.JTextField txtIdPelicula;
-    private javax.swing.JTextField txtIdPrestamo;
     private javax.swing.JTextField txtIdSocio;
+    private javax.swing.JTextField txtIdSocioLDE;
     private javax.swing.JTextField txtNombreActor;
     private javax.swing.JTextField txtNombreDirector;
     private javax.swing.JTextField txtNombreSocio;

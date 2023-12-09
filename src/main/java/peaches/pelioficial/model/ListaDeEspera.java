@@ -5,49 +5,51 @@
 package peaches.pelioficial.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author q-ql
  */
 public class ListaDeEspera {
-    private int listaEsperaId;
-    private int peliculaId;
-    private int socioId;
+    private int idListaEspera;
+    private int idSocio;
+    private String nombreSocio;
     private LocalDate fechaSolicitud;
-
-    public ListaDeEspera() {
+    
+    public ListaDeEspera(){
+        
     }
 
-    public ListaDeEspera(int listaEsperaId, int peliculaId, int socioId, LocalDate fechaSolicitud) {
-        this.listaEsperaId = listaEsperaId;
-        this.peliculaId = peliculaId;
-        this.socioId = socioId;
+    public ListaDeEspera(int idListaEspera, int idSocio, String nombreSocio, LocalDate fechaSolicitud) {
+        this.idListaEspera = idListaEspera;
+        this.idSocio = idSocio;
+        this.nombreSocio = nombreSocio;
         this.fechaSolicitud = fechaSolicitud;
     }
     
-    public int getListaEsperaId() {
-        return listaEsperaId;
+    public int getIdListaEspera() {
+        return idListaEspera;
     }
 
-    public void setListaEsperaId(int listaEsperaId) {
-        this.listaEsperaId = listaEsperaId;
+    public void setIdListaEspera(int idListaEspera) {
+        this.idListaEspera = idListaEspera;
     }
 
-    public int getPeliculaId() {
-        return peliculaId;
+    public int getIdSocio() {
+        return idSocio;
     }
 
-    public void setPeliculaId(int peliculaId) {
-        this.peliculaId = peliculaId;
+    public void setIdSocio(int idSocio) {
+        this.idSocio = idSocio;
     }
 
-    public int getSocioId() {
-        return socioId;
+    public String getNombreSocio() {
+        return nombreSocio;
     }
 
-    public void setSocioId(int socioId) {
-        this.socioId = socioId;
+    public void setNombreSocio(String nombreSocio) {
+        this.nombreSocio = nombreSocio;
     }
 
     public LocalDate getFechaSolicitud() {
@@ -57,4 +59,6 @@ public class ListaDeEspera {
     public void setFechaSolicitud(LocalDate fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
+    
+    
 }

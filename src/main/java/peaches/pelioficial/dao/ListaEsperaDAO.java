@@ -34,10 +34,10 @@ public class ListaEsperaDAO implements Dao<ListaDeEspera>{
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
                 listaDeEspera = new ListaDeEspera();
-                listaDeEspera.setListaEsperaId(resultSet.getInt("lista_espera_id"));
-                listaDeEspera.setPeliculaId(resultSet.getInt("pelicula_id"));
-                listaDeEspera.setSocioId(resultSet.getInt("socio_id"));
-                listaDeEspera.setFechaSolicitud(resultSet.getDate("fecha_solicitud").toLocalDate());
+//                listaDeEspera.setListaEsperaId(resultSet.getInt("lista_espera_id"));
+//                listaDeEspera.setPeliculaId(resultSet.getInt("pelicula_id"));
+//                listaDeEspera.setSocioId(resultSet.getInt("socio_id"));
+//                listaDeEspera.setFechaSolicitud(resultSet.getDate("fecha_solicitud").toLocalDate());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,12 +49,14 @@ public class ListaEsperaDAO implements Dao<ListaDeEspera>{
     public List<ListaDeEspera> getAll(){
         List<ListaDeEspera> listaDeEsperas = new ArrayList<>();
         try (Statement statement = connection.createStatement()){
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM ListaEspera");
+            ResultSet resultSet = statement.executeQuery("SELECT le.lista_espera_id, le.socio_id, s.nombre, le.fecha_solicitud " +
+                     "FROM listaespera le " +
+                     "INNER JOIN socios s ON le.socio_id = s.socio_id ");
             while(resultSet.next()){
                 ListaDeEspera listaDeEspera = new ListaDeEspera();
-                listaDeEspera.setListaEsperaId(resultSet.getInt("lista_espera_id"));
-                listaDeEspera.setPeliculaId(resultSet.getInt("pelicula_id"));
-                listaDeEspera.setSocioId(resultSet.getInt("socio_id"));
+                listaDeEspera.setIdListaEspera(resultSet.getInt("lista_espera_id"));
+                listaDeEspera.setIdSocio(resultSet.getInt("socio_id"));
+                listaDeEspera.setNombreSocio(resultSet.getString("nombre"));
                 listaDeEspera.setFechaSolicitud(resultSet.getDate("fecha_solicitud").toLocalDate());
                 listaDeEsperas.add(listaDeEspera);
             }
@@ -69,9 +71,9 @@ public class ListaEsperaDAO implements Dao<ListaDeEspera>{
         String sql = "INSERT INTO ListaEspera (pelicula_id, socio_id, fecha_solicitud) VALUES (?, ?, ?)";
         int generatedId = 0;
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setInt(1, listaDeEspera.getPeliculaId());
-            statement.setInt(2, listaDeEspera.getSocioId());
-            statement.setDate(3, Date.valueOf(listaDeEspera.getFechaSolicitud()));
+//            statement.setInt(1, listaDeEspera.getPeliculaId());
+//            statement.setInt(2, listaDeEspera.getSocioId());
+//            statement.setDate(3, Date.valueOf(listaDeEspera.getFechaSolicitud()));
             int affectedRows = statement.executeUpdate();
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -90,10 +92,10 @@ public class ListaEsperaDAO implements Dao<ListaDeEspera>{
     public void update(ListaDeEspera listaDeEspera, String[] params) {
         String sql = "UPDATE ListaEspera SET pelicula_id = ?, socio_id = ?, fecha_solicitud = ? WHERE lista_espera_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, listaDeEspera.getPeliculaId());
-            statement.setInt(2, listaDeEspera.getSocioId());
-            statement.setDate(3, Date.valueOf(listaDeEspera.getFechaSolicitud()));
-            statement.setInt(4, listaDeEspera.getListaEsperaId());
+//            statement.setInt(1, listaDeEspera.getPeliculaId());
+//            statement.setInt(2, listaDeEspera.getSocioId());
+//            statement.setDate(3, Date.valueOf(listaDeEspera.getFechaSolicitud()));
+//            statement.setInt(4, listaDeEspera.getListaEsperaId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,10 +105,64 @@ public class ListaEsperaDAO implements Dao<ListaDeEspera>{
     @Override
     public void delete(ListaDeEspera listaDeEspera) {
         try (PreparedStatement statement = connection.prepareStatement("DELETE FROM ListaEspera WHERE lista_espera_id = ?")) {
-            statement.setInt(1, listaDeEspera.getListaEsperaId());
+//            statement.setInt(1, listaDeEspera.getListaEsperaId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public List<ListaDeEspera> obtenerListaEsperaParaPelicula(int peliculaId) {
+        List<ListaDeEspera> listaEspera = new ArrayList<>();
+        String sql = "SELECT le.lista_espera_id, le.socio_id, s.nombre, le.fecha_solicitud " +
+                     "FROM listaespera le " +
+                     "INNER JOIN socios s ON le.socio_id = s.socio_id " +
+                     "WHERE le.pelicula_id = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, peliculaId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                ListaDeEspera listaDeEspera = new ListaDeEspera();
+//                 Suponiendo que tienes setters en tu clase ListaDeEspera, descomenta y ajusta según tu implementación
+                 listaDeEspera.setIdListaEspera(resultSet.getInt("lista_espera_id"));
+                 listaDeEspera.setIdSocio(resultSet.getInt("socio_id"));
+                 listaDeEspera.setNombreSocio(resultSet.getString("nombre")); // Asume que tienes un campo para el nombre del socio
+                 listaDeEspera.setFechaSolicitud(resultSet.getDate("fecha_solicitud").toLocalDate());
+                listaEspera.add(listaDeEspera);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaEspera;
+    }
+    
+    public boolean agregarSocioListaEspera(int peliculaId, int socioId) {
+        String sql = "INSERT INTO listaespera (pelicula_id, socio_id, fecha_solicitud) VALUES (?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, peliculaId);
+            statement.setInt(2, socioId);
+            statement.setDate(3, new Date(System.currentTimeMillis())); // Fecha actual
+
+            int affectedRows = statement.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Aquí podrías loguear el error o manejarlo según convenga a tu aplicación
+            return false;
+        }
+    }
+    
+    public boolean eliminarDeListaEspera(int listaEsperaId){
+        String sql = "DELETE FROM listaespera WHERE lista_espera_id = ?";
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1, listaEsperaId);
+            int affectedRows = statement.executeUpdate();
+            return affectedRows > 0;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
         }
     }
 }
