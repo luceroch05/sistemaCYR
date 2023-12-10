@@ -53,14 +53,15 @@ public class framePrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1200, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBarra.setBackground(new java.awt.Color(0, 0, 0));
@@ -90,7 +91,7 @@ public class framePrincipal extends javax.swing.JFrame {
         panelBarraLayout.setHorizontalGroup(
             panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
-                .addGap(0, 900, Short.MAX_VALUE)
+                .addGap(0, 1180, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelBarraLayout.setVerticalGroup(
@@ -98,22 +99,22 @@ public class framePrincipal extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
+        getContentPane().add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 20));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setForeground(new java.awt.Color(255, 153, 153));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/Banner1.jpg"))); // NOI18N
-        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 440, 550));
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, -1, 720));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Poppins Black", 0, 60)); // NOI18N
         jLabel2.setText("¡Bienvenido!");
-        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 250, 40));
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 430, 80));
 
-        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtUsuario.setText("Usuario");
+        txtUsuario.setText("user");
         txtUsuario.setBorder(null);
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,34 +130,33 @@ public class framePrincipal extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        Fondo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 250, 30));
+        Fondo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 310, -1));
         txtUsuario.setForeground(Color.GRAY);
-        txtUsuario.addFocusListener(new Placeholders("Usuario", new Color(204, 204, 204), Color.BLACK));
-
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 250, 20));
+        txtUsuario.addFocusListener(new Placeholders("user", new Color(204, 204, 204), Color.BLACK));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 323, 250, 20));
+        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 310, 20));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel3.setText("Iniciar Sesión");
-        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 170, 30));
+        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 20)); // NOI18N
+        jLabel3.setText("INICIAR SESIÓN");
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 230, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Poppins ExtraBold", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ingresar");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setName(""); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 250, 30));
+        Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 310, 40));
 
+        txtPassword.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(204, 204, 204));
         txtPassword.setText("jPasswordField1");
         txtPassword.setBorder(null);
@@ -168,11 +168,14 @@ public class framePrincipal extends javax.swing.JFrame {
                 txtPasswordMousePressed(evt);
             }
         });
-        Fondo.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 240, -1));
+        Fondo.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 300, -1));
         txtPassword.setForeground(Color.GRAY);
         txtPassword.addFocusListener(new Placeholders("jPasswordField1", new Color(204, 204, 204), Color.BLACK));
 
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 520));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 310, 30));
+
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1200, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -228,8 +231,8 @@ yMouse = evt.getY();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel panelBarra;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;

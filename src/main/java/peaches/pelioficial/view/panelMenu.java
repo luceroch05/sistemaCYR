@@ -511,19 +511,11 @@ public class panelMenu extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnRegistrarSocio = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         txtDireccionSocio = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         txtTelefonoSocio = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
         txtNombreSocio = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        jSeparator12 = new javax.swing.JSeparator();
-        jSeparator13 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         txtIdSocio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -531,13 +523,14 @@ public class panelMenu extends javax.swing.JPanel {
         btnEditarSocio = new javax.swing.JButton();
         btnEliminarSocio = new javax.swing.JButton();
         txtBuscarSocio = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
         btnDirectoresSocios = new javax.swing.JButton();
         btnActoresSocios = new javax.swing.JButton();
         btnGenerosSocios = new javax.swing.JButton();
         lblDirectoresSeleccionados = new javax.swing.JLabel();
         lblActoresSeleccionados = new javax.swing.JLabel();
         lblGenerosSeleccionados = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         pPrestamos = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtPrestamoId = new javax.swing.JTextField();
@@ -556,6 +549,9 @@ public class panelMenu extends javax.swing.JPanel {
         txtBuscarPrestamo = new javax.swing.JTextField();
         lblSocioSeleccionadoPrestamo = new javax.swing.JLabel();
         lblCintaSeleccionadaPrestamo = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         pListaDeEspera = new javax.swing.JPanel();
         btnSeleccionarPeliculaLDE = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -565,6 +561,8 @@ public class panelMenu extends javax.swing.JPanel {
         btnAgregarSocioLDE = new javax.swing.JButton();
         btnNotificarSocioLDE = new javax.swing.JButton();
         btnEliminarListaLDE = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        lblPeliculaSeleccionadaLDE1 = new javax.swing.JLabel();
         pDirectores = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtNombreDirector = new javax.swing.JTextField();
@@ -574,6 +572,8 @@ public class panelMenu extends javax.swing.JPanel {
         btnEditarDirector = new javax.swing.JButton();
         btnEliminarDirector = new javax.swing.JButton();
         txtBuscarDirector = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         pActores = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtNombreActor = new javax.swing.JTextField();
@@ -583,6 +583,8 @@ public class panelMenu extends javax.swing.JPanel {
         btnAgregarActor = new javax.swing.JButton();
         btnEditarActor = new javax.swing.JButton();
         btnEliminarActor = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         pPeliculas = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtIdPelicula = new javax.swing.JTextField();
@@ -599,6 +601,8 @@ public class panelMenu extends javax.swing.JPanel {
         btnEliminarPelicula = new javax.swing.JButton();
         txtBuscarPelicula = new javax.swing.JTextField();
         lblGenerosSeleccionadosPeliculas = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
         pCintas = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         txtIdCinta = new javax.swing.JTextField();
@@ -610,49 +614,54 @@ public class panelMenu extends javax.swing.JPanel {
         btnAgregarCinta = new javax.swing.JButton();
         btnEditarCinta = new javax.swing.JButton();
         btnEliminarCinta = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
         txtBuscarCinta = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableCintas = new javax.swing.JTable();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextField1.setText("jTextField1");
 
+        setPreferredSize(new java.awt.Dimension(1200, 740));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnDirectores.setBackground(new java.awt.Color(0, 0, 0));
-        btnDirectores.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnDirectores.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
         btnDirectores.setForeground(new java.awt.Color(255, 255, 255));
         btnDirectores.setText("DIRECTORES");
-        btnDirectores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnDirectores.setBorder(null);
+        btnDirectores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDirectores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDirectoresMouseClicked(evt);
             }
         });
-        jPanel1.add(btnDirectores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 250, 40));
+        jPanel1.add(btnDirectores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 180, 40));
 
         btnregistrarsocio.setBackground(new java.awt.Color(0, 0, 0));
-        btnregistrarsocio.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnregistrarsocio.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
         btnregistrarsocio.setForeground(new java.awt.Color(255, 255, 255));
         btnregistrarsocio.setText("SOCIO");
-        btnregistrarsocio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnregistrarsocio.setBorder(null);
+        btnregistrarsocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnregistrarsocio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnregistrarsocioMouseClicked(evt);
             }
         });
-        jPanel1.add(btnregistrarsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 250, 40));
+        jPanel1.add(btnregistrarsocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 180, 40));
 
         btnPrestamos.setBackground(new java.awt.Color(0, 0, 0));
-        btnPrestamos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnPrestamos.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
         btnPrestamos.setForeground(new java.awt.Color(255, 255, 255));
         btnPrestamos.setText("PRESTAMOS");
-        btnPrestamos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnPrestamos.setBorder(null);
+        btnPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrestamosMouseClicked(evt);
@@ -663,25 +672,32 @@ public class panelMenu extends javax.swing.JPanel {
                 btnPrestamosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 250, 40));
+        jPanel1.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 180, 40));
 
         btnListaDeEspera.setBackground(new java.awt.Color(0, 0, 0));
-        btnListaDeEspera.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnListaDeEspera.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
         btnListaDeEspera.setForeground(new java.awt.Color(255, 255, 255));
         btnListaDeEspera.setText("LISTA DE ESPERA");
-        btnListaDeEspera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnListaDeEspera.setBorder(null);
+        btnListaDeEspera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnListaDeEspera.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnListaDeEsperaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnListaDeEspera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 250, 40));
+        btnListaDeEspera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaDeEsperaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnListaDeEspera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 40));
 
         btnActores.setBackground(new java.awt.Color(0, 0, 0));
-        btnActores.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        btnActores.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
         btnActores.setForeground(new java.awt.Color(255, 255, 255));
         btnActores.setText("ACTORES");
-        btnActores.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnActores.setBorder(null);
+        btnActores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActores.setMaximumSize(new java.awt.Dimension(84, 22));
         btnActores.setMinimumSize(new java.awt.Dimension(84, 22));
         btnActores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -689,25 +705,35 @@ public class panelMenu extends javax.swing.JPanel {
                 btnActoresMouseClicked(evt);
             }
         });
-        jPanel1.add(btnActores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 250, 40));
+        jPanel1.add(btnActores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 180, 40));
 
+        btnPeliculas.setBackground(new java.awt.Color(0, 0, 0));
+        btnPeliculas.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
+        btnPeliculas.setForeground(new java.awt.Color(255, 255, 255));
         btnPeliculas.setText("PELICULAS");
+        btnPeliculas.setBorder(null);
+        btnPeliculas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPeliculas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPeliculasMouseClicked(evt);
             }
         });
-        jPanel1.add(btnPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 250, 40));
+        jPanel1.add(btnPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 180, 40));
 
+        btnCintas.setBackground(new java.awt.Color(0, 0, 0));
+        btnCintas.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
+        btnCintas.setForeground(new java.awt.Color(255, 255, 255));
         btnCintas.setText("CINTAS");
+        btnCintas.setBorder(null);
+        btnCintas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCintas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCintasMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCintas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 250, 40));
+        jPanel1.add(btnCintas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 180, 40));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 250, 510));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 180, 730));
 
         panelBarra.setBackground(new java.awt.Color(0, 0, 0));
         panelBarra.setPreferredSize(new java.awt.Dimension(920, 18));
@@ -736,7 +762,7 @@ public class panelMenu extends javax.swing.JPanel {
         panelBarraLayout.setHorizontalGroup(
             panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
-                .addGap(0, 900, Short.MAX_VALUE)
+                .addGap(0, 1180, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelBarraLayout.setVerticalGroup(
@@ -744,7 +770,7 @@ public class panelMenu extends javax.swing.JPanel {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
         );
 
-        add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
+        add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 20));
 
         tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -752,59 +778,39 @@ public class panelMenu extends javax.swing.JPanel {
         pSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel1.setText("Nombre:");
-        pSocios.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel1.setText("SOCIOS");
+        pSocios.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel2.setText("Dirección:");
-        pSocios.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel2.setText("DIRECCIÓN");
+        pSocios.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel3.setText("Teléfono:");
-        pSocios.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel3.setText("TELÉFONO");
+        pSocios.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel4.setText("Directores favoritos:");
-        pSocios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel4.setText("DIRECTORES FAVORITOS");
+        pSocios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
 
         btnRegistrarSocio.setBackground(new java.awt.Color(0, 0, 0));
-        btnRegistrarSocio.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnRegistrarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         btnRegistrarSocio.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarSocio.setText("Registrar");
+        btnRegistrarSocio.setText("REGISTRAR");
         btnRegistrarSocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarSocioActionPerformed(evt);
             }
         });
-        pSocios.add(btnRegistrarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 250, 40));
+        pSocios.add(btnRegistrarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
 
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel7MouseDragged(evt);
-            }
-        });
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
-            }
-        });
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 10, 20));
-
-        pSocios.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 60, 30));
-
-        txtDireccionSocio.setForeground(new java.awt.Color(204, 204, 204));
-        txtDireccionSocio.setText("Av. Del Coso 123");
+        txtDireccionSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtDireccionSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtDireccionSocio.setToolTipText("");
         txtDireccionSocio.setBorder(null);
         txtDireccionSocio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -820,15 +826,12 @@ public class panelMenu extends javax.swing.JPanel {
                 txtDireccionSocioActionPerformed(evt);
             }
         });
-        pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 240, 30));
+        pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
         txtDireccionSocio.setForeground(new Color(204, 204, 204));
         txtDireccionSocio.addFocusListener(new Placeholders("Av. Del Coso 123", new Color(204, 204, 204), Color.BLACK));
 
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 320, 10));
-
-        txtTelefonoSocio.setForeground(new java.awt.Color(204, 204, 204));
-        txtTelefonoSocio.setText("987654321");
+        txtTelefonoSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtTelefonoSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtTelefonoSocio.setBorder(null);
         txtTelefonoSocio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -848,15 +851,12 @@ public class panelMenu extends javax.swing.JPanel {
                 txtTelefonoSocioKeyTyped(evt);
             }
         });
-        pSocios.add(txtTelefonoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 240, 30));
+        pSocios.add(txtTelefonoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 250, 30));
         txtTelefonoSocio.setForeground(new Color(204, 204, 204));
         txtTelefonoSocio.addFocusListener(new Placeholders("987654321", new Color(204, 204, 204), Color.BLACK));
 
-        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 320, 10));
-
-        txtNombreSocio.setForeground(new java.awt.Color(204, 204, 204));
-        txtNombreSocio.setText("Introduzca su nombre");
+        txtNombreSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtNombreSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtNombreSocio.setBorder(null);
         txtNombreSocio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -876,39 +876,31 @@ public class panelMenu extends javax.swing.JPanel {
                 txtNombreSocioKeyTyped(evt);
             }
         });
-        pSocios.add(txtNombreSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 240, 30));
+        pSocios.add(txtNombreSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 250, 30));
         txtNombreSocio.setForeground(new Color(204, 204, 204));
         txtNombreSocio.addFocusListener(new Placeholders("Introduzca su nombre", new Color(204, 204, 204), Color.BLACK));
 
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 320, 10));
-
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel11.setText("Actores favoritos:");
-        pSocios.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jLabel11.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel11.setText("ACTORES FAVORITOS");
+        pSocios.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel12.setText("Géneros preferidos:");
-        pSocios.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel12.setText("GÉNEROS PREFERIDOS");
+        pSocios.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
 
-        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 320, 10));
-
-        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 320, 10));
-
-        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
-        pSocios.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 320, 10));
-
-        jLabel18.setText("ID Socio:");
-        pSocios.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jLabel18.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel18.setText("ID SOCIO");
+        pSocios.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         txtIdSocio.setEditable(false);
-        pSocios.add(txtIdSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 240, -1));
+        pSocios.add(txtIdSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
 
-        tableSocios.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        tableSocios.getTableHeader().setBackground(Color.black);
+        tableSocios.getTableHeader().setForeground(Color.white);
+        tableSocios.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 14));
+        tableSocios.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tableSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -936,119 +928,169 @@ public class panelMenu extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableSocios);
         actualizarTablaSocios();
 
-        pSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 590, 140));
+        pSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 930, 260));
 
-        btnEditarSocio.setText("Editar");
+        btnEditarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarSocio.setText("EDITAR");
         btnEditarSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarSocioActionPerformed(evt);
             }
         });
-        pSocios.add(btnEditarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, -1, -1));
+        pSocios.add(btnEditarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 180, 40));
 
-        btnEliminarSocio.setText("Eliminar");
+        btnEliminarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarSocio.setText("ELIMINAR");
         btnEliminarSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarSocioActionPerformed(evt);
             }
         });
-        pSocios.add(btnEliminarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
+        pSocios.add(btnEliminarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 180, 40));
 
         txtBuscarSocio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarSocioKeyReleased(evt);
             }
         });
-        pSocios.add(txtBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 80, -1));
+        pSocios.add(txtBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 360, 70, 30));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("Buscar por ID");
-        pSocios.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
-
-        btnDirectoresSocios.setText("Elegir Directores");
+        btnDirectoresSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnDirectoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnDirectoresSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnDirectoresSocios.setText("SELECCIONAR");
         btnDirectoresSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDirectoresSociosActionPerformed(evt);
             }
         });
-        pSocios.add(btnDirectoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+        pSocios.add(btnDirectoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 160, -1));
 
-        btnActoresSocios.setText("Elegir Actores");
+        btnActoresSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnActoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnActoresSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnActoresSocios.setText("SELECCIONAR");
         btnActoresSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActoresSociosActionPerformed(evt);
             }
         });
-        pSocios.add(btnActoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 240, 110, -1));
+        pSocios.add(btnActoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 160, -1));
 
-        btnGenerosSocios.setText("Elegir Generos");
+        btnGenerosSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnGenerosSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnGenerosSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerosSocios.setText("SELECCIONAR");
         btnGenerosSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerosSociosActionPerformed(evt);
             }
         });
-        pSocios.add(btnGenerosSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 280, 110, -1));
-        pSocios.add(lblDirectoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
-        pSocios.add(lblActoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, -1, -1));
-        pSocios.add(lblGenerosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
+        pSocios.add(btnGenerosSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 160, -1));
+
+        lblDirectoresSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pSocios.add(lblDirectoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 110, 20));
+
+        lblActoresSeleccionados.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        pSocios.add(lblActoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 140, 20));
+
+        lblGenerosSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pSocios.add(lblGenerosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 120, 20));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel13.setText("NOMBRE");
+        pSocios.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pSocios.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, 30, 30));
 
         tabbedPane.addTab("tab1", pSocios);
 
         pPrestamos.setBackground(new java.awt.Color(255, 255, 255));
+        pPrestamos.setForeground(new java.awt.Color(189, 189, 189));
         pPrestamos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setText("ID Prestamo");
-        pPrestamos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel8.setText("PRÉSTAMOS");
+        pPrestamos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
 
         txtPrestamoId.setEditable(false);
-        pPrestamos.add(txtPrestamoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, -1));
+        txtPrestamoId.setBackground(new java.awt.Color(239, 239, 239));
+        pPrestamos.add(txtPrestamoId, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 172, 140, 30));
 
-        jLabel9.setText("Socio");
-        pPrestamos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel9.setText("SOCIO");
+        pPrestamos.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
-        btnBuscarSocio.setText("Buscar Socio");
+        btnBuscarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnBuscarSocio.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        btnBuscarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarSocio.setText("BUSCAR");
         btnBuscarSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarSocioActionPerformed(evt);
             }
         });
-        pPrestamos.add(btnBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
+        pPrestamos.add(btnBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 140, -1));
 
-        jLabel10.setText("Cinta");
-        pPrestamos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jLabel10.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel10.setText("CINTA");
+        pPrestamos.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
 
-        btnBuscarCinta.setText("Buscar Cinta");
+        btnBuscarCinta.setBackground(new java.awt.Color(0, 0, 0));
+        btnBuscarCinta.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        btnBuscarCinta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarCinta.setText("BUSCAR");
         btnBuscarCinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarCintaActionPerformed(evt);
             }
         });
-        pPrestamos.add(btnBuscarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        pPrestamos.add(btnBuscarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 140, -1));
 
-        jLabel26.setText("Fecha Prestamo");
-        pPrestamos.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
-        pPrestamos.add(pickerFechaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 140, -1));
+        jLabel26.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel26.setText("FECHA PRÉSTAMO");
+        pPrestamos.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
 
-        jLabel27.setText("Fecha Devolucion");
-        pPrestamos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-        pPrestamos.add(pickerFechaDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, -1));
+        pickerFechaPrestamo.setBackground(new java.awt.Color(236, 236, 236));
+        pPrestamos.add(pickerFechaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 140, 30));
 
-        btnAgregarPrestamo.setText("Agregar");
+        jLabel27.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel27.setText("FECHA DEVOLUCIÓN");
+        pPrestamos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
+        pPrestamos.add(pickerFechaDevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 140, 30));
+
+        btnAgregarPrestamo.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarPrestamo.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarPrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarPrestamo.setText("AGREGAR");
         btnAgregarPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarPrestamoActionPerformed(evt);
             }
         });
-        pPrestamos.add(btnAgregarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+        pPrestamos.add(btnAgregarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 220, 40));
 
-        btnEliminarPrestamo.setText("Eliminar");
+        btnEliminarPrestamo.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarPrestamo.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarPrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarPrestamo.setText("ELIMINAR");
         btnEliminarPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarPrestamoActionPerformed(evt);
             }
         });
-        pPrestamos.add(btnEliminarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, -1, -1));
+        pPrestamos.add(btnEliminarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 220, 40));
 
+        tablePrestamos.getTableHeader().setBackground(Color.black);
+        tablePrestamos.getTableHeader().setForeground(Color.white);
+        tablePrestamos.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tablePrestamos.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tablePrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -1070,7 +1112,7 @@ public class panelMenu extends javax.swing.JPanel {
         });
         jScrollPane6.setViewportView(tablePrestamos);
 
-        pPrestamos.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 630, 220));
+        pPrestamos.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 840, 230));
 
         txtBuscarPrestamo.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -1102,23 +1144,45 @@ public class panelMenu extends javax.swing.JPanel {
                 }
             }
         });
-        pPrestamos.add(txtBuscarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, -1));
-        pPrestamos.add(lblSocioSeleccionadoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 130, 20));
-        pPrestamos.add(lblCintaSeleccionadaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 130, 20));
+        pPrestamos.add(txtBuscarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 90, 30));
+
+        lblSocioSeleccionadoPrestamo.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pPrestamos.add(lblSocioSeleccionadoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 130, 20));
+
+        lblCintaSeleccionadaPrestamo.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pPrestamos.add(lblCintaSeleccionadaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 130, 20));
+
+        jLabel19.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel19.setText("ID PRESTAMO");
+        pPrestamos.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel28.setText("ID PRESTAMO");
+        pPrestamos.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pPrestamos.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, 30, 30));
 
         tabbedPane.addTab("tab2", pPrestamos);
 
         pListaDeEspera.setBackground(new java.awt.Color(255, 255, 255));
         pListaDeEspera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSeleccionarPeliculaLDE.setText("Seleccionar Pelicula");
+        btnSeleccionarPeliculaLDE.setBackground(new java.awt.Color(0, 0, 0));
+        btnSeleccionarPeliculaLDE.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnSeleccionarPeliculaLDE.setForeground(new java.awt.Color(255, 255, 255));
+        btnSeleccionarPeliculaLDE.setText("SELECCIONAR PELÍCULA");
         btnSeleccionarPeliculaLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionarPeliculaLDEActionPerformed(evt);
             }
         });
-        pListaDeEspera.add(btnSeleccionarPeliculaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        pListaDeEspera.add(btnSeleccionarPeliculaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 250, 30));
 
+        tableListaDeEspera.getTableHeader().setBackground(Color.black);
+        tableListaDeEspera.getTableHeader().setForeground(Color.white);
+        tableListaDeEspera.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tableListaDeEspera.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tableListaDeEspera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1140,59 +1204,88 @@ public class panelMenu extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(tableListaDeEspera);
 
-        pListaDeEspera.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 500, 110));
+        pListaDeEspera.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 680, 270));
 
-        lblPeliculaSeleccionadaLDE.setText("...");
-        pListaDeEspera.add(lblPeliculaSeleccionadaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 170, -1));
-        pListaDeEspera.add(txtIdSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, -1));
+        lblPeliculaSeleccionadaLDE.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
+        lblPeliculaSeleccionadaLDE.setText(".");
+        pListaDeEspera.add(lblPeliculaSeleccionadaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 80, 30));
 
-        btnAgregarSocioLDE.setText("Agregar Socio");
+        txtIdSocioLDE.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        pListaDeEspera.add(txtIdSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 120, 30));
+
+        btnAgregarSocioLDE.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarSocioLDE.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarSocioLDE.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarSocioLDE.setText("AGREGAR SOCIO");
         btnAgregarSocioLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarSocioLDEActionPerformed(evt);
             }
         });
-        pListaDeEspera.add(btnAgregarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
+        pListaDeEspera.add(btnAgregarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 200, 40));
 
-        btnNotificarSocioLDE.setText("Notificar Socio");
+        btnNotificarSocioLDE.setBackground(new java.awt.Color(0, 0, 0));
+        btnNotificarSocioLDE.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnNotificarSocioLDE.setForeground(new java.awt.Color(255, 255, 255));
+        btnNotificarSocioLDE.setText("NOTIFICAR SOCIO");
         btnNotificarSocioLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNotificarSocioLDEActionPerformed(evt);
             }
         });
-        pListaDeEspera.add(btnNotificarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, -1, -1));
+        pListaDeEspera.add(btnNotificarSocioLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 190, 40));
 
-        btnEliminarListaLDE.setText("Eliminar de la Lista");
+        btnEliminarListaLDE.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarListaLDE.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarListaLDE.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarListaLDE.setText("ELIMINAR SOCIO");
         btnEliminarListaLDE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarListaLDEActionPerformed(evt);
             }
         });
-        pListaDeEspera.add(btnEliminarListaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, -1, -1));
+        pListaDeEspera.add(btnEliminarListaLDE, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 210, 40));
+
+        jLabel29.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel29.setText("LISTA DE ESPERA");
+        pListaDeEspera.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 390, -1));
+
+        lblPeliculaSeleccionadaLDE1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        lblPeliculaSeleccionadaLDE1.setText("ID SOCIO");
+        pListaDeEspera.add(lblPeliculaSeleccionadaLDE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 80, 30));
 
         tabbedPane.addTab("tab3", pListaDeEspera);
 
         pDirectores.setBackground(new java.awt.Color(255, 255, 255));
         pDirectores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("Nombre:");
-        pDirectores.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel6.setText("NOMBRE");
+        pDirectores.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, 20));
 
+        txtNombreDirector.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         txtNombreDirector.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreDirectorKeyTyped(evt);
             }
         });
-        pDirectores.add(txtNombreDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 240, -1));
+        pDirectores.add(txtNombreDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 240, -1));
 
-        btnAgregarDirector.setText("Agregar");
+        btnAgregarDirector.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarDirector.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarDirector.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarDirector.setText("AGREGAR");
         btnAgregarDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarDirectorActionPerformed(evt);
             }
         });
-        pDirectores.add(btnAgregarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+        pDirectores.add(btnAgregarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 120, -1));
 
+        tableDirectores.getTableHeader().setBackground(Color.black);
+        tableDirectores.getTableHeader().setForeground(Color.white);
+        tableDirectores.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tableDirectores.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tableDirectores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -1218,23 +1311,29 @@ public class panelMenu extends javax.swing.JPanel {
         actualizarTablaDirectores();
         jScrollPane2.setViewportView(tableDirectores);
 
-        pDirectores.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 400, 160));
+        pDirectores.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 430, 290));
 
-        btnEditarDirector.setText("Editar");
+        btnEditarDirector.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarDirector.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarDirector.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarDirector.setText("EDITAR");
         btnEditarDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarDirectorActionPerformed(evt);
             }
         });
-        pDirectores.add(btnEditarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+        pDirectores.add(btnEditarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 170, 40));
 
-        btnEliminarDirector.setText("Eliminar");
+        btnEliminarDirector.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarDirector.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarDirector.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarDirector.setText("ELIMINAR");
         btnEliminarDirector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarDirectorActionPerformed(evt);
             }
         });
-        pDirectores.add(btnEliminarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
+        pDirectores.add(btnEliminarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 610, 170, 40));
 
         txtBuscarDirector.getDocument().addDocumentListener(new DocumentListener(){
             @Override
@@ -1261,22 +1360,32 @@ public class panelMenu extends javax.swing.JPanel {
                 }
             }
         });
-        pDirectores.add(txtBuscarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 240, -1));
+        txtBuscarDirector.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pDirectores.add(txtBuscarDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 240, -1));
+
+        jLabel30.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel30.setText("DIRECTORES");
+        pDirectores.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pDirectores.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 30, 30));
 
         tabbedPane.addTab("tab4", pDirectores);
 
         pActores.setBackground(new java.awt.Color(255, 255, 255));
         pActores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setText("Nombre:");
-        pActores.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+        jLabel16.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel16.setText("ACTORES");
+        pActores.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
+        txtNombreActor.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         txtNombreActor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreActorKeyTyped(evt);
             }
         });
-        pActores.add(txtNombreActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 280, -1));
+        pActores.add(txtNombreActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 280, -1));
 
         txtBuscarActor.getDocument().addDocumentListener(new DocumentListener(){
             @Override
@@ -1303,8 +1412,13 @@ public class panelMenu extends javax.swing.JPanel {
                 }
             }
         });
-        pActores.add(txtBuscarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 280, -1));
+        txtBuscarActor.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pActores.add(txtBuscarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 130, -1));
 
+        tableActores.getTableHeader().setBackground(Color.black);
+        tableActores.getTableHeader().setForeground(Color.white);
+        tableActores.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tableActores.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tableActores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -1330,63 +1444,97 @@ public class panelMenu extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tableActores);
         actualizarTablaActores();
 
-        pActores.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 480, 200));
+        pActores.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 520, 260));
 
-        btnAgregarActor.setText("Agregar");
+        btnAgregarActor.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarActor.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarActor.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarActor.setText("AGREGAR");
         btnAgregarActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActorActionPerformed(evt);
             }
         });
-        pActores.add(btnAgregarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+        pActores.add(btnAgregarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 200, 140, -1));
 
-        btnEditarActor.setText("Editar");
+        btnEditarActor.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarActor.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarActor.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarActor.setText("EDITAR");
         btnEditarActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActorActionPerformed(evt);
             }
         });
-        pActores.add(btnEditarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+        pActores.add(btnEditarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, 240, -1));
 
-        btnEliminarActor.setText("Eliminar");
+        btnEliminarActor.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarActor.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarActor.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarActor.setText("ELIMINAR");
         btnEliminarActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActorActionPerformed(evt);
             }
         });
-        pActores.add(btnEliminarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+        pActores.add(btnEliminarActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 610, 230, -1));
+
+        jLabel34.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel34.setText("NOMBRE");
+        pActores.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pActores.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, -1, 30));
 
         tabbedPane.addTab("tab5", pActores);
 
         pPeliculas.setBackground(new java.awt.Color(255, 255, 255));
         pPeliculas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel20.setText("ID Pelicula");
-        pPeliculas.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jLabel20.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel20.setText("ID PELICULA");
+        pPeliculas.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         txtIdPelicula.setEditable(false);
-        pPeliculas.add(txtIdPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 120, 20));
+        txtIdPelicula.setBackground(new java.awt.Color(235, 235, 235));
+        txtIdPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pPeliculas.add(txtIdPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 130, 30));
 
-        jLabel21.setText("Titulo");
-        pPeliculas.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
-        pPeliculas.add(txtTituloPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 120, -1));
+        jLabel21.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel21.setText("TITULO");
+        pPeliculas.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
 
-        jLabel22.setText("Director");
-        pPeliculas.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        txtTituloPelicula.setBackground(new java.awt.Color(235, 235, 235));
+        txtTituloPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pPeliculas.add(txtTituloPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 130, -1));
 
-        pPeliculas.add(cboDirectoresPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 120, -1));
+        jLabel22.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel22.setText("DIRECTOR");
+        pPeliculas.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
 
-        jLabel23.setText("Generos");
-        pPeliculas.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        cboDirectoresPelicula.setBackground(new java.awt.Color(235, 235, 235));
+        cboDirectoresPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pPeliculas.add(cboDirectoresPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 130, -1));
 
-        btnAbrirListaGeneros.setText("Abrir generos");
+        jLabel23.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel23.setText("PELÍCULAS");
+        pPeliculas.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+
+        btnAbrirListaGeneros.setBackground(new java.awt.Color(0, 0, 0));
+        btnAbrirListaGeneros.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAbrirListaGeneros.setForeground(new java.awt.Color(255, 255, 255));
+        btnAbrirListaGeneros.setText("SELECCIONAR");
         btnAbrirListaGeneros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirListaGenerosActionPerformed(evt);
             }
         });
-        pPeliculas.add(btnAbrirListaGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+        pPeliculas.add(btnAbrirListaGeneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 180, -1));
 
+        tablePeliculas.getTableHeader().setBackground(Color.black);
+        tablePeliculas.getTableHeader().setForeground(Color.white);
+        tablePeliculas.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tablePeliculas.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         tablePeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1413,31 +1561,40 @@ public class panelMenu extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tablePeliculas);
 
-        pPeliculas.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 530, 150));
+        pPeliculas.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 530, 150));
 
-        btnAgregarPelicula.setText("Agregar");
+        btnAgregarPelicula.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarPelicula.setText("AGREGAR");
         btnAgregarPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarPeliculaActionPerformed(evt);
             }
         });
-        pPeliculas.add(btnAgregarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+        pPeliculas.add(btnAgregarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 150, -1));
 
-        btnEditarPelicula.setText("Editar");
+        btnEditarPelicula.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPelicula.setText("EDITAR");
         btnEditarPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPeliculaActionPerformed(evt);
             }
         });
-        pPeliculas.add(btnEditarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+        pPeliculas.add(btnEditarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 150, -1));
 
-        btnEliminarPelicula.setText("Eliminar");
+        btnEliminarPelicula.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarPelicula.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarPelicula.setText("ELIMINAR");
         btnEliminarPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarPeliculaActionPerformed(evt);
             }
         });
-        pPeliculas.add(btnEliminarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+        pPeliculas.add(btnEliminarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 150, -1));
 
         txtBuscarPelicula.getDocument().addDocumentListener(new DocumentListener(){
             @Override
@@ -1469,66 +1626,90 @@ public class panelMenu extends javax.swing.JPanel {
                 txtBuscarPelicula.getDocument().addDocumentListener(this);
             }
         });
-        pPeliculas.add(txtBuscarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 260, -1));
-        pPeliculas.add(lblGenerosSeleccionadosPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        txtBuscarPelicula.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pPeliculas.add(txtBuscarPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 230, 30));
+
+        lblGenerosSeleccionadosPeliculas.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        pPeliculas.add(lblGenerosSeleccionadosPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 160, 20));
+
+        jLabel35.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel35.setText("GÉNEROS");
+        pPeliculas.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pPeliculas.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, 30));
 
         tabbedPane.addTab("tab6", pPeliculas);
 
         pCintas.setBackground(new java.awt.Color(255, 255, 255));
         pCintas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setText("ID Cinta");
-        pCintas.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        jLabel15.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel15.setText("CINTAS");
+        pCintas.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 70));
 
         txtIdCinta.setEditable(false);
-        pCintas.add(txtIdCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 70, -1));
+        txtIdCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pCintas.add(txtIdCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 70, -1));
 
-        jLabel17.setText("Pelicula");
-        pCintas.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jLabel17.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel17.setText("PELÍCULA");
+        pCintas.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
 
         txtPeliculaCinta.setEditable(false);
-        pCintas.add(txtPeliculaCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 150, -1));
+        txtPeliculaCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pCintas.add(txtPeliculaCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 150, -1));
 
-        btnBuscarPeliculaCinta.setText("Buscar Pelicula");
+        btnBuscarPeliculaCinta.setBackground(new java.awt.Color(0, 0, 0));
+        btnBuscarPeliculaCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnBuscarPeliculaCinta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarPeliculaCinta.setText("BUSCAR PELÍCULA");
         btnBuscarPeliculaCinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPeliculaCintaActionPerformed(evt);
             }
         });
-        pCintas.add(btnBuscarPeliculaCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        pCintas.add(btnBuscarPeliculaCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 180, -1));
 
-        jLabel24.setText("Estado");
-        pCintas.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        jLabel24.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel24.setText("ESTADO");
+        pCintas.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         cboEstadoCinta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Prestado", "Dañada", "Perdida" }));
-        pCintas.add(cboEstadoCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 150, -1));
+        pCintas.add(cboEstadoCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 150, 30));
 
-        btnAgregarCinta.setText("Agregar");
+        btnAgregarCinta.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnAgregarCinta.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarCinta.setText("AGREGAR");
         btnAgregarCinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarCintaActionPerformed(evt);
             }
         });
-        pCintas.add(btnAgregarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        pCintas.add(btnAgregarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 120, -1));
 
-        btnEditarCinta.setText("Editar");
+        btnEditarCinta.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarCinta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarCinta.setText("EDITAR");
         btnEditarCinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarCintaActionPerformed(evt);
             }
         });
-        pCintas.add(btnEditarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        pCintas.add(btnEditarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 120, -1));
 
-        btnEliminarCinta.setText("Eliminar");
+        btnEliminarCinta.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarCinta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarCinta.setText("ELIMINAR");
         btnEliminarCinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarCintaActionPerformed(evt);
             }
         });
-        pCintas.add(btnEliminarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
-
-        jLabel25.setText("Buscar");
-        pCintas.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        pCintas.add(btnEliminarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 110, -1));
 
         txtBuscarCinta.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -1551,8 +1732,13 @@ public class panelMenu extends javax.swing.JPanel {
                 }
             }
         });
-        pCintas.add(txtBuscarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 150, -1));
+        txtBuscarCinta.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        pCintas.add(txtBuscarCinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 150, -1));
 
+        tableCintas.getTableHeader().setBackground(Color.black);
+        tableCintas.getTableHeader().setForeground(Color.white);
+        tableCintas.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 16));
+        tableCintas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tableCintas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -1574,11 +1760,18 @@ public class panelMenu extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tableCintas);
 
-        pCintas.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 440, 170));
+        pCintas.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 680, 260));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pCintas.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, 30));
+
+        jLabel39.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel39.setText("ID CINTA");
+        pCintas.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         tabbedPane.addTab("tab7", pCintas);
 
-        add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, -20, 890, 550));
+        add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -20, 1020, 760));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnregistrarsocioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregistrarsocioMouseClicked
@@ -1651,20 +1844,6 @@ public class panelMenu extends javax.swing.JPanel {
     private void txtDireccionSocioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionSocioFocusGained
 
     }//GEN-LAST:event_txtDireccionSocioFocusGained
-
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MousePressed
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel7MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseDragged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jLabel7MouseDragged
 
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         String nombre = txtNombreSocio.getText();
@@ -2370,6 +2549,10 @@ validacionTexto(evt);        // TODO add your handling code here:
             JOptionPane.showMessageDialog(this, "No se puedo eliminar el socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarListaLDEActionPerformed
+
+    private void btnListaDeEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeEsperaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListaDeEsperaActionPerformed
     void validacionTexto(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 
@@ -2438,6 +2621,8 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2449,18 +2634,26 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2468,12 +2661,6 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblActoresSeleccionados;
     private javax.swing.JLabel lblCintaSeleccionadaPrestamo;
@@ -2481,6 +2668,7 @@ validacionTexto(evt);        // TODO add your handling code here:
     private javax.swing.JLabel lblGenerosSeleccionados;
     private javax.swing.JLabel lblGenerosSeleccionadosPeliculas;
     private javax.swing.JLabel lblPeliculaSeleccionadaLDE;
+    private javax.swing.JLabel lblPeliculaSeleccionadaLDE1;
     private javax.swing.JLabel lblSocioSeleccionadoPrestamo;
     private javax.swing.JPanel pActores;
     private javax.swing.JPanel pCintas;
