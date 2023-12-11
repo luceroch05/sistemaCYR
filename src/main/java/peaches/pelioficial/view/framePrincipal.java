@@ -18,27 +18,25 @@ import peaches.pelioficial.util.Placeholders;
  */
 public class framePrincipal extends javax.swing.JFrame {
     private panelMenu panelMenu;
-    private panelCartelera panelCartelera;
     
     public framePrincipal() {
         initComponents();
         panelMenu = new panelMenu(this);
-        panelCartelera = new panelCartelera(this);
+     
         
         
         add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        add(panelCartelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        panelCartelera.setVisible(false);
+        
         panelMenu.setVisible(false);
     }
     
     public void mostrarPanelCartelera(){
         panelMenu.setVisible(false);
-        panelCartelera.setVisible(true);
+ 
     }
     
     public void mostrarPanelMenu(){
-        panelCartelera.setVisible(false);
+  
         panelMenu.setVisible(true);
     }
 
