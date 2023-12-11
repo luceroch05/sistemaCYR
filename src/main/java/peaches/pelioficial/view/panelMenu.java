@@ -54,63 +54,34 @@ import peaches.pelioficial.util.SeleccionPeliculaDialog;
  * @author Lucero
  */
 public class panelMenu extends javax.swing.JPanel {
-        int xMouse,yMouse;
-        SocioService socioService = new SocioService();
-        PeliculaService peliculaService = new PeliculaService(DatabaseConnector.conectar());
-        DirectorService directorService = new DirectorService(DatabaseConnector.conectar());
-        ActorService actorService = new ActorService(DatabaseConnector.conectar());
-        CintaService cintaService = new CintaService();
-        PrestamoService prestamoService = new PrestamoService(DatabaseConnector.conectar());
-        ListaEsperaService listaEsperaService = new ListaEsperaService();
-        private framePrincipal framePrincipal;
+    int xMouse,yMouse;
+    SocioService socioService = new SocioService();
+    PeliculaService peliculaService = new PeliculaService(DatabaseConnector.conectar());
+    DirectorService directorService = new DirectorService(DatabaseConnector.conectar());
+    ActorService actorService = new ActorService(DatabaseConnector.conectar());
+    CintaService cintaService = new CintaService();
+    PrestamoService prestamoService = new PrestamoService(DatabaseConnector.conectar());
+    ListaEsperaService listaEsperaService = new ListaEsperaService();
+    private framePrincipal framePrincipal;
         
-        private Set<Director> directoresSeleccionados = new HashSet<>();
-        private Set<Actor> actoresSeleccionados = new HashSet<>();
-        private Set<Genero> generosSeleccionados = new HashSet<>();
-        private List<Director> listaDirectores = directorService.obtenerTodosLosDirectores();
-        private List<Actor> listaActores = actorService.obtenerTodosLosActores();
-        private List<Genero> listaGeneros = peliculaService.obtenerTodosLosGeneros();
-        private Prestamo prestamoSeleccionado;
-        private List<Genero> generosSeleccionadosPeliculas = new ArrayList<>();
+    private Set<Director> directoresSeleccionados = new HashSet<>();
+    private Set<Actor> actoresSeleccionados = new HashSet<>();
+    private Set<Genero> generosSeleccionados = new HashSet<>();
+    private List<Director> listaDirectores = directorService.obtenerTodosLosDirectores();
+    private List<Actor> listaActores = actorService.obtenerTodosLosActores();
+    private List<Genero> listaGeneros = peliculaService.obtenerTodosLosGeneros();
+    private Prestamo prestamoSeleccionado;
+    private List<Genero> generosSeleccionadosPeliculas = new ArrayList<>();
         
-        private int peliculaLDESeleccionadaId = -1; // Inicializa con -1 para indicar que no hay selección
+    private int peliculaLDESeleccionadaId = -1;
         
-    /**
-     * Creates new form panelMenu
-     */
     public panelMenu(framePrincipal framePrincipal) {
         initComponents();
-        rellenarComboBoxes();
         this.framePrincipal = framePrincipal;
     }
      
     public JTabbedPane getTabbedPane(){
         return tabbedPane;
-    }
-    
-    private void rellenarComboBoxes() {
-        rellenarCboDirectores();
-        rellenarCboActores();
-        rellenarCboGeneros();
-    }
-    
-    private void rellenarCboDirectores() {
-        List<Director> directores = directorService.obtenerTodosLosDirectores();
-        for (Director director : directores) {
-            cboDirectoresPelicula.addItem(director);
-        }
-    }
-    
-    private void rellenarCboActores() {
-        List<Actor> actores = actorService.obtenerTodosLosActores();
-        for (Actor actor : actores) {
-        }
-    }
-    
-    private void rellenarCboGeneros() {
-        List<Genero> generos = peliculaService.obtenerTodosLosGeneros();
-        for (Genero genero : generos) {
-        }
     }
     
     public void actualizarTablaDirectores(){
@@ -227,7 +198,6 @@ public class panelMenu extends javax.swing.JPanel {
         int peliculaId = (int) tablePeliculas.getValueAt(filaSeleccionada, 0);
         Pelicula pelicula = peliculaService.obtenerPeliculaPorId(peliculaId);
         Director director = pelicula.getDirector();
-        List<Genero> generos = peliculaService.obtenerGenerosPorPelicula(peliculaId);
         
         txtIdPelicula.setText(String.valueOf(pelicula.getPeliculaId()));
         txtTituloPelicula.setText(pelicula.getTitulo());
@@ -259,13 +229,6 @@ public class panelMenu extends javax.swing.JPanel {
                 nombresGeneros
             });
         }
-    }
-    
-    private void limpiarCamposPelicula(){
-        txtIdPelicula.setText("");
-        txtTituloPelicula.setText("");
-        cboDirectoresPelicula.setSelectedIndex(0);
-        lblGenerosSeleccionados.setText("");
     }
     
     private void filtrarTablaDirectores(String texto){
@@ -330,28 +293,13 @@ public class panelMenu extends javax.swing.JPanel {
         generosSeleccionados.clear();
     }
     
-    private List<Director> obtenerDirectoresSeleccionados() {
-        return new ArrayList<>(directoresSeleccionados);
-    }
-
-    private List<Actor> obtenerActoresSeleccionados() {
-        return new ArrayList<>(actoresSeleccionados);
-    }
-
-    private List<Genero> obtenerGenerosSeleccionados() {
-        return new ArrayList<>(generosSeleccionados);
-    }
-    
     private Cinta obtenerCintaSeleccionada() {
         int filaSeleccionada = tableCintas.getSelectedRow();
         if (filaSeleccionada >= 0) {
             DefaultTableModel model = (DefaultTableModel) tableCintas.getModel();
 
-            // Asumiendo que el ID de la cinta está en la columna 0
             int cintaId = Integer.parseInt(model.getValueAt(filaSeleccionada, 0).toString());
 
-            // Aquí deberías buscar la cinta en tu lista de cintas o base de datos usando el cintaId
-            // Por ejemplo, podrías tener un método en tu CintaService que busque la cinta por su ID:
             Cinta cinta = cintaService.obtenerCintaPorId(cintaId);
 
             return cinta;
@@ -364,7 +312,6 @@ public class panelMenu extends javax.swing.JPanel {
     private Cinta obtenerCintaSeleccionadaDeLaTabla() {
         int filaSeleccionada = tableCintas.getSelectedRow();
         if (filaSeleccionada != -1) {
-            // Suponiendo que la primera columna es la del ID de la cinta
             int cintaId = (int) tableCintas.getValueAt(filaSeleccionada, 0);
             return cintaService.obtenerCintaPorId(cintaId);
         } else {
@@ -374,13 +321,13 @@ public class panelMenu extends javax.swing.JPanel {
     
     public void actualizarTablaCintas() {
         DefaultTableModel modelo = (DefaultTableModel) tableCintas.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla primero
-        List<Cinta> listaCintas = cintaService.obtenerTodasLasCintas(); // Asegúrate de que este método devuelve la lista actualizada de cintas
+        modelo.setRowCount(0);
+        List<Cinta> listaCintas = cintaService.obtenerTodasLasCintas();
         for (Cinta cinta : listaCintas) {
-            Pelicula pelicula = peliculaService.obtenerPeliculaPorId(cinta.getPeliculaId()); // Suponiendo que tienes un método para obtener la película por su ID
+            Pelicula pelicula = peliculaService.obtenerPeliculaPorId(cinta.getPeliculaId());
             modelo.addRow(new Object[] {
                 cinta.getCintaId(),
-                pelicula != null ? pelicula.getTitulo() : "Desconocido", // Asegúrate de que la película no sea null
+                pelicula != null ? pelicula.getTitulo() : "Desconocido",
                 cinta.getEstado()
             });
         }
@@ -422,7 +369,7 @@ public class panelMenu extends javax.swing.JPanel {
     private void actualizarTablaPrestamos() {
         List<Prestamo> prestamos = prestamoService.obtenerTodosLosPrestamos();
         DefaultTableModel modelo = (DefaultTableModel) tablePrestamos.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla primero
+        modelo.setRowCount(0);
 
         for (Prestamo prestamo : prestamos) {
             modelo.addRow(new Object[]{
@@ -452,25 +399,9 @@ public class panelMenu extends javax.swing.JPanel {
         actualizarUIConGenerosSeleccionadosPeliculas();
     }
     
-    private void cargarDatosEnTablaListaEspera(int peliculaId) {
-        DefaultTableModel modelo = (DefaultTableModel) tableListaDeEspera.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla
-
-        List<ListaDeEspera> listaEspera = listaEsperaService.obtenerListaEsperaPararPelicula(peliculaId);
-
-        for (ListaDeEspera le : listaEspera) {
-            modelo.addRow(new Object[]{
-                le.getIdListaEspera(), 
-                le.getIdSocio(), 
-                le.getNombreSocio(), 
-                le.getFechaSolicitud().toString() // Asegúrate de formatear la fecha como prefieras
-            });
-        }
-    }
-    
     private void cargarDatosEnTablaListaEsperaCompleta() {
         DefaultTableModel modelo = (DefaultTableModel) tableListaDeEspera.getModel();
-        modelo.setRowCount(0); // Limpia la tabla
+        modelo.setRowCount(0);
 
         List<ListaDeEspera> listaEsperaCompleta = listaEsperaService.obtenerTodaListaDeEspera();
         for (ListaDeEspera le : listaEsperaCompleta) {
@@ -478,7 +409,7 @@ public class panelMenu extends javax.swing.JPanel {
                 le.getIdListaEspera(),
                 le.getIdSocio(),
                 le.getNombreSocio(),
-                le.getFechaSolicitud().toString() // o el formato de fecha que prefieras
+                le.getFechaSolicitud().toString()
             });
         }
     }
@@ -667,11 +598,6 @@ public class panelMenu extends javax.swing.JPanel {
                 btnPrestamosMouseClicked(evt);
             }
         });
-        btnPrestamos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrestamosActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 180, 40));
 
         btnListaDeEspera.setBackground(new java.awt.Color(0, 0, 0));
@@ -683,11 +609,6 @@ public class panelMenu extends javax.swing.JPanel {
         btnListaDeEspera.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnListaDeEsperaMouseClicked(evt);
-            }
-        });
-        btnListaDeEspera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaDeEsperaActionPerformed(evt);
             }
         });
         jPanel1.add(btnListaDeEspera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 40));
@@ -813,37 +734,11 @@ public class panelMenu extends javax.swing.JPanel {
         txtDireccionSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtDireccionSocio.setToolTipText("");
         txtDireccionSocio.setBorder(null);
-        txtDireccionSocio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDireccionSocioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDireccionSocioFocusLost(evt);
-            }
-        });
-        txtDireccionSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionSocioActionPerformed(evt);
-            }
-        });
         pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
 
         txtTelefonoSocio.setBackground(new java.awt.Color(241, 241, 241));
         txtTelefonoSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtTelefonoSocio.setBorder(null);
-        txtTelefonoSocio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoSocioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoSocioFocusLost(evt);
-            }
-        });
-        txtTelefonoSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoSocioActionPerformed(evt);
-            }
-        });
         txtTelefonoSocio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoSocioKeyTyped(evt);
@@ -854,19 +749,6 @@ public class panelMenu extends javax.swing.JPanel {
         txtNombreSocio.setBackground(new java.awt.Color(241, 241, 241));
         txtNombreSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
         txtNombreSocio.setBorder(null);
-        txtNombreSocio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreSocioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreSocioFocusLost(evt);
-            }
-        });
-        txtNombreSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreSocioActionPerformed(evt);
-            }
-        });
         txtNombreSocio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreSocioKeyTyped(evt);
@@ -1803,42 +1685,6 @@ public class panelMenu extends javax.swing.JPanel {
         yMouse = evt.getY();
     }//GEN-LAST:event_panelBarraMousePressed
 
-    private void txtNombreSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreSocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreSocioActionPerformed
-
-    private void txtNombreSocioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreSocioFocusLost
-
-    }//GEN-LAST:event_txtNombreSocioFocusLost
-
-    private void txtNombreSocioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreSocioFocusGained
-
-    }//GEN-LAST:event_txtNombreSocioFocusGained
-
-    private void txtTelefonoSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoSocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoSocioActionPerformed
-
-    private void txtTelefonoSocioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoSocioFocusLost
-
-    }//GEN-LAST:event_txtTelefonoSocioFocusLost
-
-    private void txtTelefonoSocioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoSocioFocusGained
-
-    }//GEN-LAST:event_txtTelefonoSocioFocusGained
-
-    private void txtDireccionSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionSocioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionSocioActionPerformed
-
-    private void txtDireccionSocioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionSocioFocusLost
-
-    }//GEN-LAST:event_txtDireccionSocioFocusLost
-
-    private void txtDireccionSocioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionSocioFocusGained
-
-    }//GEN-LAST:event_txtDireccionSocioFocusGained
-
     private void btnRegistrarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSocioActionPerformed
         String nombre = txtNombreSocio.getText();
         String direccion = txtDireccionSocio.getText();
@@ -2009,21 +1855,19 @@ public class panelMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarSocioKeyReleased
 
     private void txtNombreSocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreSocioKeyTyped
-           validacionTexto(evt);
-     
+        validacionTexto(evt);
     }//GEN-LAST:event_txtNombreSocioKeyTyped
 
     private void txtTelefonoSocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoSocioKeyTyped
-validacionNumerica(evt); // TODO add your handling code here:
+        validacionNumerica(evt);
     }//GEN-LAST:event_txtTelefonoSocioKeyTyped
 
     private void txtNombreActorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreActorKeyTyped
-          validacionTexto(evt);
-        // TODO add your handling code here:
+        validacionTexto(evt);
     }//GEN-LAST:event_txtNombreActorKeyTyped
 
     private void txtNombreDirectorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreDirectorKeyTyped
-validacionTexto(evt);        // TODO add your handling code here:
+        validacionTexto(evt);
     }//GEN-LAST:event_txtNombreDirectorKeyTyped
 
     private void btnPeliculasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeliculasMouseClicked
@@ -2032,17 +1876,17 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnPeliculasMouseClicked
 
     private void btnAbrirListaGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirListaGenerosActionPerformed
-    List<Genero> todosLosGeneros = peliculaService.obtenerTodosLosGeneros(); // Asumiendo que tienes un servicio que hace esto
+    List<Genero> todosLosGeneros = peliculaService.obtenerTodosLosGeneros();
     SeleccionElementosDialog<Genero> seleccionGenerosDialog = new SeleccionElementosDialog<>(
-            this.framePrincipal, // El JFrame padre, 'this' si tu clase extiende de JFrame
-            true, // Si el diálogo es modal
-            todosLosGeneros, // La lista completa de géneros disponibles
-            new HashSet<>(generosSeleccionadosPeliculas), // Los géneros actualmente seleccionados para películas
-            Genero::getNombre, // La función que define cómo convertir un Género en un String
-            seleccion -> { // Lo que sucede cuando confirmas la selección en el diálogo
+            this.framePrincipal,
+            true,
+            todosLosGeneros,
+            new HashSet<>(generosSeleccionadosPeliculas),
+            Genero::getNombre,
+            seleccion -> {
                 generosSeleccionadosPeliculas.clear();
                 generosSeleccionadosPeliculas.addAll(seleccion);
-                actualizarUIConGenerosSeleccionadosPeliculas(); // Método para actualizar tu UI con los géneros seleccionados para películas
+                actualizarUIConGenerosSeleccionadosPeliculas();
             }
     );
     seleccionGenerosDialog.setVisible(true);
@@ -2072,8 +1916,8 @@ validacionTexto(evt);        // TODO add your handling code here:
 
         if(peliculaId > 0) {
             JOptionPane.showMessageDialog(this, "Película agregada correctamente.");
-            actualizarTablaPeliculas(); // Debes implementar este método para actualizar la tabla de películas
-            limpiarFormularioPelicula(); // Debes implementar este método para limpiar el formulario después de agregar
+            actualizarTablaPeliculas();
+            limpiarFormularioPelicula();
         } else {
             JOptionPane.showMessageDialog(this, "Error al agregar la película.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -2101,31 +1945,26 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_tablePeliculasMouseClicked
 
     private void btnEditarPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPeliculaActionPerformed
-        // Validar que se haya seleccionado una película
         if(txtIdPelicula.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Por favor, selecciona una película para editar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Obtener la información de la película del formulario
         int peliculaId = Integer.parseInt(txtIdPelicula.getText());
         String titulo = txtTituloPelicula.getText();
         Director director = (Director) cboDirectoresPelicula.getSelectedItem();
         List<Genero> generosSeleccionadosParaEditar = new ArrayList<>(generosSeleccionadosPeliculas);
 
-        // Crear una instancia de Pelicula con los datos actuales
         Pelicula peliculaEditada = new Pelicula();
         peliculaEditada.setPeliculaId(peliculaId);
         peliculaEditada.setTitulo(titulo);
         peliculaEditada.setDirector(director);
 
-        // Llamar al servicio para actualizar la película con los nuevos géneros
         boolean exito = peliculaService.editarPeliculaConGeneros(peliculaEditada, generosSeleccionadosParaEditar);
 
-        // Verificar el resultado de la operación y actualizar la UI en consecuencia
         if(exito){
-            actualizarTablaPeliculas(); // Actualizar la tabla de películas con la información actualizada
-            limpiarFormularioPelicula(); // Limpiar el formulario para edición
+            actualizarTablaPeliculas(); 
+            limpiarFormularioPelicula();
             JOptionPane.showMessageDialog(this, "Película actualizada correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(this, "Hubo un error al editar la película.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2222,36 +2061,29 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarCintaActionPerformed
 
     private void btnEditarCintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCintaActionPerformed
-        // Asumiendo que tienes un método para obtener la cinta seleccionada de la tabla
         Cinta cintaSeleccionada = obtenerCintaSeleccionada();
         if (cintaSeleccionada == null) {
             JOptionPane.showMessageDialog(null, "Por favor, seleccione una cinta para editar.");
             return;
         }
 
-        // Asumiendo que tienes métodos para obtener los datos actualizados de la UI
         String peliculaTexto = txtPeliculaCinta.getText();
         int peliculaId = cintaService.obtenerPeliculaIdPorNombre(peliculaTexto);
         String estado = (String) cboEstadoCinta.getSelectedItem();
         
-        // Actualizar los datos de la cinta seleccionada
         cintaSeleccionada.setPeliculaId(peliculaId);
         cintaSeleccionada.setEstado(estado);
 
-        // Llamar al servicio para actualizar la cinta
         cintaService.actualizarCinta(cintaSeleccionada);
 
-        // Actualizar la tabla y notificar al usuario
         actualizarTablaCintas();
         JOptionPane.showMessageDialog(null, "Cinta actualizada exitosamente.");
     }//GEN-LAST:event_btnEditarCintaActionPerformed
 
     private void btnEliminarCintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCintaActionPerformed
-        // Asumiendo que tienes un método que obtenga la cinta seleccionada de la tabla
         Cinta cintaSeleccionada = obtenerCintaSeleccionadaDeLaTabla();
 
         if (cintaSeleccionada != null) {
-            // Confirmar antes de eliminar
             int confirmacion = JOptionPane.showConfirmDialog(this, 
                 "¿Estás seguro de que quieres eliminar la cinta seleccionada?", 
                 "Eliminar Cinta", 
@@ -2263,7 +2095,7 @@ validacionTexto(evt);        // TODO add your handling code here:
                 if (exito) {
                     JOptionPane.showMessageDialog(this, "Cinta eliminada con éxito.", 
                         "Eliminar Cinta", JOptionPane.INFORMATION_MESSAGE);
-                    actualizarTablaCintas(); // Actualizar la tabla
+                    actualizarTablaCintas();
                 } else {
                     JOptionPane.showMessageDialog(this, "Error al eliminar la cinta.", 
                         "Eliminar Cinta", JOptionPane.ERROR_MESSAGE);
@@ -2276,26 +2108,18 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarCintaActionPerformed
 
     private void btnBuscarPeliculaCintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPeliculaCintaActionPerformed
-        // Obtener la lista de películas
-        List<Pelicula> peliculas = obtenerListaPeliculas(); // Asumiendo que este método ya está definido y devuelve la lista de películas.
+        List<Pelicula> peliculas = obtenerListaPeliculas();
 
-        // Encuentra el JFrame que contiene este panel
         Frame frameAncestor = (Frame) SwingUtilities.getWindowAncestor(this);
 
-        // Crear y mostrar el diálogo
         SeleccionPeliculaDialog dialog = new SeleccionPeliculaDialog(frameAncestor, true, peliculas);
         dialog.setVisible(true);
 
-        // Obtener la película seleccionada del diálogo
         Pelicula peliculaSeleccionada = dialog.getPeliculaSeleccionada();
         if (peliculaSeleccionada != null) {
             txtPeliculaCinta.setText(peliculaSeleccionada.getTitulo());
         }
     }//GEN-LAST:event_btnBuscarPeliculaCintaActionPerformed
-
-    private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrestamosActionPerformed
 
     private void btnAgregarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPrestamoActionPerformed
         int socioId = Integer.parseInt(txtIdSocio.getText());
@@ -2314,7 +2138,7 @@ validacionTexto(evt);        // TODO add your handling code here:
 
         if (exito) {
             JOptionPane.showMessageDialog(this, "Préstamo agregado exitosamente.");
-            actualizarTablaPrestamos(); // Asumiendo que este método actualiza la tabla en la interfaz de usuario
+            actualizarTablaPrestamos();
             limpiarSeleccionPrestamo();
         } else {
             JOptionPane.showMessageDialog(this, "Error al agregar el préstamo.");
@@ -2322,38 +2146,30 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarPrestamoActionPerformed
 
     private void btnBuscarCintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCintaActionPerformed
-        // Crear un JDialog para buscar cintas
         JDialog buscarCintaDialog = new JDialog(this.framePrincipal, "Buscar Cinta", true); // 'this.frame' debería ser tu JFrame principal
         buscarCintaDialog.setLayout(new BorderLayout());
 
-        // Crear modelo de tabla y tabla
         DefaultTableModel modeloTablaCintas = new DefaultTableModel(new Object[]{"ID", "Título", "Estado"}, 0);
         JTable tablaCintas = new JTable(modeloTablaCintas);
 
-        // Llenar la tabla con datos
         List<Cinta> cintasDisponibles = cintaService.obtenerCintasDisponibles();
         for (Cinta cinta : cintasDisponibles) {
             modeloTablaCintas.addRow(new Object[]{cinta.getCintaId(), cinta.getTituloPelicula(), cinta.getEstado()});
         }
 
-        // Agregar un JScrollPane a la tabla
         JScrollPane scrollPane = new JScrollPane(tablaCintas);
         buscarCintaDialog.add(scrollPane, BorderLayout.CENTER);
 
-        // Panel para los botones
         JPanel botonPanel = new JPanel();
         JButton btnSeleccionar = new JButton("Seleccionar");
         btnSeleccionar.addActionListener(e -> {
-            // Lógica para obtener la cinta seleccionada y cerrar el diálogo
             int filaSeleccionada = tablaCintas.getSelectedRow();
             if (filaSeleccionada >= 0) {
                 int cintaId = (int) modeloTablaCintas.getValueAt(filaSeleccionada, 0);
                 String tituloCinta = (String) modeloTablaCintas.getValueAt(filaSeleccionada, 1);
-                // Establecer el ID de la cinta en el campo de texto en tu panel de préstamos
                 txtIdCinta.setText(String.valueOf(cintaId));
-                // Actualizar el label con el título de la cinta seleccionada
                 lblCintaSeleccionadaPrestamo.setText(tituloCinta);
-                lblCintaSeleccionadaPrestamo.setVisible(true); // Asegúrate de que el label sea visible si estaba oculto
+                lblCintaSeleccionadaPrestamo.setVisible(true);
                 buscarCintaDialog.dispose();
             }
         });
@@ -2367,47 +2183,36 @@ validacionTexto(evt);        // TODO add your handling code here:
         botonPanel.add(btnCancelar);
         buscarCintaDialog.add(botonPanel, BorderLayout.SOUTH);
 
-        // Configurar tamaño y visibilidad
         buscarCintaDialog.pack();
-        buscarCintaDialog.setLocationRelativeTo(null); // Centrar en pantalla
+        buscarCintaDialog.setLocationRelativeTo(null);
         buscarCintaDialog.setVisible(true);
     }//GEN-LAST:event_btnBuscarCintaActionPerformed
 
     private void btnBuscarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSocioActionPerformed
-        // Obtener el JFrame contenedor
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 
-
-        // Crear un JDialog para buscar socios
         JDialog buscarSocioDialog = new JDialog(frame, "Buscar Socio", true);
         buscarSocioDialog.setLayout(new BorderLayout());
 
-        // Crear modelo de tabla y tabla
         DefaultTableModel modeloTablaSocios = new DefaultTableModel(new Object[]{"ID", "Nombre", "Dirección", "Teléfono"}, 0);
         JTable tablaSocios = new JTable(modeloTablaSocios);
 
-        // Llenar la tabla con datos
         List<Socio> socios = socioService.obtenerTodosLosSocios();
         for (Socio socio : socios) {
             modeloTablaSocios.addRow(new Object[]{socio.getSocioId(), socio.getNombre(), socio.getDireccion(), socio.getTelefono()});
         }
 
-        // Agregar un JScrollPane a la tabla
         JScrollPane scrollPane = new JScrollPane(tablaSocios);
         buscarSocioDialog.add(scrollPane, BorderLayout.CENTER);
 
-        // Panel para los botones
         JPanel botonPanel = new JPanel();
         JButton btnSeleccionar = new JButton("Seleccionar");
         btnSeleccionar.addActionListener(e -> {
-            // Lógica para obtener el socio seleccionado y cerrar el diálogo
             int filaSeleccionada = tablaSocios.getSelectedRow();
             if (filaSeleccionada >= 0) {
                 int socioId = (int) modeloTablaSocios.getValueAt(filaSeleccionada, 0);
                 String nombreSocio = (String) modeloTablaSocios.getValueAt(filaSeleccionada, 1);
-                // Establecer el ID del socio en el campo de texto en tu panel de préstamos
                 txtIdSocio.setText(String.valueOf(socioId));
-                // Actualizar el label con el nombre del socio seleccionado
                 lblSocioSeleccionadoPrestamo.setText(nombreSocio);
                 buscarSocioDialog.dispose();
             }
@@ -2422,7 +2227,6 @@ validacionTexto(evt);        // TODO add your handling code here:
         botonPanel.add(btnCancelar);
         buscarSocioDialog.add(botonPanel, BorderLayout.SOUTH);
 
-        // Configurar tamaño y visibilidad
         buscarSocioDialog.pack();
         buscarSocioDialog.setLocationRelativeTo(null);
         buscarSocioDialog.setVisible(true);
@@ -2431,7 +2235,6 @@ validacionTexto(evt);        // TODO add your handling code here:
     private void btnEliminarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPrestamoActionPerformed
         int selectedRow = tablePrestamos.getSelectedRow();
         if (selectedRow >= 0) {
-            // Confirmar la eliminación
             int confirm = JOptionPane.showConfirmDialog(
                     null,
                     "¿Está seguro que desea eliminar el préstamo seleccionado?",
@@ -2442,11 +2245,9 @@ validacionTexto(evt);        // TODO add your handling code here:
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     int prestamoId = Integer.parseInt(tablePrestamos.getValueAt(selectedRow, 0).toString());
-                    // Llamada al método del servicio que realiza la eliminación
                     boolean exito = prestamoService.eliminarPrestamo(prestamoId);
 
                     if (exito) {
-                        // Eliminar la fila de la tabla de la interfaz gráfica
                         ((DefaultTableModel) tablePrestamos.getModel()).removeRow(selectedRow);
 
                         JOptionPane.showMessageDialog(null, "Préstamo eliminado correctamente.");
@@ -2463,25 +2264,19 @@ validacionTexto(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarPrestamoActionPerformed
 
     private void btnSeleccionarPeliculaLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarPeliculaLDEActionPerformed
-        // Obtener la lista de películas (deberías obtenerla de tu base de datos o similar)
         List<Pelicula> listaPeliculas = obtenerListaPeliculas();
 
-        // Crear y mostrar el diálogo
         SeleccionPeliculaDialog dialogoSeleccion = new SeleccionPeliculaDialog(JFrame.getFrames()[0], true, listaPeliculas);
         dialogoSeleccion.setVisible(true);
 
-        // Obtener la película seleccionada
         Pelicula peliculaSeleccionada = dialogoSeleccion.getPeliculaSeleccionada();
         if (peliculaSeleccionada != null) {
             lblPeliculaSeleccionadaLDE.setText(peliculaSeleccionada.getTitulo());
-            // Actualiza la interfaz de usuario de 'panelListaDeEspera' según sea necesario
-            // Por ejemplo, mostrar el título de la película seleccionada en algún campo de texto o etiqueta
             peliculaLDESeleccionadaId = peliculaSeleccionada.getPeliculaId();
         }
     }//GEN-LAST:event_btnSeleccionarPeliculaLDEActionPerformed
 
     private void btnAgregarSocioLDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSocioLDEActionPerformed
-        // Obtén el ID del socio del campo de texto
         String idSocioTexto = txtIdSocioLDE.getText();
         if (idSocioTexto.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, introduce el ID del socio.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2501,14 +2296,12 @@ validacionTexto(evt);        // TODO add your handling code here:
             return;
         }
 
-        // Aquí llamarías al método de tu servicio que se encarga de agregar al socio a la lista de espera
         boolean exito = listaEsperaService.agregarSocioAListaEspera(peliculaLDESeleccionadaId, idSocio);
 
         if (exito) {
             JOptionPane.showMessageDialog(this, "Socio agregado a la lista de espera con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             cargarDatosEnTablaListaEsperaCompleta();
         } else {
-            // Manejo de errores si el socio no pudo ser agregado
             JOptionPane.showMessageDialog(this, "No se pudo agregar al socio a la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAgregarSocioLDEActionPerformed
@@ -2543,35 +2336,25 @@ validacionTexto(evt);        // TODO add your handling code here:
             JOptionPane.showMessageDialog(this, "No se puedo eliminar el socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarListaLDEActionPerformed
-
-    private void btnListaDeEsperaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaDeEsperaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnListaDeEsperaActionPerformed
     void validacionTexto(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 
- if ((Character.isLetter(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
-        // Código a ejecutar si la condición es verdadera
-    } else {
-        evt.consume();
-        JOptionPane.showMessageDialog(null, "Solo ingresar caracteres de tipo texto");
+        if ((Character.isLetter(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
+        } else {
+           evt.consume();
+           JOptionPane.showMessageDialog(null, "Solo ingresar caracteres de tipo texto");
+        } 
     }
-    }
-    
+
     void validacionNumerica(java.awt.event.KeyEvent evt){
-             char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
- if ((Character.isDigit(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
-        // Código a ejecutar si la condición es verdadera
-    } else {
-        evt.consume();
-        JOptionPane.showMessageDialog(null, "Solo ingresar caracteres de tipo numérico");  
- }
+        if ((Character.isDigit(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
+        } else {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo ingresar caracteres de tipo numérico");  
+        }
     }
-    
-
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirListaGeneros;
     private javax.swing.JButton btnActores;

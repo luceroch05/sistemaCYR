@@ -230,8 +230,6 @@ public class SocioDAO implements Dao<Socio>{
         List<Actor> actoresFavoritos = socio.getActoresFavoritos();
         if (actoresFavoritos == null) {
             actoresFavoritos = new ArrayList<>();
-            // Opcionalmente, establecer de nuevo la lista en el objeto socio si es necesario
-            // socio.setActoresFavoritos(actoresFavoritos);
         }
 
         String sql = "INSERT INTO socio_actor (socio_id, actor_id) VALUES (?, ?)";
@@ -247,10 +245,7 @@ public class SocioDAO implements Dao<Socio>{
     private void insertSocioGenerosFavoritos(Socio socio) throws SQLException {
         List<Genero> generosFavoritos = socio.getGenerosFavoritos();
         if (generosFavoritos == null) {
-            // Si es null, inicializa la lista para evitar NullPointerException
             generosFavoritos = new ArrayList<>();
-            // Opcionalmente, puedes establecer la lista vacía en el objeto socio
-            // socio.setGenerosFavoritos(generosFavoritos);
         }
 
         String sql = "INSERT INTO socio_genero (socio_id, genero_id) VALUES (?, ?)";
@@ -315,10 +310,9 @@ public class SocioDAO implements Dao<Socio>{
     }
     
     public void guardarDirectoresFavoritos(int idSocio, List<Director> directores) {
-        // Comprobamos si la lista es null y en ese caso imprimimos un mensaje o lanzamos una excepción
         if (directores == null) {
             System.out.println("La lista de directores es null.");
-            return; // Salimos del método para evitar el NullPointerException
+            return;
         }
 
         String sql = "INSERT INTO socio_director (socio_id, director_id) VALUES (?, ?)";
@@ -329,7 +323,7 @@ public class SocioDAO implements Dao<Socio>{
                 statement.setInt(2, director.getDirectorId());
                 statement.addBatch();
             }
-            statement.executeBatch(); // Ejecutamos el lote de inserciones
+            statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -352,7 +346,7 @@ public class SocioDAO implements Dao<Socio>{
     public void guardarGenerosFavoritos(int idSocio, List<Genero> generos) {
         if (generos == null) {
             System.out.println("La lista de géneros es null.");
-            return; // Salimos del método para evitar el NullPointerException
+            return;
         }
 
         String sql = "INSERT INTO socio_genero (socio_id, genero_id) VALUES (?, ?)";
@@ -363,7 +357,7 @@ public class SocioDAO implements Dao<Socio>{
                 statement.setInt(2, genero.getGeneroId());
                 statement.addBatch();
             }
-            statement.executeBatch(); // Ejecutamos el lote de inserciones
+            statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -421,10 +415,6 @@ public class SocioDAO implements Dao<Socio>{
     }
     
     public Socio buscarPorNombre(String nombre) {
-        // Este método debe buscar en la base de datos y devolver el objeto Socio correspondiente.
-        // El código exacto dependerá de cómo esté implementada tu base de datos y la lógica de acceso a datos.
-        // A continuación, un ejemplo genérico:
-
         String sql = "SELECT * FROM socios WHERE nombre = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, nombre);
@@ -433,7 +423,6 @@ public class SocioDAO implements Dao<Socio>{
                 Socio socio = new Socio();
                 socio.setSocioId(resultSet.getInt("socio_id"));
                 socio.setNombre(resultSet.getString("nombre"));
-                // Añadir otros campos si son necesarios.
                 return socio;
             }
         } catch (SQLException e) {

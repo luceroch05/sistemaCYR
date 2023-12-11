@@ -124,13 +124,10 @@ public class CintaDAO implements Dao<Cinta>{
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle the exception, possibly return a boolean to indicate success/failure
         }
     }
     
     public int obtenerPeliculaIdPorNombre(String nombre) {
-        // Consulta a la base de datos para obtener el ID de la película por nombre
-        // Debes sustituir esto con tu consulta SQL real y manejo de resultados
         String sql = "SELECT pelicula_id FROM peliculas WHERE titulo = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, nombre);
@@ -141,7 +138,7 @@ public class CintaDAO implements Dao<Cinta>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1; // Indica que la película no fue encontrada
+        return -1;
     }
     
     public List<Cinta> obtenerTodasLasCintas() {
@@ -200,11 +197,11 @@ public class CintaDAO implements Dao<Cinta>{
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, cintaId);
             int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0; // Retorna true si se eliminó alguna fila
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false; // Retorna false si ocurre una excepción o no se eliminó ninguna fila
+        return false;
     }
     
     public List<Cinta> buscarCintasPorNombrePelicula(String nombrePelicula) {
@@ -240,7 +237,7 @@ public class CintaDAO implements Dao<Cinta>{
                     resultSet.getInt("cinta_id"),
                     resultSet.getInt("pelicula_id"),
                     resultSet.getString("estado")
-                )); // Asegúrate de que los parámetros coincidan con el constructor de tu clase Cinta
+                ));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -25,29 +25,25 @@ public class SeleccionPeliculaDialog extends JDialog {
         super(parent, modal);
         this.listaPeliculas = peliculas;
         setTitle("Seleccionar Película");
-        setSize(300, 200); // O el tamaño que prefieras
+        setSize(300, 200);
         setLayout(new BorderLayout());
         
-        tablaPeliculas = new JTable(); // Deberías configurar el modelo de tabla aquí
-        // Llenar la JTable con las películas, por ejemplo, con el título de la película
+        tablaPeliculas = new JTable();
         
-        // Configurar el modelo de tabla aquí
-        String[] columnas = {"ID", "Título"}; // Ajusta esto según los datos que quieras mostrar
+        String[] columnas = {"ID", "Título"};
         DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Para que no se puedan editar los datos
+                return false;
             }
         };
         tablaPeliculas.setModel(modeloTabla);
 
-        // Llenar la JTable con las películas
         llenarTablaConPeliculas(modeloTabla, peliculas);
 
         JScrollPane scrollPane = new JScrollPane(tablaPeliculas);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Panel para los botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnSeleccionar = new JButton("Seleccionar");
         btnCancelar = new JButton("Cancelar");
@@ -56,12 +52,10 @@ public class SeleccionPeliculaDialog extends JDialog {
         panelBotones.add(btnCancelar);
         add(panelBotones, BorderLayout.SOUTH);
 
-        // Acciones de los botones
         btnSeleccionar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int filaSeleccionada = tablaPeliculas.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                    // Asegúrate de obtener el ID o el objeto de película correcto según tu implementación
                     peliculaSeleccionada = listaPeliculas.get(filaSeleccionada);
                     dispose();
                 } else {
@@ -80,7 +74,6 @@ public class SeleccionPeliculaDialog extends JDialog {
             }
         });
 
-        // Centrar el diálogo en la pantalla o en relación al padre
         setLocationRelativeTo(parent);
     }
 
@@ -91,8 +84,8 @@ public class SeleccionPeliculaDialog extends JDialog {
     private void llenarTablaConPeliculas(DefaultTableModel modeloTabla, List<Pelicula> peliculas) {
         for (Pelicula pelicula : peliculas) {
             Object[] fila = new Object[] {
-                pelicula.getPeliculaId(), // Asumiendo que Pelicula tiene un método getId()
-                pelicula.getTitulo() // Asumiendo que Pelicula tiene un método getTitulo()
+                pelicula.getPeliculaId(),
+                pelicula.getTitulo()
             };
             modeloTabla.addRow(fila);
         }

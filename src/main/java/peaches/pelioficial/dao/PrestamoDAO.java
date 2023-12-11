@@ -38,8 +38,6 @@ public class PrestamoDAO implements Dao<Prestamo>{
             if(resultSet.next()){
                 prestamo = new Prestamo();
                 prestamo.setPrestamoId(resultSet.getInt("prestamo_id"));
-//                prestamo.setSocioId(resultSet.getInt("socio_id"));
-//                prestamo.setCintaId(resultSet.getInt("cinta_id"));
                 prestamo.setFechaPrestamo(resultSet.getDate("fecha_prestamo").toLocalDate());
                 if(resultSet.getDate("fecha_devolucion") != null){
                     prestamo.setFechaDevolucion(resultSet.getDate("fecha_devolucion").toLocalDate());
@@ -83,8 +81,6 @@ public class PrestamoDAO implements Dao<Prestamo>{
         String sql = "INSERT INTO Prestamos (socio_id, cinta_id, fecha_prestamo, fecha_devolucion) VALUES (?, ?, ?, ?)";
         int generatedId = 0;
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-//            statement.setInt(1, prestamo.getSocioId()); 
-//            statement.setInt(2, prestamo.getCintaId()); 
             statement.setDate(3, Date.valueOf(prestamo.getFechaPrestamo())); 
             if (prestamo.getFechaDevolucion() != null) {
                 statement.setDate(4, Date.valueOf(prestamo.getFechaDevolucion()));
@@ -109,8 +105,6 @@ public class PrestamoDAO implements Dao<Prestamo>{
     public void update(Prestamo prestamo, String[] params){
         String sql = "UPDATE Prestamos SET socio_id = ?, cinta_id = ?, fecha_prestamo = ?, fecha_devolucion = ? WHERE prestamo_id = ?";
         try (PreparedStatement statement =  connection.prepareStatement(sql)){
-//            statement.setInt(1, prestamo.getSocioId());
-//            statement.setInt(2, prestamo.getCintaId());
             statement.setDate(3, Date.valueOf(prestamo.getFechaPrestamo()));
             if(prestamo.getFechaDevolucion() != null){
                 statement.setDate(4, Date.valueOf(prestamo.getFechaDevolucion()));
@@ -234,9 +228,6 @@ public class PrestamoDAO implements Dao<Prestamo>{
     }
     
     public Prestamo obtenerPorId(int id) {
-        // Este método busca en la base de datos el préstamo por su ID y devuelve el objeto Prestamo.
-        // A continuación, un ejemplo genérico:
-
         String sql = "SELECT * FROM prestamos WHERE prestamo_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
@@ -249,7 +240,6 @@ public class PrestamoDAO implements Dao<Prestamo>{
                 prestamo.setFechaPrestamo(resultSet.getDate("fecha_prestamo").toLocalDate());
                 Date fechaDevolucion = resultSet.getDate("fecha_devolucion");
                 prestamo.setFechaDevolucion(fechaDevolucion != null ? fechaDevolucion.toLocalDate() : null);
-                // Completa con el resto de campos si es necesario.
                 return prestamo;
             }
         } catch (SQLException e) {
@@ -261,18 +251,12 @@ public class PrestamoDAO implements Dao<Prestamo>{
     public boolean eliminarPrestamo(int prestamoId) {
         String sql = "DELETE FROM prestamos WHERE prestamo_id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            // Establecer los parámetros del comando DELETE SQL
             pstmt.setInt(1, prestamoId);
-
-            // Ejecutar la sentencia DELETE SQL
             int affectedRows = pstmt.executeUpdate();
-
-            // Si se eliminó exactamente un registro, entonces el resultado es true
             return affectedRows == 1;
         } catch (SQLException e) {
-            // Log and handle exceptions
             e.printStackTrace();
         }
-        return false; // Si llegamos aquí, algo falló
+        return false;
     }
 }

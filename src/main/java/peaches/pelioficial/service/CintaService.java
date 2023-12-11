@@ -51,9 +51,8 @@ public class CintaService {
     
     public List<Cinta> obtenerCintasDisponibles() {
         List<Cinta> cintasDisponibles = new ArrayList<>();
-        String estadoDisponible = "Disponible"; // Asegúrate de usar el estado correcto que usas en tu base de datos
+        String estadoDisponible = "Disponible";
 
-        // Suponiendo que tienes un método en tu DAO que obtiene todas las cintas
         List<Cinta> todasLasCintas = cintaDAO.obtenerTodasLasCintas();
 
         for (Cinta cinta : todasLasCintas) {

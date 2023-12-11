@@ -59,7 +59,6 @@ public class framePrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1200, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBarra.setBackground(new java.awt.Color(0, 0, 0));
@@ -115,19 +114,6 @@ public class framePrincipal extends javax.swing.JFrame {
         txtUsuario.setText("user");
         txtUsuario.setBorder(null);
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtUsuarioMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtUsuarioMousePressed(evt);
-            }
-        });
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
         Fondo.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 310, -1));
         txtUsuario.setForeground(Color.GRAY);
         txtUsuario.addFocusListener(new Placeholders("user", new Color(204, 204, 204), Color.BLACK));
@@ -158,14 +144,6 @@ public class framePrincipal extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(204, 204, 204));
         txtPassword.setText("jPasswordField1");
         txtPassword.setBorder(null);
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtPasswordMousePressed(evt);
-            }
-        });
         Fondo.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 300, -1));
         txtPassword.setForeground(Color.GRAY);
         txtPassword.addFocusListener(new Placeholders("jPasswordField1", new Color(204, 204, 204), Color.BLACK));
@@ -179,17 +157,14 @@ public class framePrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-    }//GEN-LAST:event_txtUsuarioActionPerformed
-
     private void panelBarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMousePressed
-xMouse = evt.getX();
-yMouse = evt.getY();
+        xMouse = evt.getX();
+        yMouse = evt.getY();
     }//GEN-LAST:event_panelBarraMousePressed
 
     private void panelBarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMouseDragged
-     int x = evt.getXOnScreen();
-     int y  = evt.getYOnScreen();
+        int x = evt.getXOnScreen();
+        int y  = evt.getYOnScreen();
         this.setLocation(x -xMouse, y- yMouse);
     }//GEN-LAST:event_panelBarraMouseDragged
 
@@ -197,31 +172,13 @@ yMouse = evt.getY();
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
-    }//GEN-LAST:event_txtUsuarioMouseClicked
-
-    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-    }//GEN-LAST:event_txtPasswordMouseClicked
-
-    private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
-    }//GEN-LAST:event_txtUsuarioMousePressed
-
-    private void txtPasswordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMousePressed
-    }//GEN-LAST:event_txtPasswordMousePressed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            this.setLayout(new BorderLayout());
-            this.getContentPane().remove(Fondo);
-            panelMenu.setVisible(true);
-            this.revalidate();
-            this.repaint();
+        this.setLayout(new BorderLayout());
+        this.getContentPane().remove(Fondo);
+        panelMenu.setVisible(true);
+        this.revalidate();
+        this.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-   
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
     private javax.swing.JButton jButton1;

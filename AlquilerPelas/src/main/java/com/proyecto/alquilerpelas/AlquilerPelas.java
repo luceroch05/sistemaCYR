@@ -9,22 +9,13 @@ package com.proyecto.alquilerpelas;
  * @author q-ql
  */
 import com.proyecto.alquilerpelas.paneles.LoginPanel;
-import com.proyecto.alquilerpelas.paneles.LoginPanel1;
 import com.proyecto.alquilerpelas.paneles.pane;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import java.awt.*;
 
 public class AlquilerPelas{ 
     public static JFrame ventana;
    public static void main(String[] args) {
-
-   /*SwingUtilities.invokeLater(new Runnable() {
-        public void run(){
-            LoginPanel1 login = new LoginPanel1();
-            login.setVisible(true);
-        }
-    });*/
 
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -48,17 +39,6 @@ public class AlquilerPelas{
         }
         //</editor-fold>
 
-        /* Create and display the form */
-      /*  SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-            
-              new pane().setVisible(true);
-            }
-        });*/
-        
-    
-   
     ventana = new JFrame("Alquiler de pela");
     ventana.add(new LoginPanel());
     ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
