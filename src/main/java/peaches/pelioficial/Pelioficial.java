@@ -5,11 +5,9 @@
 package peaches.pelioficial;
 
 import peaches.pelioficial.view.framePrincipal;
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
+import java.awt.Font;
 import static peaches.pelioficial.util.DatabaseConnector.conectar;
-import javax.swing.UIManager;
+import peaches.pelioficial.util.FontUtil;
 
 /**
  *
@@ -18,16 +16,14 @@ import javax.swing.UIManager;
 public class Pelioficial {
 
     public static void main(String[] args) {
-        
         conectar();
-
-
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new framePrincipal().setVisible(true);
+                Font poppinsFont = FontUtil.loadFontFromResources("/Fonts/Poppins-Semibold.ttf", 16f);
+                framePrincipal frame = new framePrincipal();
+                FontUtil.applyFontToComponent(frame, poppinsFont);
+                frame.setVisible(true);
             }
         });
     }

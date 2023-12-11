@@ -41,7 +41,7 @@ public class framePrincipal extends javax.swing.JFrame {
         panelCartelera.setVisible(false);
         panelMenu.setVisible(true);
     }
-
+    
  int xMouse, yMouse;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
