@@ -827,8 +827,6 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
         pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
-        txtDireccionSocio.setForeground(new Color(204, 204, 204));
-        txtDireccionSocio.addFocusListener(new Placeholders("Av. Del Coso 123", new Color(204, 204, 204), Color.BLACK));
 
         txtTelefonoSocio.setBackground(new java.awt.Color(241, 241, 241));
         txtTelefonoSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
@@ -852,8 +850,6 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
         pSocios.add(txtTelefonoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 250, 30));
-        txtTelefonoSocio.setForeground(new Color(204, 204, 204));
-        txtTelefonoSocio.addFocusListener(new Placeholders("987654321", new Color(204, 204, 204), Color.BLACK));
 
         txtNombreSocio.setBackground(new java.awt.Color(241, 241, 241));
         txtNombreSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
@@ -877,8 +873,6 @@ public class panelMenu extends javax.swing.JPanel {
             }
         });
         pSocios.add(txtNombreSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 250, 30));
-        txtNombreSocio.setForeground(new Color(204, 204, 204));
-        txtNombreSocio.addFocusListener(new Placeholders("Introduzca su nombre", new Color(204, 204, 204), Color.BLACK));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
@@ -1438,9 +1432,9 @@ public class panelMenu extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tableActores.getColumnModel().getColumn(0).setMinWidth(20);
-        tableActores.getColumnModel().getColumn(0).setMaxWidth(20);
-        tableActores.getColumnModel().getColumn(0).setWidth(20);
+        tableActores.getColumnModel().getColumn(0).setMinWidth(40);
+        tableActores.getColumnModel().getColumn(0).setMaxWidth(40);
+        tableActores.getColumnModel().getColumn(0).setWidth(40);
         jScrollPane3.setViewportView(tableActores);
         actualizarTablaActores();
 

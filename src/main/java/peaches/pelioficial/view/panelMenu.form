@@ -462,9 +462,6 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtDireccionSocioFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionSocioActionPerformed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtDireccionSocio.setForeground(new Color(204, 204, 204));&#xa;txtDireccionSocio.addFocusListener(new Placeholders(&quot;Av. Del Coso 123&quot;, new Color(204, 204, 204), Color.BLACK));"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="200" y="220" width="250" height="30"/>
@@ -489,9 +486,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoSocioActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelefonoSocioKeyTyped"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtTelefonoSocio.setForeground(new Color(204, 204, 204));&#xa;txtTelefonoSocio.addFocusListener(new Placeholders(&quot;987654321&quot;, new Color(204, 204, 204), Color.BLACK));"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="200" y="270" width="250" height="30"/>
@@ -516,9 +510,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreSocioActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreSocioKeyTyped"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtNombreSocio.setForeground(new Color(204, 204, 204));&#xa;txtNombreSocio.addFocusListener(new Placeholders(&quot;Introduzca su nombre&quot;, new Color(204, 204, 204), Color.BLACK));"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="200" y="170" width="250" height="30"/>
@@ -1647,7 +1638,7 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="actualizarTablaActores();"/>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tableActores.getColumnModel().getColumn(0).setMinWidth(20);&#xa;tableActores.getColumnModel().getColumn(0).setMaxWidth(20);&#xa;tableActores.getColumnModel().getColumn(0).setWidth(20);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tableActores.getColumnModel().getColumn(0).setMinWidth(40);&#xa;tableActores.getColumnModel().getColumn(0).setMaxWidth(40);&#xa;tableActores.getColumnModel().getColumn(0).setWidth(40);"/>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tableActores.getTableHeader().setBackground(Color.black);&#xa;tableActores.getTableHeader().setForeground(Color.white);&#xa;tableActores.getTableHeader().setFont(new java.awt.Font(&quot;Poppins&quot;, 1, 16));"/>
                   </AuxValues>
                 </Component>
