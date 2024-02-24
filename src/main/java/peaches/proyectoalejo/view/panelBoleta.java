@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package peaches.proyectoalejo;
+package peaches.proyectoalejo.view;
 
 import javax.swing.JFrame;
-import peaches.proyectoalejo.agregar.Cliente;
-import peaches.proyectoalejo.agregar.Vehiculo;
+import peaches.proyectoalejo.agregar.popCliente;
+import peaches.proyectoalejo.agregar.popVehiculo;
 
 /**
  *
@@ -129,7 +129,7 @@ public class panelBoleta extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
               
-        Cliente cliente = new Cliente();
+        popCliente cliente = new popCliente();
          cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
 
         cliente.setVisible(true);
@@ -137,7 +137,7 @@ public class panelBoleta extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       Vehiculo vehiculo = new Vehiculo();
+       popVehiculo vehiculo = new popVehiculo();
            vehiculo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
 
        vehiculo.setVisible(true);
