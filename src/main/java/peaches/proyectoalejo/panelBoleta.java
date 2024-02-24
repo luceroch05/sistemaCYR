@@ -4,6 +4,10 @@
  */
 package peaches.proyectoalejo;
 
+import javax.swing.JFrame;
+import peaches.proyectoalejo.agregar.Cliente;
+import peaches.proyectoalejo.agregar.Vehiculo;
+
 /**
  *
  * @author Lucero
@@ -31,7 +35,6 @@ public class panelBoleta extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -39,7 +42,6 @@ public class panelBoleta extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 51, 255));
-        setMinimumSize(null);
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(660, 540));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,16 +52,26 @@ public class panelBoleta extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 200, -1));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("CLIENTE");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 70, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 90, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 51, 51));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("+");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 35, -1));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 60, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,11 +86,7 @@ public class panelBoleta extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 610, 200));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("VEHICULO");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 70, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 610, 230));
 
         jTextField2.setText("buscar");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,19 +94,24 @@ public class panelBoleta extends javax.swing.JPanel {
                 jTextField2ActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 200, -1));
+        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 190, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 51, 51));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("+");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 35, -1));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 60, 30));
 
         jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 560, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 600, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("VEHICULO");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 70, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -109,12 +122,33 @@ public class panelBoleta extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+              
+        Cliente cliente = new Cliente();
+         cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+
+        cliente.setVisible(true);
+ // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       Vehiculo vehiculo = new Vehiculo();
+           vehiculo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+
+       vehiculo.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

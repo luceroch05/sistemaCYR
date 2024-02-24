@@ -61,7 +61,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 230, 40));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 230, 40));
 
         jButton2.setBackground(new java.awt.Color(16, 16, 17));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -72,7 +72,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 230, 40));
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 40));
 
         jButton3.setBackground(new java.awt.Color(16, 16, 17));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -83,7 +83,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 230, 40));
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 230, 40));
 
         jButton4.setBackground(new java.awt.Color(16, 16, 17));
         jButton4.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -94,7 +94,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 40));
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 230, 40));
 
         jButton5.setBackground(new java.awt.Color(16, 16, 17));
         jButton5.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -105,7 +105,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 230, 40));
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 40));
 
         jButton6.setBackground(new java.awt.Color(16, 16, 17));
         jButton6.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -116,9 +116,9 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 230, 40));
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 40));
 
-        panelContenedor.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));
+        panelContenedor.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
