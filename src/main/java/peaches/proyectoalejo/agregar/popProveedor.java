@@ -4,21 +4,16 @@
  */
 package peaches.proyectoalejo.agregar;
 
-import peaches.proyectoalejo.model.Cliente;
-import peaches.proyectoalejo.service.ClienteService;
-
 /**
  *
- * @author santo
+ * @author Lucero
  */
-public class popCliente extends javax.swing.JFrame {
-    
-    ClienteService clienteService = new ClienteService();
+public class popProveedor extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cliente
+     * Creates new form popProveedor
      */
-    public popCliente() {
+    public popProveedor() {
         initComponents();
     }
 
@@ -33,16 +28,14 @@ public class popCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txttelefono = new javax.swing.JTextField();
-        txtapellido = new javax.swing.JTextField();
-        txtnombre = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnNomProveedor = new javax.swing.JTextField();
+        btnTelProveedor = new javax.swing.JTextField();
+        btnRProveedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setPreferredSize(new java.awt.Dimension(340, 260));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,44 +45,46 @@ public class popCliente extends javax.swing.JFrame {
         jLabel1.setText("AGREGAR ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
 
-        jLabel2.setText("APELLIDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 70, 20));
+        jLabel3.setText("TELÉFONO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 20));
 
-        jLabel3.setText("NOMBRE");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 20));
+        jLabel4.setText("NOMBRE");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
 
-        jLabel4.setText("TELÉFONO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 30));
+        btnNomProveedor.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(btnNomProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 140, -1));
 
-        txttelefono.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, -1));
+        btnTelProveedor.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(btnTelProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 140, -1));
 
-        txtapellido.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 140, -1));
-
-        txtnombre.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 140, -1));
-
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("REGISTRAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRProveedor.setBackground(new java.awt.Color(255, 51, 51));
+        btnRProveedor.setText("REGISTRAR");
+        btnRProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRProveedorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, 30));
+        jPanel1.add(btnRProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRProveedorActionPerformed
 
-    
-
+     
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRProveedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,34 +103,31 @@ public class popCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(popCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(popProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(popCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(popProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(popCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(popProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(popCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(popProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new popCliente().setVisible(true);
+                new popProveedor().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField btnNomProveedor;
+    private javax.swing.JButton btnRProveedor;
+    private javax.swing.JTextField btnTelProveedor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtapellido;
-    private javax.swing.JTextField txtnombre;
-    private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }

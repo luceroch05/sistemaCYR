@@ -4,6 +4,7 @@
  */
 package peaches.proyectoalejo.service;
 
+import java.util.List;
 import peaches.proyectoalejo.DAO.ClienteDAO;
 import peaches.proyectoalejo.model.Cliente;
 import peaches.proyectoalejo.util.Conexion;
@@ -24,8 +25,10 @@ public class ClienteService {
         this.clienteDAO = clienteDAO;
     }
         
-        
-        public void agregarCliente(Cliente cliente){        
-        clienteDAO.save(cliente);
+         public List<Cliente> obtenerTodosLosClientes(){
+        return clienteDAO.getAll();
     }
+        
+        
+     
 }

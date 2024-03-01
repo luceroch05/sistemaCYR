@@ -4,6 +4,8 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import peaches.proyectoalejo.util.DialogBuscarCliente;
+
 /**
  *
  * @author santo
@@ -31,10 +33,11 @@ public class popVehiculo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtPlaca = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
+        btnRegistrarVehiculo = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        txtClientes = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,20 +58,33 @@ public class popVehiculo extends javax.swing.JFrame {
         jLabel4.setText("CLIENTE");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, 30));
 
-        jTextField1.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 140, -1));
+        txtPlaca.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 140, -1));
 
-        jTextField2.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 140, -1));
+        txtModelo.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, -1));
 
-        jTextField3.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, -1));
+        btnRegistrarVehiculo.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegistrarVehiculo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRegistrarVehiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarVehiculo.setText("REGISTRAR");
+        btnRegistrarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarVehiculoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegistrarVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGISTRAR");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
+        btnCliente.setText("Seleccionar Cliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 50, -1));
+
+        txtClientes.setText("jTextField1");
+        jPanel1.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +105,15 @@ public class popVehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVehiculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarVehiculoActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+       DialogBuscarCliente cliente= new DialogBuscarCliente(this,true);
+       cliente.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,14 +152,15 @@ public class popVehiculo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnRegistrarVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public static javax.swing.JTextField txtClientes;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }
