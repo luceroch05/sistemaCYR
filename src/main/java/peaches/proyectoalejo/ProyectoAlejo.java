@@ -3,6 +3,7 @@
  */
 
 package peaches.proyectoalejo;
+import static peaches.proyectoalejo.util.Conexion.conectar;
 import peaches.proyectoalejo.view.framePrincipal;
 /**
  *
@@ -12,7 +13,8 @@ public class ProyectoAlejo {
     
     public static void main(String[] args) {
         
-        System.out.println("Hello World!");
+        conectar();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new framePrincipal().setVisible(true);

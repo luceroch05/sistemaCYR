@@ -9,27 +9,27 @@ package peaches.proyectoalejo.model;
  * @author santo
  */
 public class Cliente {
-    private int idCliente;
+    private String dni;
     private String nombre;
     private String apellido;
-    private int telefono;
+    private String telefono;
     
     public Cliente(){};
     
-    public Cliente(int idCliente, String nombre, String apellido, int telefono) {
-        this.idCliente = idCliente;
+    public Cliente(String dni, String nombre, String apellido, String telefono) 
+    {
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
     }
     
-    
-     public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+     public void setDNI(String dni) {
+        this.dni = dni;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public String getDNI() {
+        return dni;
     }
 
     public String getNombre() {
@@ -40,7 +40,7 @@ public class Cliente {
         return apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
@@ -52,7 +52,7 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     

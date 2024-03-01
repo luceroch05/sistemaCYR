@@ -28,6 +28,10 @@ public class ClienteService {
          public List<Cliente> obtenerTodosLosClientes(){
         return clienteDAO.getAll();
     }
+         
+         public void guardarCliente(Cliente cliente){
+             clienteDAO.save(cliente);
+         }
         
         
      

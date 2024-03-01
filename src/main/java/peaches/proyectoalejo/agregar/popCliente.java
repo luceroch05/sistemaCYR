@@ -38,8 +38,10 @@ public class popCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txttelefono = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
-        txtnombre = new javax.swing.JTextField();
+        txtdni = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtnombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,22 +55,22 @@ public class popCliente extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
 
         jLabel2.setText("APELLIDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 70, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 70, 20));
 
         jLabel3.setText("NOMBRE");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
 
         jLabel4.setText("TELÉFONO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 70, 30));
 
         txttelefono.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, -1));
+        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 140, -1));
 
         txtapellido.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 140, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 140, -1));
 
-        txtnombre.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 140, -1));
+        txtdni.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 140, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setText("REGISTRAR");
@@ -77,7 +79,13 @@ public class popCliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 100, 30));
+
+        jLabel5.setText("dni");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        txtnombre.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -86,7 +94,21 @@ public class popCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    
+        String dni = txtdni.getText();
+        String nombre = txtnombre.getText();
+        String apellido = txtapellido.getText();
+        String telefono = txttelefono.getText();
+
+        
+        Cliente nuevoCliente = new Cliente();
+        nuevoCliente.setDNI(dni);
+        nuevoCliente.setNombre(nombre);
+        nuevoCliente.setApellido(apellido);
+        nuevoCliente.setTelefono(telefono);
+        
+        
+        clienteService.guardarCliente(nuevoCliente);
+
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -133,8 +155,10 @@ public class popCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables

@@ -171,7 +171,7 @@ public class framePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
- paneLVehiculos v= new paneLVehiculos();
+ panelVehiculos v= new panelVehiculos();
         v.setSize(525,539);
         v.setLocation(0,0);
         content.removeAll();

@@ -81,7 +81,7 @@ public class popVehiculo extends javax.swing.JFrame {
                 btnClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 50, -1));
+        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 100, -1));
 
         txtClientes.setText("jTextField1");
         jPanel1.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
