@@ -35,6 +35,10 @@ public class panelServicios extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         btnAgregarProveedores = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -50,7 +54,7 @@ public class panelServicios extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, 110));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 560, 250));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +62,7 @@ public class panelServicios extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 190, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 340, 30));
 
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,18 +77,9 @@ public class panelServicios extends javax.swing.JPanel {
                 btnAgregarProveedoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 60, 30));
+        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 170, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

@@ -44,7 +44,7 @@ public class panelBoleta extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 51, 255));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(660, 540));
+        setPreferredSize(new java.awt.Dimension(650, 540));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setText("buscar");
@@ -87,7 +87,7 @@ public class panelBoleta extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 610, 230));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 610, 230));
 
         jTextField2.setText("buscar");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {

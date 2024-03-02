@@ -47,7 +47,7 @@ public class popCliente extends javax.swing.JFrame {
         txttelefono = new javax.swing.JTextField();
         txtapellido = new javax.swing.JTextField();
         txtdni = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
 
@@ -80,14 +80,14 @@ public class popCliente extends javax.swing.JFrame {
         txtdni.setBackground(new java.awt.Color(202, 202, 202));
         jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 140, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("REGISTRAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 100, 30));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 100, 30));
 
         jLabel5.setText("dni");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
@@ -100,7 +100,7 @@ public class popCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
         String dni = txtdni.getText();
         String nombre = txtnombre.getText();
@@ -119,7 +119,7 @@ public class popCliente extends javax.swing.JFrame {
         
         clienteOyente.clienteAnadido();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,7 +158,7 @@ public class popCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

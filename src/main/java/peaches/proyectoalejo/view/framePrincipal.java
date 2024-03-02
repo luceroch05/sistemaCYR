@@ -175,7 +175,7 @@ public class framePrincipal extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
  panelVehiculos v= new panelVehiculos();
-        v.setSize(525,539);
+        v.setSize(650,540);
         v.setLocation(0,0);
         content.removeAll();
         content.add(v,BorderLayout.CENTER);
