@@ -4,11 +4,14 @@
  */
 package peaches.proyectoalejo.view;
 
+  
+
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popCliente;
 import peaches.proyectoalejo.model.Cliente;
+import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ClienteService;
 import peaches.proyectoalejo.util.Conexion;
 
@@ -16,14 +19,17 @@ import peaches.proyectoalejo.util.Conexion;
  *
  * @author Lucero
  */
-public class panelCliente extends javax.swing.JPanel {
-     
+public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
+     ClienteService clienteService = new ClienteService();
     /**
      * Creates new form panelCliente
      */
     public panelCliente() {
         initComponents();
+        actualizarTabla();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,13 +42,14 @@ public class panelCliente extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableClientes = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        btnAgregarProveedores = new javax.swing.JButton();
+        btnAgregarCliente = new javax.swing.JButton();
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,12 +57,12 @@ public class panelCliente extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Telefono", "Dni"
+                "DNI", "Nombre", "Apellido", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableClientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 490, 330));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,32 +70,32 @@ public class panelCliente extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 190, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 320, 40));
 
-        btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
-        btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarProveedores.setText("+");
-        btnAgregarProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregarCliente.setBackground(new java.awt.Color(0, 51, 51));
+        btnAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarCliente.setText("+");
+        btnAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarProveedoresMouseClicked(evt);
+                btnAgregarClienteMouseClicked(evt);
             }
         });
-        btnAgregarProveedores.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProveedoresActionPerformed(evt);
+                btnAgregarClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 60, 30));
+        jPanel1.add(btnAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -96,23 +103,48 @@ public class panelCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnAgregarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresMouseClicked
+    private void btnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarClienteMouseClicked
 
-    }//GEN-LAST:event_btnAgregarProveedoresMouseClicked
+    }//GEN-LAST:event_btnAgregarClienteMouseClicked
 
-    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
-        popCliente cliente = new popCliente();
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        popCliente cliente = new popCliente(this);
          cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre        
         cliente.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
+        public void actualizarTabla(){
+        List<Cliente> ListaDeClientes = clienteService.obtenerTodosLosClientes();
+        DefaultTableModel model = (DefaultTableModel) tableClientes.getModel();
+        model.setRowCount(0);
+        for (Cliente cliente : ListaDeClientes) {
+            
+            model.addRow(new Object[]{
+                cliente.getDNI(),
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getTelefono(),
+                
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableClientes;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void clienteAnadido() {
+        actualizarTabla();
+       System.out.println("se comunicooo");
+
+    }
+
+  
+    
 }

@@ -5,7 +5,9 @@
 package peaches.proyectoalejo.agregar;
 
 import peaches.proyectoalejo.model.Cliente;
+import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ClienteService;
+import peaches.proyectoalejo.view.panelCliente;
 
 /**
  *
@@ -13,12 +15,18 @@ import peaches.proyectoalejo.service.ClienteService;
  */
 public class popCliente extends javax.swing.JFrame {
     
+    private ClienteOyente clienteOyente;
     ClienteService clienteService = new ClienteService();
 
     /**
      * Creates new form Cliente
      */
     public popCliente() {
+        initComponents();
+    }
+    
+       public popCliente(ClienteOyente clienteOyente) {
+        this.clienteOyente = clienteOyente;
         initComponents();
     }
 
@@ -108,8 +116,8 @@ public class popCliente extends javax.swing.JFrame {
         
         
         clienteService.guardarCliente(nuevoCliente);
-
-
+        
+        clienteOyente.clienteAnadido();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

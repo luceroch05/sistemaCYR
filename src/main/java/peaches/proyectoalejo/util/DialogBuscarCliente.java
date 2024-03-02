@@ -33,7 +33,7 @@ public class DialogBuscarCliente extends javax.swing.JDialog {
         
         
     }
- public void mostrar(String tabla) {
+public void mostrar(String tabla) {
     String sql = "select * from " + tabla;
     Statement st;
     Conexion con = new Conexion();
@@ -41,15 +41,15 @@ public class DialogBuscarCliente extends javax.swing.JDialog {
     System.out.print(sql);
 
     DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("ID");
-    model.addColumn("Apellido");
+    model.addColumn("DNI");
     model.addColumn("Nombre");
-    model.addColumn("Telefono");
-    model.addColumn("Dni");
+    model.addColumn("Apellido");
+    model.addColumn("Teléfono"); // Agregar la columna de Teléfono, asumiendo que hay cuatro columnas en tu tabla
+
     visorClientes.setModel(model);
 
-    String[] datos = new String[5];
-    
+    String[] datos = new String[4]; // Inicializar el array con tamaño 4
+
     try {
         st = conexion.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -59,13 +59,9 @@ public class DialogBuscarCliente extends javax.swing.JDialog {
             datos[1] = rs.getString(2);
             datos[2] = rs.getString(3);
             datos[3] = rs.getString(4);
-            datos[4] = rs.getString(5);
             
             model.addRow(datos);
-            // Imprimir datos para verificar
-
         }
-
 
         // Notificar a la tabla que los datos han cambiado
         model.fireTableDataChanged();
@@ -138,6 +134,7 @@ public class DialogBuscarCliente extends javax.swing.JDialog {
                 
                int id=Integer.parseInt(String.valueOf(tm.getValueAt(visorClientes.getSelectedRow(),0)));
                popVehiculo.txtClientes.setText(String.valueOf(id));
+               dispose();
             }catch(Exception e){
                 
             }
