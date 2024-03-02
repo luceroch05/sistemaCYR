@@ -13,13 +13,15 @@ public class Vehiculo {
     private String placa;
     private String modelo;
     private String dni;
-
+    
+    public Vehiculo() {   
+    }
     public Vehiculo(String placa, String modelo, String dni) {
         this.placa = placa;
         this.modelo = modelo;
         this.dni = dni;
     }
-
+    
     public String getPlaca() {
         return placa;
     }

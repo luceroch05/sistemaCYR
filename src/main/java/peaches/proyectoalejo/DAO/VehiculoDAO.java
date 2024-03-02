@@ -18,11 +18,11 @@ import peaches.proyectoalejo.model.Vehiculo;
  *
  * @author santo
  */
-public class VehiculoDAO implements <Vehiculo>{
+public class VehiculoDAO implements DAO<Vehiculo>{
     
     private Connection connection;
     
-         public VehiculoDAO(Connection connection){
+        public VehiculoDAO(Connection connection){
         this.connection = connection;
     }
          
@@ -33,49 +33,46 @@ public class VehiculoDAO implements <Vehiculo>{
             statement.setString(1, placa);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
-                 vehiculo = new Vehiculo();
-                cliente.setNombre(resultSet.getString("nombre"));
-                cliente.setApellido(resultSet.getString("apellido"));
-                cliente.setTelefono(resultSet.getString("telefono"));
+                vehiculo = new Vehiculo();
+                vehiculo.setPlaca(resultSet.getString("placa"));
+                vehiculo.setModelo(resultSet.getString("modelo"));
+                vehiculo.setDni(resultSet.getString("dni"));
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.ofNullable(cliente);
+        return Optional.ofNullable(vehiculo);
     }
         
-         @Override
-    public List<Cliente> getAll(){
-        List<Cliente> ListaDeClientes = new ArrayList<>();
+        
+    public List<Vehiculo> getAll(){
+        List<Vehiculo> ListaDeVehiculos = new ArrayList<>();
         try (Statement statement = connection.createStatement()){
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM clientes");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM vehiculos");
             while(resultSet.next()){
-                Cliente cliente = new Cliente();
-                cliente.setDNI(resultSet.getString("dni"));
-                cliente.setNombre(resultSet.getString("nombreCliente"));
-                cliente.setApellido(resultSet.getString("apellidoCliente"));
-                cliente.setTelefono(resultSet.getString("telefono"));
-
-                ListaDeClientes.add(cliente);
+               Vehiculo vehiculo = new Vehiculo();
+               vehiculo.setPlaca(resultSet.getString("placaVehiculo"));
+               vehiculo.setModelo(resultSet.getString("modeloVehiculo"));
+               vehiculo.setDni(resultSet.getString("dni"));              
+                ListaDeVehiculos.add(vehiculo);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ListaDeClientes;
+        return ListaDeVehiculos;
     }
     
     
     
     //metodo para guardar un cliente
-     @Override
-public void save(Cliente cliente) {
-    String sql = "INSERT INTO Clientes (dni, apellidoCliente, nombreCliente , telefono) VALUES (?, ?, ?, ?)";
+
+public void save(Vehiculo vehiculo) {
+    String sql = "INSERT INTO vehiculo (placaVehiculo, modeloVehiculo, dni) VALUES (?, ?, ?)";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
-        statement.setString(1, cliente.getDNI());
-        statement.setString(2, cliente.getApellido());
-        statement.setString(3, cliente.getNombre());
-        statement.setString(4, cliente.getTelefono());
+        statement.setString(1, vehiculo.getPlaca());
+        statement.setString(2, vehiculo.getModelo());
+        statement.setString(3, vehiculo.getDni());
         
         // Ejecutar la inserción
         int affectedRows = statement.executeUpdate();
@@ -96,13 +93,12 @@ public void save(Cliente cliente) {
     
     
     //metodo para actualizar el cliente
-      public void update(Cliente cliente, String[] params) {
-        String sql = "UPDATE Cliente SET nombre = ?, apellido = ?, telefono = ? WHERE dni = ?";
+      public void update(Vehiculo vehiculo) {
+        String sql = "UPDATE Cliente SET modelo = ?, dni = ? WHERE placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, cliente.getNombre());
-            statement.setString(2, cliente.getApellido());
-            statement.setString(3, cliente.getTelefono());
-            statement.setString(4, cliente.getDNI());
+            statement.setString(1, vehiculo.getPlaca());
+            statement.setString(2, vehiculo.getModelo());
+            statement.setString(3, vehiculo.getDni());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Updating socio failed, no rows affected.");
@@ -117,13 +113,13 @@ public void save(Cliente cliente) {
       
       
       //metodo para eliminar un socio
-      @Override
-    public void delete(Cliente cliente){
+
+    public void delete(Vehiculo vehiculo){
         try{
             connection.setAutoCommit(false);
           
-            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM Cliente WHERE dni = ?")){
-                statement.setString(1, cliente.getDNI());
+            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM vehiculo WHERE placa = ?")){
+                statement.setString(1, vehiculo.getPlaca());
                 int affectedRows = statement.executeUpdate();
                 if(affectedRows == 0){
                     throw new SQLException("Deleting socio failed, no rows affected.");
@@ -146,6 +142,8 @@ public void save(Cliente cliente) {
             }
         }
     }
+
+    
 
     
  

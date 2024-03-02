@@ -16,7 +16,7 @@ public interface DAO<T> {
     Optional<T> get(String dni);
     List<T> getAll();
     void save (T t);
-    void update(T t, String[] param);
+    void update(T t);
     void delete(T t);
     
     

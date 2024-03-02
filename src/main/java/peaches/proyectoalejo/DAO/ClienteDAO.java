@@ -100,7 +100,7 @@ public void save(Cliente cliente) {
     
     
     //metodo para actualizar el cliente
-      public void update(Cliente cliente, String[] params) {
+      public void update(Cliente cliente) {
         String sql = "UPDATE Cliente SET nombre = ?, apellido = ?, telefono = ? WHERE dni = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, cliente.getNombre());
