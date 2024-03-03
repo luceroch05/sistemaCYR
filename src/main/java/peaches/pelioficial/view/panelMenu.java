@@ -436,32 +436,6 @@ public class panelMenu extends javax.swing.JPanel {
         panelBarra = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         tabbedPane = new javax.swing.JTabbedPane();
-        pSocios = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnRegistrarSocio = new javax.swing.JButton();
-        txtDireccionSocio = new javax.swing.JTextField();
-        txtTelefonoSocio = new javax.swing.JTextField();
-        txtNombreSocio = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        txtIdSocio = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableSocios = new javax.swing.JTable();
-        btnEditarSocio = new javax.swing.JButton();
-        btnEliminarSocio = new javax.swing.JButton();
-        txtBuscarSocio = new javax.swing.JTextField();
-        btnDirectoresSocios = new javax.swing.JButton();
-        btnActoresSocios = new javax.swing.JButton();
-        btnGenerosSocios = new javax.swing.JButton();
-        lblDirectoresSeleccionados = new javax.swing.JLabel();
-        lblActoresSeleccionados = new javax.swing.JLabel();
-        lblGenerosSeleccionados = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         pPrestamos = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtPrestamoId = new javax.swing.JTextField();
@@ -550,6 +524,32 @@ public class panelMenu extends javax.swing.JPanel {
         tableCintas = new javax.swing.JTable();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        pSocios = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnRegistrarSocio = new javax.swing.JButton();
+        txtDireccionSocio = new javax.swing.JTextField();
+        txtTelefonoSocio = new javax.swing.JTextField();
+        txtNombreSocio = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtIdSocio = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableSocios = new javax.swing.JTable();
+        btnEditarSocio = new javax.swing.JButton();
+        btnEliminarSocio = new javax.swing.JButton();
+        txtBuscarSocio = new javax.swing.JTextField();
+        btnDirectoresSocios = new javax.swing.JButton();
+        btnActoresSocios = new javax.swing.JButton();
+        btnGenerosSocios = new javax.swing.JButton();
+        lblDirectoresSeleccionados = new javax.swing.JLabel();
+        lblActoresSeleccionados = new javax.swing.JLabel();
+        lblGenerosSeleccionados = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -596,6 +596,11 @@ public class panelMenu extends javax.swing.JPanel {
         btnPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrestamosMouseClicked(evt);
+            }
+        });
+        btnPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrestamosActionPerformed(evt);
             }
         });
         jPanel1.add(btnPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 180, 40));
@@ -694,198 +699,6 @@ public class panelMenu extends javax.swing.JPanel {
         add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 20));
 
         tabbedPane.setBackground(new java.awt.Color(255, 204, 204));
-
-        pSocios.setBackground(new java.awt.Color(255, 255, 255));
-        pSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
-        jLabel1.setText("SOCIOS");
-        pSocios.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel2.setText("DIRECCIÓN");
-        pSocios.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel3.setText("TELÉFONO");
-        pSocios.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel4.setText("DIRECTORES FAVORITOS");
-        pSocios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
-
-        btnRegistrarSocio.setBackground(new java.awt.Color(0, 0, 0));
-        btnRegistrarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        btnRegistrarSocio.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarSocio.setText("REGISTRAR");
-        btnRegistrarSocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarSocioActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnRegistrarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
-
-        txtDireccionSocio.setBackground(new java.awt.Color(241, 241, 241));
-        txtDireccionSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
-        txtDireccionSocio.setToolTipText("");
-        txtDireccionSocio.setBorder(null);
-        pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
-
-        txtTelefonoSocio.setBackground(new java.awt.Color(241, 241, 241));
-        txtTelefonoSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
-        txtTelefonoSocio.setBorder(null);
-        txtTelefonoSocio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoSocioKeyTyped(evt);
-            }
-        });
-        pSocios.add(txtTelefonoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 250, 30));
-
-        txtNombreSocio.setBackground(new java.awt.Color(241, 241, 241));
-        txtNombreSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
-        txtNombreSocio.setBorder(null);
-        txtNombreSocio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreSocioKeyTyped(evt);
-            }
-        });
-        pSocios.add(txtNombreSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 250, 30));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel11.setText("ACTORES FAVORITOS");
-        pSocios.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
-
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel12.setText("GÉNEROS PREFERIDOS");
-        pSocios.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
-
-        jLabel18.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel18.setText("ID SOCIO");
-        pSocios.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
-
-        txtIdSocio.setEditable(false);
-        pSocios.add(txtIdSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
-
-        tableSocios.getTableHeader().setBackground(Color.black);
-        tableSocios.getTableHeader().setForeground(Color.white);
-        tableSocios.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 14));
-        tableSocios.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        tableSocios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "IDSocio", "Nombre", "Dirección", "Teléfono", "Directores favorito", "Actores favorito", "Generos favoritos"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableSocios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableSociosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tableSocios);
-        actualizarTablaSocios();
-
-        pSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 930, 260));
-
-        btnEditarSocio.setBackground(new java.awt.Color(0, 0, 0));
-        btnEditarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        btnEditarSocio.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarSocio.setText("EDITAR");
-        btnEditarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarSocioActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnEditarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 180, 40));
-
-        btnEliminarSocio.setBackground(new java.awt.Color(0, 0, 0));
-        btnEliminarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        btnEliminarSocio.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarSocio.setText("ELIMINAR");
-        btnEliminarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarSocioActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnEliminarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 180, 40));
-
-        txtBuscarSocio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarSocioKeyReleased(evt);
-            }
-        });
-        pSocios.add(txtBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 360, 70, 30));
-
-        btnDirectoresSocios.setBackground(new java.awt.Color(0, 0, 0));
-        btnDirectoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        btnDirectoresSocios.setForeground(new java.awt.Color(255, 255, 255));
-        btnDirectoresSocios.setText("SELECCIONAR");
-        btnDirectoresSocios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDirectoresSociosActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnDirectoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 160, -1));
-
-        btnActoresSocios.setBackground(new java.awt.Color(0, 0, 0));
-        btnActoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        btnActoresSocios.setForeground(new java.awt.Color(255, 255, 255));
-        btnActoresSocios.setText("SELECCIONAR");
-        btnActoresSocios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActoresSociosActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnActoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 160, -1));
-
-        btnGenerosSocios.setBackground(new java.awt.Color(0, 0, 0));
-        btnGenerosSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        btnGenerosSocios.setForeground(new java.awt.Color(255, 255, 255));
-        btnGenerosSocios.setText("SELECCIONAR");
-        btnGenerosSocios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerosSociosActionPerformed(evt);
-            }
-        });
-        pSocios.add(btnGenerosSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 160, -1));
-
-        lblDirectoresSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        pSocios.add(lblDirectoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 110, 20));
-
-        lblActoresSeleccionados.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        pSocios.add(lblActoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 140, 20));
-
-        lblGenerosSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        pSocios.add(lblGenerosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 120, 20));
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jLabel13.setText("NOMBRE");
-        pSocios.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
-        pSocios.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, 30, 30));
-
-        tabbedPane.addTab("tab1", pSocios);
 
         pPrestamos.setBackground(new java.awt.Color(255, 255, 255));
         pPrestamos.setForeground(new java.awt.Color(189, 189, 189));
@@ -1647,6 +1460,198 @@ public class panelMenu extends javax.swing.JPanel {
 
         tabbedPane.addTab("tab7", pCintas);
 
+        pSocios.setBackground(new java.awt.Color(255, 255, 255));
+        pSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Poppins SemiBold", 0, 48)); // NOI18N
+        jLabel1.setText("SOCIOS");
+        pSocios.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel2.setText("DIRECCIÓN");
+        pSocios.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel3.setText("TELÉFONO");
+        pSocios.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel4.setText("DIRECTORES FAVORITOS");
+        pSocios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+
+        btnRegistrarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnRegistrarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnRegistrarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarSocio.setText("REGISTRAR");
+        btnRegistrarSocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarSocioActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnRegistrarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
+
+        txtDireccionSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtDireccionSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtDireccionSocio.setToolTipText("");
+        txtDireccionSocio.setBorder(null);
+        pSocios.add(txtDireccionSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
+
+        txtTelefonoSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtTelefonoSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtTelefonoSocio.setBorder(null);
+        txtTelefonoSocio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoSocioKeyTyped(evt);
+            }
+        });
+        pSocios.add(txtTelefonoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 250, 30));
+
+        txtNombreSocio.setBackground(new java.awt.Color(241, 241, 241));
+        txtNombreSocio.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        txtNombreSocio.setBorder(null);
+        txtNombreSocio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreSocioKeyTyped(evt);
+            }
+        });
+        pSocios.add(txtNombreSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 250, 30));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel11.setText("ACTORES FAVORITOS");
+        pSocios.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel12.setText("GÉNEROS PREFERIDOS");
+        pSocios.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel18.setText("ID SOCIO");
+        pSocios.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        txtIdSocio.setEditable(false);
+        pSocios.add(txtIdSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 120, 30));
+
+        tableSocios.getTableHeader().setBackground(Color.black);
+        tableSocios.getTableHeader().setForeground(Color.white);
+        tableSocios.getTableHeader().setFont(new java.awt.Font("Poppins", 1, 14));
+        tableSocios.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        tableSocios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "IDSocio", "Nombre", "Dirección", "Teléfono", "Directores favorito", "Actores favorito", "Generos favoritos"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSociosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableSocios);
+        actualizarTablaSocios();
+
+        pSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 930, 260));
+
+        btnEditarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnEditarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEditarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarSocio.setText("EDITAR");
+        btnEditarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarSocioActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnEditarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 180, 40));
+
+        btnEliminarSocio.setBackground(new java.awt.Color(0, 0, 0));
+        btnEliminarSocio.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        btnEliminarSocio.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarSocio.setText("ELIMINAR");
+        btnEliminarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarSocioActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnEliminarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 180, 40));
+
+        txtBuscarSocio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarSocioKeyReleased(evt);
+            }
+        });
+        pSocios.add(txtBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 360, 70, 30));
+
+        btnDirectoresSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnDirectoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnDirectoresSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnDirectoresSocios.setText("SELECCIONAR");
+        btnDirectoresSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDirectoresSociosActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnDirectoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, 160, -1));
+
+        btnActoresSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnActoresSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnActoresSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnActoresSocios.setText("SELECCIONAR");
+        btnActoresSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActoresSociosActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnActoresSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 160, -1));
+
+        btnGenerosSocios.setBackground(new java.awt.Color(0, 0, 0));
+        btnGenerosSocios.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnGenerosSocios.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerosSocios.setText("SELECCIONAR");
+        btnGenerosSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerosSociosActionPerformed(evt);
+            }
+        });
+        pSocios.add(btnGenerosSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 160, -1));
+
+        lblDirectoresSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pSocios.add(lblDirectoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 110, 20));
+
+        lblActoresSeleccionados.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        pSocios.add(lblActoresSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 140, 20));
+
+        lblGenerosSeleccionados.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        pSocios.add(lblGenerosSeleccionados, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, 120, 20));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        jLabel13.setText("NOMBRE");
+        pSocios.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/Imgs Login/lupa (2).png"))); // NOI18N
+        pSocios.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, 30, 30));
+
+        tabbedPane.addTab("tab1", pSocios);
+
         add(tabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -20, 1020, 760));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2336,6 +2341,10 @@ public class panelMenu extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No se puedo eliminar el socio de la lista de espera.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarListaLDEActionPerformed
+
+    private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrestamosActionPerformed
     void validacionTexto(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 

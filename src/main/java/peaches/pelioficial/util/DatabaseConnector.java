@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author q-ql
  */
 public class DatabaseConnector {
-    private static final String URL = "jdbc:mysql://localhost:3306/pelioficial";
+    private static final String URL = "jdbc:mysql://localhost:3308/pelaaa";
     private static final String USER = "root";
     private static final String PASSWORD = "";
     
