@@ -68,7 +68,7 @@ public class VehiculoDAO implements DAO<Vehiculo>{
     //metodo para guardar un cliente
 
 public void save(Vehiculo vehiculo) {
-    String sql = "INSERT INTO vehiculo (placaVehiculo, modeloVehiculo, dni) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO vehiculo (placa, modelo, dni) VALUES (?, ?, ?)";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
         statement.setString(1, vehiculo.getPlaca());
         statement.setString(2, vehiculo.getModelo());
@@ -96,9 +96,10 @@ public void save(Vehiculo vehiculo) {
       public void update(Vehiculo vehiculo) {
         String sql = "UPDATE Cliente SET modelo = ?, dni = ? WHERE placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, vehiculo.getPlaca());
-            statement.setString(2, vehiculo.getModelo());
-            statement.setString(3, vehiculo.getDni());
+            statement.setString(1, vehiculo.getModelo());
+            statement.setString(2, vehiculo.getDni());
+            statement.setString(3, vehiculo.getPlaca());
+
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Updating socio failed, no rows affected.");

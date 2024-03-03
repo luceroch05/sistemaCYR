@@ -10,4 +10,44 @@ package peaches.proyectoalejo.model;
  */
 public class Proveedor {
     
+      private int idProveedor;
+    private String nombre;
+    private String telefono;
+
+    public Proveedor(int idProveedor, String nombre, String telefono) {
+        this.idProveedor = idProveedor;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    public Proveedor() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+  
+    
 }

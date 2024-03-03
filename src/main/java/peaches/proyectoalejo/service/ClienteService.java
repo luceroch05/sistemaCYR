@@ -32,6 +32,15 @@ public class ClienteService {
          public void guardarCliente(Cliente cliente){
              clienteDAO.save(cliente);
          }
+         
+         
+         public void eliminarCliente(Cliente cliente){
+             clienteDAO.delete(cliente);
+         }
+         
+         public void actualizarCliente(Cliente cliente){
+             clienteDAO.update(cliente);
+         }
         
         
      

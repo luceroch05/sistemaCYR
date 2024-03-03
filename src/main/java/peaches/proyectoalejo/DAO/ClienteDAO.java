@@ -101,7 +101,7 @@ public void save(Cliente cliente) {
     
     //metodo para actualizar el cliente
       public void update(Cliente cliente) {
-        String sql = "UPDATE Cliente SET nombre = ?, apellido = ?, telefono = ? WHERE dni = ?";
+        String sql = "UPDATE Clientes SET nombreCliente = ?, apellidoCliente = ?, telefono = ? WHERE dni = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, cliente.getNombre());
             statement.setString(2, cliente.getApellido());
@@ -126,7 +126,7 @@ public void save(Cliente cliente) {
         try{
             connection.setAutoCommit(false);
           
-            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM Cliente WHERE dni = ?")){
+            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM clientes WHERE dni = ?")){
                 statement.setString(1, cliente.getDNI());
                 int affectedRows = statement.executeUpdate();
                 if(affectedRows == 0){

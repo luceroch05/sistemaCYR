@@ -8,11 +8,13 @@ package peaches.proyectoalejo.view;
 
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popCliente;
 import peaches.proyectoalejo.model.Cliente;
 import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ClienteService;
+import peaches.proyectoalejo.update.upCliente;
 import peaches.proyectoalejo.util.Conexion;
 
 /**
@@ -44,8 +46,11 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        btnAgregarCliente = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,7 +67,7 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
         ));
         jScrollPane1.setViewportView(tableClientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 490, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 540, 330));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -70,22 +75,52 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 320, 40));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 210, 30));
 
-        btnAgregarCliente.setBackground(new java.awt.Color(0, 51, 51));
-        btnAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarCliente.setText("+");
-        btnAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregar.setBackground(new java.awt.Color(0, 51, 51));
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarClienteMouseClicked(evt);
+                btnAgregarMouseClicked(evt);
             }
         });
-        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarClienteActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 40));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 130, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 130, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,16 +138,63 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarClienteMouseClicked
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarMouseClicked
 
-    }//GEN-LAST:event_btnAgregarClienteMouseClicked
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       
+            int filaSeleccionada = tableClientes.getSelectedRow();
+    if (filaSeleccionada != -1) { // Verifica si se ha seleccionado una fila
+        String dni = (String) tableClientes.getValueAt(filaSeleccionada, 0); // Suponiendo que la primera columna es el DNI
+     upCliente upCli = new upCliente(dni, this);
+        upCli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+        upCli.setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
 
-    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+    }
+                   
+        
+     // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       int fila = tableClientes.getSelectedRow();
+        if(fila != -1){
+            String dniCliente = tableClientes.getValueAt(fila, 0).toString();
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Estás seguro de que deseas eliminar el socio seleccionado?", "Eliminar Socio", JOptionPane.YES_NO_OPTION);
+            if(confirmacion == JOptionPane.YES_OPTION){
+                Cliente clienteParaEliminar = new Cliente();
+                clienteParaEliminar.setDNI(dniCliente);
+                clienteService.eliminarCliente(clienteParaEliminar);
+                actualizarTabla();
+                JOptionPane.showMessageDialog(null, "Socio eliminado con exito.", "Eliminar Socio", JOptionPane.INFORMATION_MESSAGE);
+                
+            
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un socio de la tabla.", "Eliminar Socio", JOptionPane.ERROR_MESSAGE);
+        }
+    
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         popCliente cliente = new popCliente(this);
-         cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre        
+        cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
         cliente.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarClienteActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
+
+    }//GEN-LAST:event_btnAgregarMouseClicked
 
         public void actualizarTabla(){
         List<Cliente> ListaDeClientes = clienteService.obtenerTodosLosClientes();
@@ -131,7 +213,9 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarCliente;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
