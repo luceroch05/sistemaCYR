@@ -13,6 +13,9 @@ public class Proveedor {
       private int idProveedor;
     private String nombre;
     private String telefono;
+    
+        public Proveedor() {
+    }
 
     public Proveedor(int idProveedor, String nombre, String telefono) {
         this.idProveedor = idProveedor;
@@ -20,9 +23,7 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public Proveedor() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 
     public int getIdProveedor() {
         return idProveedor;
