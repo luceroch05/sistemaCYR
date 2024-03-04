@@ -52,8 +52,8 @@ public class VehiculoDAO implements DAO<Vehiculo>{
             ResultSet resultSet = statement.executeQuery("SELECT * FROM vehiculo");
             while(resultSet.next()){
                Vehiculo vehiculo = new Vehiculo();
-               vehiculo.setPlaca(resultSet.getString("placaVehiculo"));
-               vehiculo.setModelo(resultSet.getString("modeloVehiculo"));
+               vehiculo.setPlaca(resultSet.getString("placa"));
+               vehiculo.setModelo(resultSet.getString("modelo"));
                vehiculo.setDni(resultSet.getString("dni"));              
                 ListaDeVehiculos.add(vehiculo);
             }
@@ -68,7 +68,7 @@ public class VehiculoDAO implements DAO<Vehiculo>{
     //metodo para guardar un cliente
 
 public void save(Vehiculo vehiculo) {
-    String sql = "INSERT INTO vehiculo (placaVehiculo, modeloVehiculo, dni) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO vehiculo (placa, modelo, dni) VALUES (?, ?, ?)";
     try (PreparedStatement statement = connection.prepareStatement(sql)) {
         statement.setString(1, vehiculo.getPlaca());
         statement.setString(2, vehiculo.getModelo());
@@ -119,7 +119,7 @@ public void save(Vehiculo vehiculo) {
         try{
             connection.setAutoCommit(false);
           
-            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM vehiculo WHERE placaVehiculo = ?")){
+            try(PreparedStatement statement = connection.prepareStatement("DELETE FROM vehiculo WHERE placa = ?")){
                 statement.setString(1, vehiculo.getPlaca());
                 int affectedRows = statement.executeUpdate();
                 if(affectedRows == 0){

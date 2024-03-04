@@ -58,19 +58,19 @@ public class popVehiculo extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 120, -1));
 
         jLabel2.setText("PLACA");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 70, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 70, 20));
 
         jLabel3.setText("MODELO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 70, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 70, 20));
 
         jLabel4.setText("CLIENTE");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, 30));
 
         txtPlaca.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 140, -1));
+        jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 140, -1));
 
         txtModelo.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, -1));
+        jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 140, -1));
 
         btnRegistrarVehiculo.setBackground(new java.awt.Color(255, 51, 51));
         btnRegistrarVehiculo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
