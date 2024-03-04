@@ -4,6 +4,9 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import peaches.proyectoalejo.model.Vehiculo;
+import peaches.proyectoalejo.oyentes.ClienteOyente;
+import peaches.proyectoalejo.service.VehiculoService;
 import peaches.proyectoalejo.util.DialogBuscarCliente;
 
 /**
@@ -11,11 +14,16 @@ import peaches.proyectoalejo.util.DialogBuscarCliente;
  * @author santo
  */
 public class popVehiculo extends javax.swing.JFrame {
-
+    VehiculoService vehiculoService=new VehiculoService();
+    ClienteOyente clienteOyente;
     /**
      * Creates new form Vehiculo
      */
     public popVehiculo() {
+        initComponents();
+    } 
+    public popVehiculo(ClienteOyente clienteOyente) {
+        this.clienteOyente=clienteOyente;
         initComponents();
     }
 
@@ -107,7 +115,21 @@ public class popVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVehiculoActionPerformed
-        // TODO add your handling code here:
+        String placa = txtPlaca.getText();
+        String modelo = txtModelo.getText();
+        String cliente = txtClientes.getText();
+
+        
+        Vehiculo nuevoVehiculo = new Vehiculo();
+        nuevoVehiculo.setPlaca(placa);
+        nuevoVehiculo.setModelo(modelo);
+        nuevoVehiculo.setDni(cliente);
+       
+        
+        
+        vehiculoService.guardarVehiculo(nuevoVehiculo);
+        clienteOyente.clienteAnadido();
+         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarVehiculoActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed

@@ -132,7 +132,7 @@ public void mostrar(String tabla) {
             try{
                 DefaultTableModel tm=(DefaultTableModel)visorClientes.getModel();
                 
-               int id=Integer.parseInt(String.valueOf(tm.getValueAt(visorClientes.getSelectedRow(),0)));
+               String id=String.valueOf(tm.getValueAt(visorClientes.getSelectedRow(),0));
                popVehiculo.txtClientes.setText(String.valueOf(id));
                dispose();
             }catch(Exception e){
