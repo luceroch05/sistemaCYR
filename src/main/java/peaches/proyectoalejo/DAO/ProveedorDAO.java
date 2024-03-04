@@ -53,7 +53,7 @@ public class ProveedorDAO {
             while(resultSet.next()){
                 Proveedor proveedor = new Proveedor();
                 proveedor.setIdProveedor(resultSet.getInt("idProveedor"));
-                proveedor.setNombre(resultSet.getString("nombreCliente"));
+                proveedor.setNombre(resultSet.getString("nombreProveedor"));
                 proveedor.setTelefono(resultSet.getString("telefono"));
 
                 ListaDeProveedores.add(proveedor);
@@ -68,8 +68,8 @@ public class ProveedorDAO {
     
     //metodo para guardar un cliente
  
-    public int save(Proveedor proveedor) {
-        String sql = "INSERT INTO proveedores (nombreProveedores, telefono) VALUES (?, ?)";
+    public void save(Proveedor proveedor) {
+        String sql = "INSERT INTO proveedores (nombreProveedor, telefono) VALUES (?, ?)";
         int generatedId = 0;
         try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, proveedor.getNombre());
@@ -88,7 +88,6 @@ public class ProveedorDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return generatedId;
     }
 
 

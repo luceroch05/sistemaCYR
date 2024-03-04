@@ -5,20 +5,28 @@
 package peaches.proyectoalejo.view;
 
 import javax.swing.JFrame;
-import peaches.proyectoalejo.agregar.popCliente;
+import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popProveedor;
+import peaches.proyectoalejo.model.Proveedor;
+import peaches.proyectoalejo.oyentes.ClienteOyente;
+import peaches.proyectoalejo.service.ProveedorService;
+import java.util.List;
+
 
 /**
  *
  * @author Lucero
  */
-public class panelProveedores extends javax.swing.JPanel {
+public class panelProveedores extends javax.swing.JPanel implements ClienteOyente {
+    
+    ProveedorService proveedorService = new ProveedorService();
 
     /**
      * Creates new form panelProveedores
      */
     public panelProveedores() {
         initComponents();
+        actualizarTabla();
     }
 
     /**
@@ -32,10 +40,10 @@ public class panelProveedores extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnAgregarProveedores = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableProveedores = new javax.swing.JTable();
+        btnAgregarProveedores = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -53,6 +61,29 @@ public class panelProveedores extends javax.swing.JPanel {
         jPanel2.setMinimumSize(new java.awt.Dimension(650, 540));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField1.setText("buscar");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 260, 30));
+
+        tableProveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Telefono"
+            }
+        ));
+        jScrollPane1.setViewportView(tableProveedores);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, 330));
+
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProveedores.setText("+");
@@ -66,58 +97,57 @@ public class panelProveedores extends javax.swing.JPanel {
                 btnAgregarProveedoresActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 160, 30));
-
-        jTextField1.setText("buscar");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 270, 30));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nombre", "Telefono"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 150));
+        jPanel2.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 160, 30));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 540));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgregarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresMouseClicked
-
-      
-    }//GEN-LAST:event_btnAgregarProveedoresMouseClicked
-
-    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
-        popProveedor proveedor = new popProveedor();
-         proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
-
-        proveedor.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void btnAgregarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProveedoresMouseClicked
+
+    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
+
+        popProveedor proveedor = new popProveedor(this);
+        proveedor.setVisible(true);
+        proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
+
+    
+    void actualizarTabla(){
+         List<Proveedor> ListadeProveedores = proveedorService.obtenerTodosLosProveedores();
+        DefaultTableModel model = (DefaultTableModel) tableProveedores.getModel();
+        model.setRowCount(0);
+        for (Proveedor proveedor : ListadeProveedores) {
+            
+            model.addRow(new Object[]{
+                proveedor.getIdProveedor(),
+                proveedor.getNombre(),
+                proveedor.getTelefono(),
+                
+            });
+        }
+    };
+    
+        public void clienteAnadido() {
+        actualizarTabla();
+       System.out.println("comunico con el proveedor");
+
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProveedores;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableProveedores;
     // End of variables declaration//GEN-END:variables
 }

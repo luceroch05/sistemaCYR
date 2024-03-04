@@ -4,16 +4,28 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import peaches.proyectoalejo.model.Proveedor;
+import peaches.proyectoalejo.oyentes.ClienteOyente;
+import peaches.proyectoalejo.service.ProveedorService;
+
 /**
  *
  * @author Lucero
  */
 public class popProveedor extends javax.swing.JFrame {
+    
+    private ClienteOyente clienteOyente;
+    ProveedorService proveedorService = new ProveedorService();
 
     /**
      * Creates new form popProveedor
      */
     public popProveedor() {
+        initComponents();
+    }
+    
+      public popProveedor(ClienteOyente clienteOyente) {
+        this.clienteOyente = clienteOyente;
         initComponents();
     }
 
@@ -30,9 +42,9 @@ public class popProveedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnNomProveedor = new javax.swing.JTextField();
-        btnTelProveedor = new javax.swing.JTextField();
-        btnRProveedor = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,22 +60,22 @@ public class popProveedor extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 20));
 
         jLabel4.setText("NOMBRE");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 20));
 
-        btnNomProveedor.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnNomProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 140, -1));
+        txtNombre.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 140, -1));
 
-        btnTelProveedor.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnTelProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 140, -1));
+        txtTelefono.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 140, -1));
 
-        btnRProveedor.setBackground(new java.awt.Color(255, 51, 51));
-        btnRProveedor.setText("REGISTRAR");
-        btnRProveedor.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRProveedorActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, 30));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,11 +91,23 @@ public class popProveedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRProveedorActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
+        String nombre = txtNombre.getText();
+        String telefono = txtTelefono.getText();
+
+        
+        Proveedor nuevoProveedor = new Proveedor();
+        nuevoProveedor.setNombre(nombre);
+        nuevoProveedor.setTelefono(telefono);
+        
+        
+        proveedorService.guardarProveedor(nuevoProveedor);
+        
+        clienteOyente.clienteAnadido();
      
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRProveedorActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,12 +145,12 @@ public class popProveedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnNomProveedor;
-    private javax.swing.JButton btnRProveedor;
-    private javax.swing.JTextField btnTelProveedor;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
