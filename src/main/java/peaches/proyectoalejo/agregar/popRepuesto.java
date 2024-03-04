@@ -4,11 +4,16 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import peaches.proyectoalejo.model.Repuesto;
+import peaches.proyectoalejo.service.RepuestoService;
+
 /**
  *
  * @author Lucero
  */
 public class popRepuesto extends javax.swing.JFrame {
+    
+    RepuestoService repuestoService = new RepuestoService();
 
     /**
      * Creates new form popRepuesto
@@ -28,26 +33,15 @@ public class popRepuesto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnNomProveedor = new javax.swing.JTextField();
-        btnTelProveedor = new javax.swing.JTextField();
-        btnNomProveedor3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        btnRProveedor = new javax.swing.JButton();
-        btnNomProveedor2 = new javax.swing.JTextField();
-        btnTelProveedor1 = new javax.swing.JTextField();
-        btnTelProveedor2 = new javax.swing.JTextField();
-        btnTelProveedor3 = new javax.swing.JTextField();
-        btnNomProveedor1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtProveedor = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,87 +53,56 @@ public class popRepuesto extends javax.swing.JFrame {
         jLabel1.setText("AGREGAR ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("AGREGAR ");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
-
-        jLabel3.setText("STOCK");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 50, 20));
-
-        jLabel4.setText("DESCRIPCIÓN");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 90, 20));
-
-        btnNomProveedor.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel2.add(btnNomProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
-
-        btnTelProveedor.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel2.add(btnTelProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, -1));
-
-        btnNomProveedor3.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel2.add(btnNomProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 140, -1));
-
-        jLabel6.setText("PRECIO");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 20));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        btnRProveedor.setBackground(new java.awt.Color(255, 51, 51));
-        btnRProveedor.setText("REGISTRAR");
-        btnRProveedor.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRProveedorActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 100, 30));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 100, 30));
 
-        btnNomProveedor2.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnNomProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
-
-        btnTelProveedor1.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnTelProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, -1));
-
-        btnTelProveedor2.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnTelProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, -1));
-
-        btnTelProveedor3.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnTelProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, 20));
-
-        btnNomProveedor1.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(btnNomProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 140, -1));
-
-        jLabel5.setText("TELÉFONO");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 20));
-
-        jLabel7.setText("PRECIO");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 20));
-
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("PRECIO");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 50, 20));
 
-        jLabel9.setText("TELÉFONO");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 20));
-
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("STOCK");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 50, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 50, 20));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("PROVEEDOR");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("DESCRIPCION");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        txtProveedor.setText("jTextField1");
+        jPanel1.add(txtProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 160, -1));
+
+        txtPrecio.setText("jTextField1");
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, -1));
+
+        txtStock.setText("jTextField1");
+        jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 160, -1));
+
+        txtDescripcion.setText("jTextField1");
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -147,10 +110,23 @@ public class popRepuesto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRProveedorActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
+        String descripcion = txtDescripcion.getText();
+        int stock = Integer.parseInt(txtStock.getText());
+        double precio = Double.parseDouble(txtPrecio.getText());
+        int idProveedor = Integer.parseInt(txtProveedor.getText());
+        
+        Repuesto nuevoRepuesto = new Repuesto();
+        nuevoRepuesto.setDescripcion(descripcion);
+        nuevoRepuesto.setStock(stock);
+        nuevoRepuesto.setPrecio(precio);
+        nuevoRepuesto.setIdProveedor(idProveedor);
+        
+        repuestoService.guardarRepuesto(nuevoRepuesto);
+        
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRProveedorActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,27 +164,16 @@ public class popRepuesto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnNomProveedor;
-    private javax.swing.JTextField btnNomProveedor1;
-    private javax.swing.JTextField btnNomProveedor2;
-    private javax.swing.JTextField btnNomProveedor3;
-    private javax.swing.JButton btnRProveedor;
-    private javax.swing.JTextField btnTelProveedor;
-    private javax.swing.JTextField btnTelProveedor1;
-    private javax.swing.JTextField btnTelProveedor2;
-    private javax.swing.JTextField btnTelProveedor3;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtProveedor;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

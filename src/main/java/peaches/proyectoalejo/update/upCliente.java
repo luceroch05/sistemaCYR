@@ -5,8 +5,8 @@
 package peaches.proyectoalejo.update;
 
 import peaches.proyectoalejo.model.Cliente;
-import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ClienteService;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
@@ -14,7 +14,7 @@ import peaches.proyectoalejo.service.ClienteService;
  */
 public class upCliente extends javax.swing.JFrame {
     
-        private ClienteOyente clienteOyente;
+        private Oyente clienteOyente;
 
     
     String dni;
@@ -28,10 +28,10 @@ public class upCliente extends javax.swing.JFrame {
     }
     
     
-        public upCliente(String dni, ClienteOyente click) {
-           this.dni = dni;
-           this.clienteOyente = click;
-            System.out.println("observacion");
+    public upCliente(String dni, Oyente click) {
+        this.dni = dni;
+        this.clienteOyente = click;
+        System.out.println("observacion");
         initComponents();
     }
 

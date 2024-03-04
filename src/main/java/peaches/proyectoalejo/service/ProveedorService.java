@@ -32,4 +32,13 @@ public class ProveedorService {
     public List<Proveedor> obtenerTodosLosProveedores(){
         return this.proveedorDAO.getAll();
     }
+    
+    public void eliminarProveedor(Proveedor proveedor){
+        this.proveedorDAO.delete(proveedor);
+    }
+    
+        public void actualizarProveedor(Proveedor proveedor){
+        this.proveedorDAO.update(proveedor);
+    }
+    
 }

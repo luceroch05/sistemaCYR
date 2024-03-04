@@ -5,8 +5,8 @@
 package peaches.proyectoalejo.agregar;
 
 import peaches.proyectoalejo.model.Proveedor;
-import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ProveedorService;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
@@ -14,7 +14,7 @@ import peaches.proyectoalejo.service.ProveedorService;
  */
 public class popProveedor extends javax.swing.JFrame {
     
-    private ClienteOyente clienteOyente;
+    private Oyente clienteOyente;
     ProveedorService proveedorService = new ProveedorService();
 
     /**
@@ -24,7 +24,7 @@ public class popProveedor extends javax.swing.JFrame {
         initComponents();
     }
     
-      public popProveedor(ClienteOyente clienteOyente) {
+      public popProveedor(Oyente clienteOyente) {
         this.clienteOyente = clienteOyente;
         initComponents();
     }

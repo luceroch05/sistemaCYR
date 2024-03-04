@@ -6,29 +6,39 @@ package peaches.proyectoalejo.view;
 
   
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popCliente;
 import peaches.proyectoalejo.model.Cliente;
-import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ClienteService;
 import peaches.proyectoalejo.update.upCliente;
 import peaches.proyectoalejo.util.Conexion;
+import peaches.proyectoalejo.util.Oyente;
+import peaches.proyectoalejo.util.PersonalizarTabla;
 
 /**
  *
  * @author Lucero
  */
-public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
+public class panelCliente extends javax.swing.JPanel implements Oyente {
      ClienteService clienteService = new ClienteService();
+      PersonalizarTabla personalizarTabla;
     /**
      * Creates new form panelCliente
      */
     public panelCliente() {
+        //this.personalizarTabla = new PersonalizarTabla(tableClientes);
         initComponents();
         actualizarTabla();
+        tableClientes.getTableHeader().setBackground(new Color(255,255,255));
+        tableClientes.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD,12));
+        
+    //tableClientes.setDefaultRenderer(Object.class, personalizarTabla); // aplica el personalizador a la tabla
+        
     }
     
 
@@ -54,6 +64,10 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        tableClientes.setBackground(new java.awt.Color(255, 255, 255));
         tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -65,9 +79,24 @@ public class panelCliente extends javax.swing.JPanel implements ClienteOyente {
                 "DNI", "Nombre", "Apellido", "Teléfono"
             }
         ));
+        tableClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableClientes.setGridColor(new java.awt.Color(255, 255, 255));
+        tableClientes.setRowHeight(25);
+        tableClientes.setShowHorizontalLines(true);
+        tableClientes.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableClientes);
+        if (tableClientes.getColumnModel().getColumnCount() > 0) {
+            tableClientes.getColumnModel().getColumn(0).setResizable(false);
+            tableClientes.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tableClientes.getColumnModel().getColumn(1).setResizable(false);
+            tableClientes.getColumnModel().getColumn(1).setPreferredWidth(10);
+            tableClientes.getColumnModel().getColumn(2).setResizable(false);
+            tableClientes.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tableClientes.getColumnModel().getColumn(3).setResizable(false);
+            tableClientes.getColumnModel().getColumn(3).setPreferredWidth(10);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 540, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 550, 330));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

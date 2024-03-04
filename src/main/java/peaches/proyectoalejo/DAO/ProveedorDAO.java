@@ -100,7 +100,7 @@ public class ProveedorDAO {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, proveedor.getNombre());
             statement.setString(2, proveedor.getTelefono());
-             statement.setLong(3, proveedor.getIdProveedor());
+            statement.setLong(3, proveedor.getIdProveedor());
 
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {

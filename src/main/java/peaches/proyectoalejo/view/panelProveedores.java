@@ -8,18 +8,22 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popProveedor;
 import peaches.proyectoalejo.model.Proveedor;
-import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.ProveedorService;
 import java.util.List;
+import javax.swing.JOptionPane;
+import peaches.proyectoalejo.update.upProveedor;
+import peaches.proyectoalejo.util.Oyente;
+import peaches.proyectoalejo.util.PersonalizarTabla;
 
 
 /**
  *
  * @author Lucero
  */
-public class panelProveedores extends javax.swing.JPanel implements ClienteOyente {
+public class panelProveedores extends javax.swing.JPanel implements Oyente {
     
     ProveedorService proveedorService = new ProveedorService();
+   
 
     /**
      * Creates new form panelProveedores
@@ -44,6 +48,8 @@ public class panelProveedores extends javax.swing.JPanel implements ClienteOyent
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProveedores = new javax.swing.JTable();
         btnAgregarProveedores = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,7 +92,7 @@ public class panelProveedores extends javax.swing.JPanel implements ClienteOyent
 
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarProveedores.setText("+");
+        btnAgregarProveedores.setText("AGREGAR");
         btnAgregarProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarProveedoresMouseClicked(evt);
@@ -98,6 +104,36 @@ public class panelProveedores extends javax.swing.JPanel implements ClienteOyent
             }
         });
         jPanel2.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 160, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 130, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("EDITAR");
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 130, 30));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 540));
     }// </editor-fold>//GEN-END:initComponents
@@ -119,6 +155,50 @@ public class panelProveedores extends javax.swing.JPanel implements ClienteOyent
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tableProveedores.getSelectedRow();
+        if(fila != -1){
+            int idProveedor = Integer.parseInt(tableProveedores.getValueAt(fila, 0).toString());
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Estás seguro de que deseas eliminar el proveedor seleccionado?", "Eliminar Proveedor", JOptionPane.YES_NO_OPTION);
+            if(confirmacion == JOptionPane.YES_OPTION){
+                Proveedor proveedorParaEliminar = new Proveedor();
+                proveedorParaEliminar.setIdProveedor(idProveedor);
+                proveedorService.eliminarProveedor(proveedorParaEliminar);
+                actualizarTabla();
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado con exito.", "Eliminar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un proveedor de la tabla.", "Eliminar Proveedor", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+
+        int filaSeleccionada = tableProveedores.getSelectedRow();
+        if (filaSeleccionada != -1) { // Verifica si se ha seleccionado una fila
+        int idProveedor = Integer.parseInt(tableProveedores.getValueAt(filaSeleccionada, 0).toString());
+            upProveedor upProv = new upProveedor(idProveedor, this);
+            upProv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+            upProv.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila para actualizar", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
     
     void actualizarTabla(){
          List<Proveedor> ListadeProveedores = proveedorService.obtenerTodosLosProveedores();
@@ -137,13 +217,15 @@ public class panelProveedores extends javax.swing.JPanel implements ClienteOyent
     
         public void clienteAnadido() {
         actualizarTabla();
-       System.out.println("comunico con el proveedor");
+        System.out.println("comunico con el proveedor");
 
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

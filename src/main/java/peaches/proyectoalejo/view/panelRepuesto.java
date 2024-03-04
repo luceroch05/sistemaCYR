@@ -4,22 +4,48 @@
  */
 package peaches.proyectoalejo.view;
 
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popRepuesto;
+import peaches.proyectoalejo.model.Repuesto;
+import peaches.proyectoalejo.service.RepuestoService;
 
 /**
  *
  * @author Lucero
  */
 public class panelRepuesto extends javax.swing.JPanel {
+    
+    RepuestoService repuestoService = new RepuestoService();
 
     /**
      * Creates new form panelRepuesto
      */
     public panelRepuesto() {
         initComponents();
+        actualizarTabla();
+
     }
 
+    
+       public void actualizarTabla(){
+        List<Repuesto> ListaDeRepuestos = repuestoService.obtenerTodosLosRepuestos();
+        DefaultTableModel model = (DefaultTableModel) tableRepuesto.getModel();
+        model.setRowCount(0);
+        for (Repuesto repuesto : ListaDeRepuestos) {
+            
+            model.addRow(new Object[]{
+                repuesto.getIdRepuesto(),
+                repuesto.getDescripcion(),
+                repuesto.getStock(),
+                repuesto.getPrecio(),
+               repuesto.getIdProveedor(),
+
+                
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +58,7 @@ public class panelRepuesto extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableRepuesto = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         btnAgregarProveedores = new javax.swing.JButton();
 
@@ -45,20 +71,20 @@ public class panelRepuesto extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableRepuesto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Descripción", "Stock", "Precio", "Proveedor"
+                "ID", "Descripción", "Stock", "Precio", "Proveedor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableRepuesto);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 500, 290));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 510, 290));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +132,7 @@ public class panelRepuesto extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableRepuesto;
     // End of variables declaration//GEN-END:variables
 }

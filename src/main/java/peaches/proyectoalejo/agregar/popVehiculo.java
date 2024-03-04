@@ -5,9 +5,9 @@
 package peaches.proyectoalejo.agregar;
 
 import peaches.proyectoalejo.model.Vehiculo;
-import peaches.proyectoalejo.oyentes.ClienteOyente;
 import peaches.proyectoalejo.service.VehiculoService;
 import peaches.proyectoalejo.util.DialogBuscarCliente;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
@@ -15,15 +15,15 @@ import peaches.proyectoalejo.util.DialogBuscarCliente;
  */
 public class popVehiculo extends javax.swing.JFrame {
     VehiculoService vehiculoService=new VehiculoService();
-    ClienteOyente clienteOyente;
+    Oyente oyente;
     /**
      * Creates new form Vehiculo
      */
     public popVehiculo() {
         initComponents();
     } 
-    public popVehiculo(ClienteOyente clienteOyente) {
-        this.clienteOyente=clienteOyente;
+    public popVehiculo(Oyente oyente) {
+        this.oyente=oyente;
         initComponents();
     }
 
@@ -128,7 +128,7 @@ public class popVehiculo extends javax.swing.JFrame {
         
         
         vehiculoService.guardarVehiculo(nuevoVehiculo);
-        clienteOyente.clienteAnadido();
+        oyente.clienteAnadido();
          // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarVehiculoActionPerformed
 
