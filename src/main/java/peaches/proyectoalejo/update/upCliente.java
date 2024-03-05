@@ -111,7 +111,7 @@ public class upCliente extends javax.swing.JFrame {
        
        clienteService.actualizarCliente(clienteActualizado);
        
-          clienteOyente.clienteAnadido();
+          clienteOyente.anadido();
 
 
         

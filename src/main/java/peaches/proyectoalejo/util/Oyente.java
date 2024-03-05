@@ -9,5 +9,5 @@ package peaches.proyectoalejo.util;
  * @author santo
  */
 public interface Oyente {
-        void clienteAnadido();
+        void anadido();
 }

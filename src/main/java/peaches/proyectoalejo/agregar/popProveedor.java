@@ -104,7 +104,7 @@ public class popProveedor extends javax.swing.JFrame {
         
         proveedorService.guardarProveedor(nuevoProveedor);
         
-        clienteOyente.clienteAnadido();
+        clienteOyente.anadido();
      
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed

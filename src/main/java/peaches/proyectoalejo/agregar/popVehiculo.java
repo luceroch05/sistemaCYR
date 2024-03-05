@@ -128,7 +128,7 @@ public class popVehiculo extends javax.swing.JFrame {
         
         
         vehiculoService.guardarVehiculo(nuevoVehiculo);
-        oyente.clienteAnadido();
+        oyente.anadido();
          // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarVehiculoActionPerformed
 

@@ -100,7 +100,7 @@ public class upProveedor extends javax.swing.JFrame {
         
         proveedorService.actualizarProveedor(nuevoProveedor);
         
-        oyente.clienteAnadido();
+        oyente.anadido();
         
 
         

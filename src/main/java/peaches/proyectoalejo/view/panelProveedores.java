@@ -215,7 +215,7 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
         }
     };
     
-        public void clienteAnadido() {
+        public void anadido() {
         actualizarTabla();
         System.out.println("comunico con el proveedor");
 

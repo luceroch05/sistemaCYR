@@ -117,7 +117,7 @@ public class popCliente extends javax.swing.JFrame {
         
         clienteService.guardarCliente(nuevoCliente);
         
-        clienteOyente.clienteAnadido();
+        clienteOyente.anadido();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

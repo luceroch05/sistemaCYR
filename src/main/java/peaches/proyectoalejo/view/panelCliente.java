@@ -252,7 +252,7 @@ public class panelCliente extends javax.swing.JPanel implements Oyente {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void clienteAnadido() {
+    public void anadido() {
         actualizarTabla();
        System.out.println("se comunicooo");
 
