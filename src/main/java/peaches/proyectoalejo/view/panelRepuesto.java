@@ -6,16 +6,19 @@ package peaches.proyectoalejo.view;
 
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popRepuesto;
 import peaches.proyectoalejo.model.Repuesto;
 import peaches.proyectoalejo.service.RepuestoService;
+import peaches.proyectoalejo.update.upRepuesto;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
  * @author Lucero
  */
-public class panelRepuesto extends javax.swing.JPanel {
+public class panelRepuesto extends javax.swing.JPanel implements Oyente {
     
     RepuestoService repuestoService = new RepuestoService();
 
@@ -61,6 +64,8 @@ public class panelRepuesto extends javax.swing.JPanel {
         tableRepuesto = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         btnAgregarProveedores = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -108,6 +113,36 @@ public class panelRepuesto extends javax.swing.JPanel {
             }
         });
         add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 130, 40));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 130, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 130, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -126,13 +161,64 @@ public class panelRepuesto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarMouseClicked
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+
+        int filaSeleccionada = tableRepuesto.getSelectedRow();
+        if (filaSeleccionada != -1) { // Verifica si se ha seleccionado una fila
+            int idRepuesto = Integer.parseInt(tableRepuesto.getValueAt(filaSeleccionada, 0).toString());
+            upRepuesto upRe = new upRepuesto(this, idRepuesto);
+            upRe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+            upRe.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tableRepuesto.getSelectedRow();
+        if(fila != -1){
+            int idRepuesto = Integer.parseInt(tableRepuesto.getValueAt(fila, 0).toString());
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Estás seguro de que deseas eliminar el repuesto seleccionado?", "Eliminar Socio", JOptionPane.YES_NO_OPTION);
+            if(confirmacion == JOptionPane.YES_OPTION){
+                Repuesto repuestoParaEliminar = new Repuesto();
+                repuestoParaEliminar.setIdRepuesto(idRepuesto);
+                repuestoService.eliminarRepuesto(repuestoParaEliminar);
+                actualizarTabla();
+                JOptionPane.showMessageDialog(null, "Repuesto eliminado con exito.", "Eliminar Repuesto", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un repuesto de la tabla.", "Eliminar Repuesto", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableRepuesto;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void anadido() {
+        actualizarTabla();
+    }
 }

@@ -50,76 +50,82 @@ public class framePrincipal extends javax.swing.JFrame {
 
         panelContenedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBackground(new java.awt.Color(78, 103, 142));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(16, 16, 17));
-        jButton1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(78, 103, 142));
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setText("SERVICIOS");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 40));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 50));
 
-        jButton2.setBackground(new java.awt.Color(16, 16, 17));
-        jButton2.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(78, 103, 142));
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
         jButton2.setText("BOLETA");
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 40));
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 230, 50));
 
-        jButton3.setBackground(new java.awt.Color(16, 16, 17));
-        jButton3.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(78, 103, 142));
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(204, 204, 204));
         jButton3.setText("CLIENTES");
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 230, 40));
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 50));
 
-        jButton4.setBackground(new java.awt.Color(16, 16, 17));
-        jButton4.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setBackground(new java.awt.Color(78, 103, 142));
+        jButton4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(204, 204, 204));
         jButton4.setText("PROVEEDORES");
+        jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 230, 40));
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 230, 50));
 
-        jButton5.setBackground(new java.awt.Color(16, 16, 17));
-        jButton5.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setBackground(new java.awt.Color(78, 103, 142));
+        jButton5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(204, 204, 204));
         jButton5.setText("VEHICULOS");
+        jButton5.setBorder(null);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 230, 40));
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 50));
 
-        jButton6.setBackground(new java.awt.Color(16, 16, 17));
-        jButton6.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setBackground(new java.awt.Color(78, 103, 142));
+        jButton6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(204, 204, 204));
         jButton6.setText("REPUESTOS");
+        jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 40));
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 230, 50));
 
-        panelContenedor.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
+        panelContenedor.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 540));
 
         content.setBackground(new java.awt.Color(255, 255, 255));
 

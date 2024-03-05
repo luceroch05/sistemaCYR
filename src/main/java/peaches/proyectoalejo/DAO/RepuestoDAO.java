@@ -108,7 +108,7 @@ public class RepuestoDAO implements DAO<Repuesto> {
             statement.setLong(2, repuesto.getStock());
             statement.setDouble(3, repuesto.getPrecio());
              statement.setLong(4, repuesto.getIdProveedor());
-              statement.setLong(4, repuesto.getIdRepuesto());
+              statement.setLong(5, repuesto.getIdRepuesto());
 
 
 
@@ -126,7 +126,7 @@ public class RepuestoDAO implements DAO<Repuesto> {
             connection.setAutoCommit(false);
           
             try(PreparedStatement statement = connection.prepareStatement("DELETE FROM repuesto WHERE idRepuesto = ?")){
-                statement.setLong(1, repuesto.getIdProveedor());
+                statement.setLong(1, repuesto.getIdRepuesto());
                 int affectedRows = statement.executeUpdate();
                 if(affectedRows == 0){
                     throw new SQLException("El Repuesto no se pudo eliminar");

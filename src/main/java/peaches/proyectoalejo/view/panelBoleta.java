@@ -82,7 +82,7 @@ public class panelBoleta extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Item", "Cantidad", "Subtotal", "IVA", "Total"
+                "ID", "DNI", "Fecha", "Empleado", "Total"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -108,7 +108,7 @@ public class panelBoleta extends javax.swing.JPanel {
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 60, 30));
 
         jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 600, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 600, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("VEHICULO");
