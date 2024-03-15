@@ -5,17 +5,22 @@
 package peaches.proyectoalejo.view;
 
 import java.awt.BorderLayout;
+import peaches.proyectoalejo.model.Empleado;
 
 /**
  *
  * @author Lucero
  */
 public class framePrincipal extends javax.swing.JFrame {
+    
+    Empleado empleadoEnUso;
 
     /**
      * Creates new form framePrincipal
      */
-    public framePrincipal() {
+    public framePrincipal(Empleado empleadoEnUso) {
+        
+        this.empleadoEnUso = empleadoEnUso;
         initComponents();
         panelBoleta b= new panelBoleta();
         b.setSize(660,540);
@@ -25,6 +30,7 @@ public class framePrincipal extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +49,8 @@ public class framePrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,12 +58,12 @@ public class framePrincipal extends javax.swing.JFrame {
 
         panelContenedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(78, 103, 142));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(78, 103, 142));
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("SERVICIOS");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,11 +71,11 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 50));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 50));
 
-        jButton2.setBackground(new java.awt.Color(78, 103, 142));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("BOLETA");
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -75,11 +83,11 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 230, 50));
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 50));
 
-        jButton3.setBackground(new java.awt.Color(78, 103, 142));
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 204, 204));
+        jButton3.setForeground(new java.awt.Color(51, 51, 51));
         jButton3.setText("CLIENTES");
         jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +95,11 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 50));
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 50));
 
-        jButton4.setBackground(new java.awt.Color(78, 103, 142));
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
+        jButton4.setForeground(new java.awt.Color(51, 51, 51));
         jButton4.setText("PROVEEDORES");
         jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -99,11 +107,11 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 230, 50));
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 220, 50));
 
-        jButton5.setBackground(new java.awt.Color(78, 103, 142));
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(204, 204, 204));
+        jButton5.setForeground(new java.awt.Color(51, 51, 51));
         jButton5.setText("VEHICULOS");
         jButton5.setBorder(null);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +119,11 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 50));
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 50));
 
-        jButton6.setBackground(new java.awt.Color(78, 103, 142));
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(204, 204, 204));
+        jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("REPUESTOS");
         jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +131,33 @@ public class framePrincipal extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 230, 50));
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 50));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
+        jLabel1.setText("XX");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 70, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 1, 470));
 
         panelContenedor.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 540));
 
@@ -209,6 +243,21 @@ public class framePrincipal extends javax.swing.JFrame {
         content.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+        panelPerfil s= new panelPerfil(empleadoEnUso);
+        s.setSize(660,540);
+        s.setLocation(0,0);
+        content.removeAll();
+        content.add(s,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();   
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    
+  
     /**
      * @param args the command line arguments
      */
@@ -248,6 +297,8 @@ public class framePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel panelContenedor;
     // End of variables declaration//GEN-END:variables

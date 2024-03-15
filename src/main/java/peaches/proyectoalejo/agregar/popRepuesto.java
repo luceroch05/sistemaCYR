@@ -6,12 +6,15 @@ package peaches.proyectoalejo.agregar;
 
 import peaches.proyectoalejo.model.Repuesto;
 import peaches.proyectoalejo.service.RepuestoService;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
  * @author Lucero
  */
 public class popRepuesto extends javax.swing.JFrame {
+    
+    private Oyente oyente;
     
     RepuestoService repuestoService = new RepuestoService();
 
@@ -22,6 +25,11 @@ public class popRepuesto extends javax.swing.JFrame {
         initComponents();
     }
 
+    public popRepuesto(Oyente oyente) {
+        this.oyente= oyente;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,7 +132,7 @@ public class popRepuesto extends javax.swing.JFrame {
         nuevoRepuesto.setIdProveedor(idProveedor);
         
         repuestoService.guardarRepuesto(nuevoRepuesto);
-        
+        oyente.anadido();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

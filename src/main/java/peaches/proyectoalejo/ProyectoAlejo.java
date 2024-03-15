@@ -4,6 +4,7 @@
 
 package peaches.proyectoalejo;
 import static peaches.proyectoalejo.util.Conexion.conectar;
+import peaches.proyectoalejo.view.frameLogin;
 import peaches.proyectoalejo.view.framePrincipal;
 /**
  *
@@ -17,7 +18,11 @@ public class ProyectoAlejo {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new framePrincipal().setVisible(true);
+             frameLogin frameLogin = new frameLogin();
+             frameLogin.setVisible(true);
+              frameLogin.setLocationRelativeTo(null);                
+                
+                //new framePrincipal().setVisible(true);
             }
         });
     }

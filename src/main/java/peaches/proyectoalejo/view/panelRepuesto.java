@@ -48,6 +48,7 @@ public class panelRepuesto extends javax.swing.JPanel implements Oyente {
                 
             });
         }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +155,7 @@ public class panelRepuesto extends javax.swing.JPanel implements Oyente {
     }//GEN-LAST:event_btnAgregarProveedoresMouseClicked
 
     private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
-        popRepuesto repuesto = new popRepuesto();
+        popRepuesto repuesto = new popRepuesto(this);
         repuesto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
 
         repuesto.setVisible(true);
