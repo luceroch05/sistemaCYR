@@ -173,12 +173,13 @@ public class panelCliente extends javax.swing.JPanel implements Oyente {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        
-            int filaSeleccionada = tableClientes.getSelectedRow();
+    int filaSeleccionada = tableClientes.getSelectedRow();
     if (filaSeleccionada != -1) { // Verifica si se ha seleccionado una fila
         String dni = (String) tableClientes.getValueAt(filaSeleccionada, 0); // Suponiendo que la primera columna es el DNI
      upCliente upCli = new upCliente(dni, this);
         upCli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
         upCli.setVisible(true);
+        actualizarTabla();
     } else {
         JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
 

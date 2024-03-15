@@ -94,7 +94,7 @@ public void save(Vehiculo vehiculo) {
     
     //metodo para actualizar el cliente
       public void update(Vehiculo vehiculo) {
-        String sql = "UPDATE Cliente SET modelo = ?, dni = ? WHERE placa = ?";
+        String sql = "UPDATE vehiculo SET modelo = ?, dni = ? WHERE placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, vehiculo.getModelo());
             statement.setString(2, vehiculo.getDni());

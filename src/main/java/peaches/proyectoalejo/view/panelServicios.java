@@ -4,22 +4,48 @@
  */
 package peaches.proyectoalejo.view;
 
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popServicio;
+import peaches.proyectoalejo.model.Servicio;
+import peaches.proyectoalejo.service.ServicioService;
+import peaches.proyectoalejo.update.upServicio;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
  * @author Lucero
  */
-public class panelServicios extends javax.swing.JPanel {
-
+public class panelServicios extends javax.swing.JPanel implements Oyente{
+    
+    ServicioService servicioService=new ServicioService();
+    
     /**
      * Creates new form panelServicios
      */
     public panelServicios() {
         initComponents();
+        actualizarTabla();
     }
-
+      public void actualizarTabla(){
+        List<Servicio> ListaDeServicios = servicioService.obtenerTodosLosServicios();
+        DefaultTableModel model = (DefaultTableModel) tableServicio.getModel();
+        model.setRowCount(0);
+        for (Servicio servicio : ListaDeServicios) {
+            
+            model.addRow(new Object[]{
+                servicio.getIdServicio(),
+                servicio.getDescripcion(),
+                servicio.getPrecio(),
+              
+                
+            });
+          
+        }
+         
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,9 +57,11 @@ public class panelServicios extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableServicio = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         btnAgregarProveedores = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -41,18 +69,18 @@ public class panelServicios extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 540));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableServicio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Descripcion", "Precio"
+                "ID", "Descripcion", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableServicio);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 560, 250));
 
@@ -62,7 +90,7 @@ public class panelServicios extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 340, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 280, 30));
 
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,7 +105,37 @@ public class panelServicios extends javax.swing.JPanel {
                 btnAgregarProveedoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 170, 30));
+        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, 30));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 130, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 130, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -95,15 +153,65 @@ public class panelServicios extends javax.swing.JPanel {
         servicio.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
 
         servicio.setVisible(true);
+        actualizarTabla();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tableServicio.getSelectedRow();
+        if(fila != -1){
+            int idRepuesto = Integer.parseInt(tableServicio.getValueAt(fila, 0).toString());
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Estás seguro de que deseas eliminar el repuesto seleccionado?", "Eliminar Socio", JOptionPane.YES_NO_OPTION);
+            if(confirmacion == JOptionPane.YES_OPTION){
+                Servicio servicioParaEliminar = new Servicio();
+                servicioParaEliminar.setIdServicio(idRepuesto);
+                servicioService.eliminarRepuesto(servicioParaEliminar);
+                actualizarTabla();
+                JOptionPane.showMessageDialog(null, "Repuesto eliminado con exito.", "Eliminar Repuesto", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un repuesto de la tabla.", "Eliminar Repuesto", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+         int filaSeleccionada = tableServicio.getSelectedRow();
+        if (filaSeleccionada != -1) { // Verifica si se ha seleccionado una fila
+            int idRepuesto = Integer.parseInt(tableServicio.getValueAt(filaSeleccionada, 0).toString());
+            upServicio upSer = new upServicio(this, idRepuesto);
+            upSer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+            upSer.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableServicio;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void anadido() {
+       actualizarTabla();
+    }
 }

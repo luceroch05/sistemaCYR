@@ -2,26 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package peaches.proyectoalejo.agregar;
+package peaches.proyectoalejo.update;
 
-import peaches.proyectoalejo.model.Repuesto;
 import peaches.proyectoalejo.model.Servicio;
 import peaches.proyectoalejo.service.ServicioService;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
  * @author Lucero
  */
-public class popServicio extends javax.swing.JFrame {
+public class upServicio extends javax.swing.JFrame {
+    Oyente oyente;
+    private int idServicio;
+    ServicioService servicioService = new ServicioService();
 
-    ServicioService servicioService=new ServicioService();
     /**
-     * Creates new form popServicio
+     * Creates new form upRepuesto
      */
-    public popServicio() {
+    /**
+     * Creates new form upServicio
+     */
+    public upServicio() {
         initComponents();
     }
-
+    public upServicio(Oyente oyente, int idServicio) {
+            this.idServicio = idServicio;
+            this.oyente = oyente;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,43 +41,37 @@ public class popServicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnActualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        btnRProveedor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("AGREGAR ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 120, -1));
-
-        jLabel4.setText("DESCRIPCIÓN");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 90, 20));
-
-        txtDescripcion.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 140, -1));
-
-        jLabel6.setText("PRECIO");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 50, 20));
-
-        txtPrecio.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, -1));
-
-        btnRProveedor.setBackground(new java.awt.Color(255, 51, 51));
-        btnRProveedor.setText("REGISTRAR");
-        btnRProveedor.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRProveedorActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 100, 30));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+
+        jLabel1.setText("DESCRIPCIÓN");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        jLabel2.setText("PRECIO");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 110, -1));
+
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,18 +87,25 @@ public class popServicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRProveedorActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          String descripcion = txtDescripcion.getText();
 
         double precio = Double.parseDouble(txtPrecio.getText());
-      
+
+        
+        
         Servicio nuevoServicio = new Servicio();
+        nuevoServicio.setIdServicio(idServicio);
         nuevoServicio.setDescripcion(descripcion);
         nuevoServicio.setPrecio(precio);
         
-        servicioService.guardarServicio(nuevoServicio);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRProveedorActionPerformed
+        servicioService.actualizarServicio(nuevoServicio);
+        oyente.anadido();   // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,29 +124,28 @@ public class popServicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(popServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(upServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(popServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(upServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(popServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(upServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(popServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(upServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new popServicio().setVisible(true);
+                new upServicio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRProveedor;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtPrecio;
