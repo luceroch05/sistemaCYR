@@ -30,8 +30,7 @@ public class DialogBuscarCliente extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         mostrar("Clientes");
-        
-        
+  
     }
 public void mostrar(String tabla) {
     String sql = "select * from " + tabla;

@@ -4,6 +4,11 @@
  */
 package peaches.proyectoalejo.view;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import peaches.proyectoalejo.dialog.DialogBuscarRepuesto;
+import peaches.proyectoalejo.dialog.DialogBuscarServicio;
+
 /**
  *
  * @author santo
@@ -50,6 +55,11 @@ public class panelVenta extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 430, 30));
 
         btnSeleccionarServicio.setText("SELECCIONAR");
+        btnSeleccionarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarServicioActionPerformed(evt);
+            }
+        });
         add(btnSeleccionarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 120, 30));
 
         btnSeleccionarRepuesto.setText("SELECCIONAR");
@@ -58,7 +68,7 @@ public class panelVenta extends javax.swing.JPanel {
                 btnSeleccionarRepuestoActionPerformed(evt);
             }
         });
-        add(btnSeleccionarRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 120, 30));
+        add(btnSeleccionarRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 120, 30));
 
         jButton3.setText("PROCESAR");
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 120, 50));
@@ -95,8 +105,18 @@ public class panelVenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarRepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarRepuestoActionPerformed
+
+    DialogBuscarRepuesto repuesto = new DialogBuscarRepuesto((JFrame) SwingUtilities.getWindowAncestor(this), true);
+       repuesto.setVisible(true);// TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSeleccionarRepuestoActionPerformed
+
+    private void btnSeleccionarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarServicioActionPerformed
+      DialogBuscarServicio servicio = new DialogBuscarServicio((JFrame) SwingUtilities.getWindowAncestor(this), true);
+       servicio.setVisible(true);// TODO add your handling code here: 
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnSeleccionarServicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
