@@ -142,7 +142,7 @@ public class framePrincipal extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 70, -1));
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 70, 70));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
