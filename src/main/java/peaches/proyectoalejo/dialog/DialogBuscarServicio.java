@@ -4,11 +4,23 @@
  */
 package peaches.proyectoalejo.dialog;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import peaches.proyectoalejo.model.Servicio;
+import peaches.proyectoalejo.service.ServicioService;
+import peaches.proyectoalejo.util.Conexion;
+
 /**
  *
  * @author Lucero
  */
 public class DialogBuscarServicio extends javax.swing.JDialog {
+    
+    ServicioService servicioService = new ServicioService();
 
     /**
      * Creates new form DialogBuscarServicio
@@ -16,6 +28,17 @@ public class DialogBuscarServicio extends javax.swing.JDialog {
     public DialogBuscarServicio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        mostrarServicios();
+    }
+    
+  public void mostrarServicios() {
+        List<Servicio> servicios = servicioService.obtenerTodosLosServicios();
+        DefaultTableModel model = (DefaultTableModel) visorServicios.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+
+        for (Servicio servicio : servicios) {
+            model.addRow(new Object[]{servicio.getIdServicio(), servicio.getDescripcion(), servicio.getPrecio()});
+        }
     }
 
     /**
@@ -31,7 +54,7 @@ public class DialogBuscarServicio extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        visorServicios = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,7 +63,7 @@ public class DialogBuscarServicio extends javax.swing.JDialog {
 
         jTextField1.setText("jTextField1");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        visorServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -51,7 +74,7 @@ public class DialogBuscarServicio extends javax.swing.JDialog {
                 "ID", "Descripcion", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(visorServicios);
 
         jButton1.setText("jButton1");
 
@@ -147,7 +170,7 @@ public class DialogBuscarServicio extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable visorServicios;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package peaches.proyectoalejo.view;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.dialog.DialogBuscarRepuesto;
 import peaches.proyectoalejo.dialog.DialogBuscarServicio;
 
@@ -21,6 +22,14 @@ public class panelVenta extends javax.swing.JPanel {
     public panelVenta() {
         initComponents();
     }
+    
+   public void agregarRepuesto(String id, String descripcion, int stock, double precio) {
+    // Agregar lógica para agregar repuesto a la tabla
+    
+    DefaultTableModel model = (DefaultTableModel) tableRepuestos.getModel();
+    model.addRow(new Object[]{id, descripcion, stock, precio});
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,9 +46,11 @@ public class panelVenta extends javax.swing.JPanel {
         btnSeleccionarRepuesto = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableRepuestos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(650, 540));
@@ -47,12 +58,12 @@ public class panelVenta extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel1.setText("Repuesto");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 30));
+        jLabel1.setText("00001");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 120, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel3.setText("Servicio");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 430, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 430, 30));
 
         btnSeleccionarServicio.setText("SELECCIONAR");
         btnSeleccionarServicio.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +71,7 @@ public class panelVenta extends javax.swing.JPanel {
                 btnSeleccionarServicioActionPerformed(evt);
             }
         });
-        add(btnSeleccionarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 120, 30));
+        add(btnSeleccionarServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 120, 30));
 
         btnSeleccionarRepuesto.setText("SELECCIONAR");
         btnSeleccionarRepuesto.addActionListener(new java.awt.event.ActionListener() {
@@ -68,12 +79,12 @@ public class panelVenta extends javax.swing.JPanel {
                 btnSeleccionarRepuestoActionPerformed(evt);
             }
         });
-        add(btnSeleccionarRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 120, 30));
+        add(btnSeleccionarRepuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 120, 30));
 
         jButton3.setText("PROCESAR");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 120, 50));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 120, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableRepuestos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -84,9 +95,9 @@ public class panelVenta extends javax.swing.JPanel {
                 "Descripcion", "Precio", "Cantidad", "Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableRepuestos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 570, 120));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 570, 120));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,14 +112,23 @@ public class panelVenta extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 570, 130));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 570, 130));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel2.setText("Repuesto");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel4.setText("BOLETA ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarRepuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarRepuestoActionPerformed
 
-    DialogBuscarRepuesto repuesto = new DialogBuscarRepuesto((JFrame) SwingUtilities.getWindowAncestor(this), true);
-       repuesto.setVisible(true);// TODO add your handling code here:
-        // TODO add your handling code here:
+  DialogBuscarRepuesto repuesto = new DialogBuscarRepuesto((JFrame) SwingUtilities.getWindowAncestor(this), true);
+    repuesto.setVisible(true);
+    
+    
     }//GEN-LAST:event_btnSeleccionarRepuestoActionPerformed
 
     private void btnSeleccionarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarServicioActionPerformed
@@ -124,10 +144,12 @@ public class panelVenta extends javax.swing.JPanel {
     private javax.swing.JButton btnSeleccionarServicio;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tableRepuestos;
     // End of variables declaration//GEN-END:variables
 }

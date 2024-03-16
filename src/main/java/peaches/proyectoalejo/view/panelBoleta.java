@@ -37,6 +37,7 @@ public class panelBoleta extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jTextField3 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 51, 255));
@@ -96,6 +97,9 @@ public class panelBoleta extends javax.swing.JPanel {
             }
         });
         add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 180, 30));
+
+        jButton2.setText("GENERAR BOLETA");
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -123,6 +127,7 @@ public class panelBoleta extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

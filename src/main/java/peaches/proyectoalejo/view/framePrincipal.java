@@ -14,7 +14,8 @@ import peaches.proyectoalejo.model.Empleado;
 public class framePrincipal extends javax.swing.JFrame {
     
     Empleado empleadoEnUso;
-
+    
+    private panelVenta pv;
     /**
      * Creates new form framePrincipal
      */
@@ -29,6 +30,14 @@ public class framePrincipal extends javax.swing.JFrame {
         content.add(b,BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
+    }
+
+    public framePrincipal() {
+        
+    }
+    
+    public panelVenta getPanelVenta() {
+        return this.pv;
     }
     
 
@@ -270,7 +279,15 @@ public class framePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+     
+        panelProveedores pp= new panelProveedores();
+        pp.setSize(660,540);
+        pp.setLocation(0,0);
+        content.removeAll();
+        content.add(pp,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();   
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     
