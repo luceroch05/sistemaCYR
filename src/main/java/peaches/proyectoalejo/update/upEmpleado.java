@@ -16,7 +16,8 @@ public class upEmpleado extends javax.swing.JFrame {
     
     EmpleadoService empleadoService = new EmpleadoService();
     String dni;
-
+        int xMouse;
+        int yMouse;
     /**
      * Creates new form upEmpleado
      */
@@ -50,8 +51,11 @@ public class upEmpleado extends javax.swing.JFrame {
         txtContraseñaConfirmada = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
+        panelBarra = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -80,6 +84,46 @@ public class upEmpleado extends javax.swing.JFrame {
         jLabel5.setText("CONTRASEÑA");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 110, 20));
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 140, -1));
+
+        panelBarra.setBackground(new java.awt.Color(228, 228, 228));
+        panelBarra.setPreferredSize(new java.awt.Dimension(920, 18));
+        panelBarra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelBarraMouseDragged(evt);
+            }
+        });
+        panelBarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelBarraMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("X");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBarraLayout = new javax.swing.GroupLayout(panelBarra);
+        panelBarra.setLayout(panelBarraLayout);
+        panelBarraLayout.setHorizontalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
+                .addGap(0, 380, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelBarraLayout.setVerticalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarraLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel7))
+        );
+
+        jPanel1.add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +164,22 @@ public class upEmpleado extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void panelBarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y  = evt.getYOnScreen();
+
+        this.setLocation(x -xMouse, y- yMouse);
+    }//GEN-LAST:event_panelBarraMouseDragged
+
+    private void panelBarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelBarraMousePressed
 
     /**
      * @param args the command line arguments
@@ -162,7 +222,9 @@ public class upEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelBarra;
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JPasswordField txtContraseñaConfirmada;
     private javax.swing.JTextField txtNombre;

@@ -5,6 +5,7 @@
 package peaches.proyectoalejo.service;
 
 import java.util.List;
+import java.util.Optional;
 import peaches.proyectoalejo.DAO.ServicioDAO;
 import peaches.proyectoalejo.model.Servicio;
 import peaches.proyectoalejo.util.Conexion;
@@ -42,6 +43,10 @@ public class ServicioService {
         this.servicioDAO.update(servicio);
     }
     
+       public Servicio obtenerServicioPorId(int id){
+               Optional<Servicio> servicio = servicioDAO.get(id);
+        return servicio.orElse(null);
+        }
     
     
 }

@@ -5,6 +5,7 @@
 package peaches.proyectoalejo.service;
 
 import java.util.List;
+import java.util.Optional;
 import peaches.proyectoalejo.DAO.ClienteDAO;
 import peaches.proyectoalejo.model.Cliente;
 import peaches.proyectoalejo.util.Conexion;
@@ -42,6 +43,9 @@ public class ClienteService {
              clienteDAO.update(cliente);
          }
         
-        
+        public Cliente obtenerClientePorDni(String dni){
+          Optional<Cliente> cliente = clienteDAO.get(dni);
+        return cliente.orElse(null);
+        }
      
 }

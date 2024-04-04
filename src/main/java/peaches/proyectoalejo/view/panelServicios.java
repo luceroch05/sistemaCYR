@@ -82,7 +82,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
         ));
         jScrollPane1.setViewportView(tableServicio);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 560, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 540, 320));
 
         jTextField1.setText("buscar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 280, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 280, 30));
 
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,7 +105,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
                 btnAgregarProveedoresActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, 30));
+        jPanel1.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 90, 30));
 
         btnEliminar.setBackground(new java.awt.Color(0, 51, 51));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +120,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 130, 30));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 130, 30));
 
         btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +135,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 130, 30));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 130, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +151,7 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
     private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
         popServicio servicio = new popServicio();
         servicio.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+servicio.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
 
         servicio.setVisible(true);
         actualizarTabla();
@@ -192,6 +193,8 @@ public class panelServicios extends javax.swing.JPanel implements Oyente{
             upServicio upSer = new upServicio(this, idRepuesto);
             upSer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
             upSer.setVisible(true);
+            upSer.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
         } else {
             JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
 

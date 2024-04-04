@@ -4,16 +4,25 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import java.awt.event.KeyEvent;
 import peaches.proyectoalejo.model.Cliente;
 import peaches.proyectoalejo.service.ClienteService;
 import peaches.proyectoalejo.view.panelCliente;
 import peaches.proyectoalejo.util.Oyente;
+import peaches.proyectoalejo.view.framePrincipal;
+import peaches.proyectoalejo.view.panelBoleta;
 
 /**
  *
  * @author santo
  */
 public class popCliente extends javax.swing.JFrame {
+    
+        int xMouse;
+        int yMouse;
+    
+    framePrincipal fp;
+    panelBoleta pb;
     
     private Oyente clienteOyente;
     ClienteService clienteService = new ClienteService();
@@ -25,10 +34,20 @@ public class popCliente extends javax.swing.JFrame {
         initComponents();
     }
     
+    //para el cliente añadido
        public popCliente(Oyente clienteOyente) {
         this.clienteOyente = clienteOyente;
         initComponents();
     }
+       
+       //para pasarle los datos a la boleta 
+       public popCliente(panelBoleta pb){
+        this.pb = pb;
+        initComponents();
+    }
+       
+          
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +58,7 @@ public class popCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,11 +70,17 @@ public class popCliente extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
+        panelBarra = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -62,23 +88,33 @@ public class popCliente extends javax.swing.JFrame {
         jLabel1.setText("AGREGAR ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, -1));
 
-        jLabel2.setText("APELLIDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 70, 20));
+        jLabel2.setText("Apellido");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 70, 20));
 
-        jLabel3.setText("NOMBRE");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
+        jLabel3.setText("Nombre");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 70, 20));
 
-        jLabel4.setText("TELÉFONO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 70, 30));
+        jLabel4.setText("Teléfono");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 30));
 
         txttelefono.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 140, -1));
+        jPanel1.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 140, -1));
 
         txtapellido.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 140, -1));
+        jPanel1.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 140, -1));
 
         txtdni.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 140, -1));
+        txtdni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtdniFocusLost(evt);
+            }
+        });
+        txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdniKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 140, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(255, 51, 51));
         btnRegistrar.setText("REGISTRAR");
@@ -87,13 +123,53 @@ public class popCliente extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 100, 30));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 100, 30));
 
-        jLabel5.setText("dni");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jLabel5.setText("DNI");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 80, 20));
 
         txtnombre.setBackground(new java.awt.Color(202, 202, 202));
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 140, -1));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 140, -1));
+
+        panelBarra.setBackground(new java.awt.Color(228, 228, 228));
+        panelBarra.setPreferredSize(new java.awt.Dimension(920, 18));
+        panelBarra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelBarraMouseDragged(evt);
+            }
+        });
+        panelBarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelBarraMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("X");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBarraLayout = new javax.swing.GroupLayout(panelBarra);
+        panelBarra.setLayout(panelBarraLayout);
+        panelBarraLayout.setHorizontalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
+                .addGap(0, 380, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelBarraLayout.setVerticalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarraLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel7))
+        );
+
+        jPanel1.add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -116,10 +192,55 @@ public class popCliente extends javax.swing.JFrame {
         
         
         clienteService.guardarCliente(nuevoCliente);
-        
+        pb.actualizarDatosBoleta(dni, nombre, apellido);
         clienteOyente.anadido();
+        
+        this.dispose();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void panelBarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y  = evt.getYOnScreen();
+
+        this.setLocation(x -xMouse, y- yMouse);
+    }//GEN-LAST:event_panelBarraMouseDragged
+
+    private void panelBarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelBarraMousePressed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void txtdniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdniKeyTyped
+    char c = evt.getKeyChar();
+    if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) || txtdni.getText().length() >= 8 || c == ' ') {
+        evt.consume();
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdniKeyTyped
+
+    private void txtdniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtdniFocusLost
+
+        String dni = txtdni.getText();
+       Cliente clienteEncontrado = new Cliente();
+       clienteEncontrado = clienteService.obtenerClientePorDni(dni);
+       
+           if (clienteEncontrado != null) {
+               txtdni.setText(dni);
+        txtnombre.setText(clienteEncontrado.getNombre());
+        txtapellido.setText(clienteEncontrado.getApellido());
+        txttelefono.setText(clienteEncontrado.getTelefono());
+    } 
+         else 
+           {
+        // Cliente no encontrado, puedes manejar esto de alguna manera (por ejemplo, limpiar los campos)
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdniFocusLost
 
     /**
      * @param args the command line arguments
@@ -159,12 +280,15 @@ public class popCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelBarra;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtnombre;

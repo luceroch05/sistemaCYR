@@ -62,7 +62,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tableClientes">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="tableClientes.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 14));&#xa;tableClientes.getTableHeader().setForeground(new java.awt.Color(15, 20, 33));&#xa;&#xa;tableClientes.setFont(new Font(&quot;Segoe UI&quot;, 0, 12));">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
@@ -101,7 +101,7 @@
                   <Color id="Default Cursor"/>
                 </Property>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="25"/>
                 <Property name="showHorizontalLines" type="boolean" value="true"/>
@@ -109,6 +109,9 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tableClientes.getTableHeader().setBackground(new java.awt.Color(255, 255, 255));"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -121,7 +124,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="390" y="90" width="210" height="30"/>
+              <AbsoluteConstraints x="360" y="90" width="240" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -161,7 +164,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="220" y="90" width="130" height="30"/>
+              <AbsoluteConstraints x="210" y="90" width="130" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

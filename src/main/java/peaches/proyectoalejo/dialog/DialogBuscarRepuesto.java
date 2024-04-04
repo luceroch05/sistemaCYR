@@ -10,13 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popVehiculo;
+import peaches.proyectoalejo.model.DetalleRepuesto;
 import peaches.proyectoalejo.model.Repuesto;
+import peaches.proyectoalejo.service.DetalleRepuestoService;
 import peaches.proyectoalejo.service.RepuestoService;
 import peaches.proyectoalejo.util.Conexion;
+import peaches.proyectoalejo.util.Oyente;
 import peaches.proyectoalejo.view.framePrincipal;
 import peaches.proyectoalejo.view.panelVenta;
 
@@ -25,17 +29,31 @@ import peaches.proyectoalejo.view.panelVenta;
  * @author Lucero
  */
 public class DialogBuscarRepuesto extends javax.swing.JDialog {
+    RepuestoService repService = new RepuestoService();
+    private Oyente click;
+    String idVenta;
+    private int cantidad = 0;
+    double total;
+    
+    DetalleRepuestoService detalleRepuestoService = new DetalleRepuestoService();
     
     RepuestoService repuestoService = new RepuestoService();
 
     /**
      * Creates new form DialogBuscarRepuesto
      */
-    public DialogBuscarRepuesto(java.awt.Frame parent, boolean modal) {
+    public DialogBuscarRepuesto(java.awt.Frame parent, boolean modal, String idVenta, Oyente click) {
     super(parent, modal);
         initComponents();
-        
+         this.idVenta = idVenta;
+         this.click = click;
+                 
+
         mostrarRepuestos();
+    }
+
+    private DialogBuscarRepuesto(JFrame jFrame, boolean b) {
+        
     }
     
     
@@ -68,7 +86,11 @@ public class DialogBuscarRepuesto extends javax.swing.JDialog {
         visorRepuestos = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSeleccionar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnMas = new javax.swing.JButton();
+        btnMenos = new javax.swing.JButton();
+        lblCantidad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,63 +109,115 @@ public class DialogBuscarRepuesto extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(visorRepuestos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 87, 350, 108));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 90, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 360, 140));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 90, -1));
 
         jLabel1.setText("Buscar:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
-        jButton1.setText("Selecionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionar.setText("Selecionar");
+        btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSeleccionarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 232, -1, -1));
+        jPanel1.add(btnSeleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 260, 110, -1));
+
+        jLabel2.setText("Cantidad");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 70, -1));
+
+        btnMas.setText("+");
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 60, -1));
+
+        btnMenos.setText("-");
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 60, -1));
+
+        lblCantidad.setText("0");
+        jPanel1.add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 20, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
 
  if(visorRepuestos.getSelectedRow()>=0){
              if (visorRepuestos.getSelectedRow() >= 0) {
         try {
             DefaultTableModel tm = (DefaultTableModel) visorRepuestos.getModel();
-            String id = String.valueOf(tm.getValueAt(visorRepuestos.getSelectedRow(), 0));
-            String descripcion = String.valueOf(tm.getValueAt(visorRepuestos.getSelectedRow(), 1));
+            int idRepuesto = Integer.parseInt(String.valueOf(tm.getValueAt(visorRepuestos.getSelectedRow(), 0)));
            int stock = Integer.parseInt(String.valueOf(tm.getValueAt(visorRepuestos.getSelectedRow(), 2)));
-
             double precio = Double.parseDouble(String.valueOf(tm.getValueAt(visorRepuestos.getSelectedRow(), 3)));
+            if(cantidad>stock){
+                JOptionPane.showMessageDialog(null, "NO HAY STOCK SUFICIENTE");
+            }
+            else{
+                    total = precio* cantidad;
+
+            DetalleRepuesto detalle = new DetalleRepuesto();
+            detalle.setIdVenta(idVenta);
+            detalle.setIdRepuesto(idRepuesto);
+            detalle.setCantidad(cantidad);
+            detalle.setPrecioUnidad(precio);
+            detalle.setTotal(total);
             
-            // Agregar el repuesto al panel de ventas
-        //    framePrincipal.panelVentas.agregarRepuesto(id, descripcion,stock, precio);
-        
-        framePrincipal fp = new framePrincipal();
-        fp.getPanelVenta().agregarRepuesto(id, descripcion, stock, precio);
-        
+            
+            
+            detalleRepuestoService.guardarDetalleRepuesto(detalle);
    
             dispose(); // Cerrar el diálogo
+            click.anadido();
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     } else {
         JOptionPane.showMessageDialog(this, "Error", "SISTEMA", JOptionPane.WARNING_MESSAGE);
              }
+             
              }   
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        cantidad++;
+        lblCantidad.setText(String.valueOf(cantidad));
+    }//GEN-LAST:event_btnMasActionPerformed
+
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
+ 
+        if (cantidad > 0) {
+                    cantidad--;
+                    lblCantidad.setText(String.valueOf(cantidad));
+                }
+    }//GEN-LAST:event_btnMenosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +262,15 @@ public class DialogBuscarRepuesto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMas;
+    private javax.swing.JButton btnMenos;
+    private javax.swing.JButton btnSeleccionar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblCantidad;
     private javax.swing.JTable visorRepuestos;
     // End of variables declaration//GEN-END:variables
 }

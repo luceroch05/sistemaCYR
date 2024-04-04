@@ -6,6 +6,7 @@ package peaches.proyectoalejo.view;
 
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import peaches.proyectoalejo.model.Empleado;
 import peaches.proyectoalejo.service.EmpleadoService;
 import peaches.proyectoalejo.update.upCliente;
@@ -62,47 +63,62 @@ public class panelPerfil extends javax.swing.JPanel {
         lblContraseña = new javax.swing.JLabel();
         lblDni = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnCerrarSesion1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(650, 540));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Perfil");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 90, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 490, 40));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Contraseña");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 100, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 100, 30));
 
         lblNombre.setText("name");
-        add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 90, -1));
+        add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 260, 30));
 
+        jButton1.setBackground(new java.awt.Color(224, 224, 224));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(102, 102, 102));
         jButton1.setText("EDITAR");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 120, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 150, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 100, 20));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 100, 30));
 
         lblContraseña.setText("password");
-        add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 80, 20));
+        add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 260, 30));
 
         lblDni.setText("dni");
-        add(lblDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, 20));
+        add(lblDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 260, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Usuario");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 100, 20));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 100, 30));
+
+        btnCerrarSesion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
+        btnCerrarSesion1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarSesion1MouseClicked(evt);
+            }
+        });
+        add(btnCerrarSesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 30, 40));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 390, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -114,13 +130,27 @@ public class panelPerfil extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnCerrarSesion1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesion1MouseClicked
+
+
+    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    frame.dispose();
+    
+        frameLogin frameLogin = new frameLogin();
+             frameLogin.setVisible(true);
+              frameLogin.setLocationRelativeTo(null);  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesion1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnCerrarSesion1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblDni;
     private javax.swing.JLabel lblNombre;

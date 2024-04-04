@@ -5,6 +5,7 @@
 package peaches.proyectoalejo.service;
 
 import java.util.List;
+import java.util.Optional;
 import peaches.proyectoalejo.DAO.ProveedorDAO;
 import peaches.proyectoalejo.model.Proveedor;
 import peaches.proyectoalejo.util.Conexion;
@@ -40,5 +41,10 @@ public class ProveedorService {
         public void actualizarProveedor(Proveedor proveedor){
         this.proveedorDAO.update(proveedor);
     }
+        
+        public Proveedor obtenerProveedorPorId(int id){
+                 Optional<Proveedor> proveedor = proveedorDAO.get(id);
+        return proveedor.orElse(null);
+        }
     
 }

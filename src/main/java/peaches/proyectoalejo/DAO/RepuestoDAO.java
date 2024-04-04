@@ -4,6 +4,7 @@
  */
 package peaches.proyectoalejo.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -148,6 +149,24 @@ public class RepuestoDAO implements DAO<Repuesto> {
                 e.printStackTrace();
             }
         }
+    }
+    
+     public void actualizarStockRepuesto(int idRepuesto, int cantidad){
+        // Preparar la llamada al procedimiento almacenado
+        String call = "{CALL actualizarStockRepuesto(?, ?)}";
+        try (CallableStatement statement = connection.prepareCall(call)) 
+        {
+            // Configurar los parámetros de entrada del procedimiento almacenado
+            statement.setInt(1, idRepuesto);
+            statement.setInt(2, cantidad);
+
+            // Ejecutar el procedimiento almacenado
+            statement.execute();
+        }
+        catch (SQLException e) {
+        e.printStackTrace();
+        // Manejar la excepción de manera adecuada, ya sea lanzando una excepción personalizada o manejando el error de otra manera según tus necesidades.
+    }
     }
 
     

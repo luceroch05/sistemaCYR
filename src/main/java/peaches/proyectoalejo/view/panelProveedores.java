@@ -88,7 +88,7 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
         ));
         jScrollPane1.setViewportView(tableProveedores);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, 330));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 340));
 
         btnAgregarProveedores.setBackground(new java.awt.Color(0, 51, 51));
         btnAgregarProveedores.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,7 +118,7 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
                 btnEliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 130, 30));
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 160, 30));
 
         btnActualizar.setBackground(new java.awt.Color(0, 51, 51));
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,7 +133,7 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 130, 30));
+        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 140, 30));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 540));
     }// </editor-fold>//GEN-END:initComponents
@@ -151,7 +151,8 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
         popProveedor proveedor = new popProveedor(this);
         proveedor.setVisible(true);
         proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
-        
+        proveedor.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
@@ -191,6 +192,8 @@ public class panelProveedores extends javax.swing.JPanel implements Oyente {
             upProveedor upProv = new upProveedor(idProveedor, this);
             upProv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
             upProv.setVisible(true);
+            upProv.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
         } else {
             JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila para actualizar", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
 

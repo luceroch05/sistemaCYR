@@ -4,6 +4,7 @@
  */
 package peaches.proyectoalejo.view;
 
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -43,10 +44,10 @@ public class frameLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnIngresar = new javax.swing.JButton();
         txtDni = new javax.swing.JTextField();
-        txtContrasena = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAgregarEmpleado = new javax.swing.JLabel();
+        txtcontrasena = new javax.swing.JPasswordField();
 
         jTextField1.setText("jTextField1");
 
@@ -55,12 +56,14 @@ public class frameLogin extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(880, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnIngresar.setBackground(new java.awt.Color(102, 102, 102));
+        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(204, 204, 204));
         btnIngresar.setText("INGRESAR");
         btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,20 +75,35 @@ public class frameLogin extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 180, -1));
-        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 180, -1));
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 180, -1));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 180, 30));
 
+        txtDni.setBackground(new java.awt.Color(255, 255, 255));
+        txtDni.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDni.setForeground(new java.awt.Color(0, 0, 0));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 180, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CONTRASEÑA");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("DNI");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
         btnAgregarEmpleado.setBackground(new java.awt.Color(0, 0, 0));
-        btnAgregarEmpleado.setFont(new java.awt.Font("Segoe UI Historic", 1, 36)); // NOI18N
+        btnAgregarEmpleado.setFont(new java.awt.Font("Segoe UI Historic", 1, 48)); // NOI18N
         btnAgregarEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregarEmpleado.setText("+");
         btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,7 +111,11 @@ public class frameLogin extends javax.swing.JFrame {
                 btnAgregarEmpleadoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 470, 30, 40));
+        jPanel1.add(btnAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 40, 60));
+
+        txtcontrasena.setBackground(new java.awt.Color(255, 255, 255));
+        txtcontrasena.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 180, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 540));
 
@@ -103,7 +125,7 @@ public class frameLogin extends javax.swing.JFrame {
     private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
 
               String contraIngresada = JOptionPane.showInputDialog(this, "Ingrese la contraseña del administrador:", "Confirmación de Administrador", JOptionPane.PLAIN_MESSAGE); Empleado empleadoAdmin = new Empleado();
-             empleadoAdmin = empleadoService.obtenerEmpleadoDni("72737015");
+             empleadoAdmin = empleadoService.obtenerEmpleadoDni("123");
 
         if (contraIngresada != null && contraIngresada.equals(empleadoAdmin.getContrasena())) {
             
@@ -128,7 +150,7 @@ public class frameLogin extends javax.swing.JFrame {
     private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
 
         String dni = txtDni.getText();
-        String contrasena  = txtContrasena.getText();
+        String contrasena  = txtcontrasena.getText();
         
         List<Empleado> listaDeEmpleados =  empleadoService.obtenerTodosEmpleados();
          
@@ -152,6 +174,17 @@ public class frameLogin extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(this, "DNI o contraseña incorrectos", "Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIngresarMouseClicked
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+    char c = evt.getKeyChar();
+    if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE) || txtDni.getText().length() >= 8 || c == ' ') {
+        evt.consume();
+    }          // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniKeyTyped
 
     /**
      * @param args the command line arguments
@@ -197,7 +230,7 @@ public class frameLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtDni;
+    private javax.swing.JPasswordField txtcontrasena;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,9 @@ import peaches.proyectoalejo.util.Oyente;
 public class popVehiculo extends javax.swing.JFrame {
     VehiculoService vehiculoService=new VehiculoService();
     Oyente oyente;
+       int xMouse;
+        int yMouse;
+        String dni;
     /**
      * Creates new form Vehiculo
      */
@@ -25,6 +28,15 @@ public class popVehiculo extends javax.swing.JFrame {
     public popVehiculo(Oyente oyente) {
         this.oyente=oyente;
         initComponents();
+    }
+    
+       public popVehiculo(Oyente oyente, String dni) {
+          initComponents();
+    this.dni = dni;
+      this.oyente=oyente;
+
+    
+    txtClientes.setText(dni);
     }
 
     /**
@@ -46,8 +58,11 @@ public class popVehiculo extends javax.swing.JFrame {
         btnRegistrarVehiculo = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
         txtClientes = new javax.swing.JTextField();
+        panelBarra = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +79,7 @@ public class popVehiculo extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 70, 20));
 
         jLabel4.setText("CLIENTE");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 70, 30));
 
         txtPlaca.setBackground(new java.awt.Color(202, 202, 202));
         jPanel1.add(txtPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 140, -1));
@@ -83,16 +98,54 @@ public class popVehiculo extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegistrarVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 110, -1));
 
-        btnCliente.setText("Seleccionar Cliente");
+        btnCliente.setText("Seleccionar");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 120, -1));
+        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 80, -1));
+        jPanel1.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 90, -1));
 
-        txtClientes.setText("jTextField1");
-        jPanel1.add(txtClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+        panelBarra.setBackground(new java.awt.Color(228, 228, 228));
+        panelBarra.setPreferredSize(new java.awt.Dimension(920, 18));
+        panelBarra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelBarraMouseDragged(evt);
+            }
+        });
+        panelBarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelBarraMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("X");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBarraLayout = new javax.swing.GroupLayout(panelBarra);
+        panelBarra.setLayout(panelBarraLayout);
+        panelBarraLayout.setHorizontalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
+                .addGap(0, 380, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelBarraLayout.setVerticalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarraLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel7))
+        );
+
+        jPanel1.add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,6 +182,9 @@ public class popVehiculo extends javax.swing.JFrame {
         
         vehiculoService.guardarVehiculo(nuevoVehiculo);
         oyente.anadido();
+        this.dispose();
+
+        
          // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarVehiculoActionPerformed
 
@@ -136,6 +192,22 @@ public class popVehiculo extends javax.swing.JFrame {
        DialogBuscarCliente cliente= new DialogBuscarCliente(this,true);
        cliente.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void panelBarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y  = evt.getYOnScreen();
+
+        this.setLocation(x -xMouse, y- yMouse);
+    }//GEN-LAST:event_panelBarraMouseDragged
+
+    private void panelBarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelBarraMousePressed
 
     /**
      * @param args the command line arguments
@@ -180,7 +252,9 @@ public class popVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelBarra;
     public static javax.swing.JTextField txtClientes;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtPlaca;

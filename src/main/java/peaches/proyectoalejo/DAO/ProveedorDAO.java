@@ -45,6 +45,7 @@ public class ProveedorDAO {
         }
         return Optional.ofNullable(proveedor);
     }
+    
         
     public List<Proveedor> getAll(){
         List<Proveedor> ListaDeProveedores = new ArrayList<>();

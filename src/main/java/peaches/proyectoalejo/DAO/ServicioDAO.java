@@ -24,10 +24,12 @@ public class ServicioDAO implements DAO<Servicio> {
         public ServicioDAO(Connection connection){
         this.connection = connection;
     }
-    public Optional<Servicio> get(String idServicio){
+        
+        
+    public Optional<Servicio> get(int idServicio){
         Servicio servicio= null;
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM servicio WHERE idServicio = ?")){
-            statement.setString(1, idServicio);
+            statement.setInt(1, idServicio);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
                 servicio = new Servicio();

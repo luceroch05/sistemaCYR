@@ -4,21 +4,64 @@
  */
 package peaches.proyectoalejo.view;
 
+
+import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popCliente;
 import peaches.proyectoalejo.agregar.popVehiculo;
+import peaches.proyectoalejo.dialog.DialogMostrarDetalleVenta;
+import peaches.proyectoalejo.model.Cliente;
+import peaches.proyectoalejo.model.Empleado;
+import peaches.proyectoalejo.model.Venta;
+import peaches.proyectoalejo.service.ClienteService;
+import peaches.proyectoalejo.service.EmpleadoService;
+import peaches.proyectoalejo.service.VentaService;
+import peaches.proyectoalejo.util.GeneradorTicket;
+import peaches.proyectoalejo.util.Oyente;
 
 /**
  *
  * @author Lucero
  */
-public class panelBoleta extends javax.swing.JPanel {
+public class panelBoleta extends javax.swing.JPanel implements Oyente{
+    
+    VentaService ventaService = new VentaService();
+    EmpleadoService empleadoService = new EmpleadoService();
+    ClienteService clienteService = new ClienteService();
+    
+    Empleado empleadoEnUso;
 
     /**
      * Creates new form panelBoleta
      */
     public panelBoleta() {
         initComponents();
+        actualizarTabla();
+
+
+    }
+    
+    public panelBoleta(Empleado empleadoEnUso){
+                initComponents();
+                this.empleadoEnUso = empleadoEnUso;
+                actualizarTabla();
+                btnAgregarVehiculo.setVisible(false);
+                txtDni.setEditable(false);
+                txtNombre.setEditable(false);
+
+    }
+    
+    
+    public void actualizarDatosBoleta(String dni, String nombre, String apellido){
+            txtDni.setText(dni);
+            txtNombre.setText(nombre + " " + apellido);  
+            btnAgregarVehiculo.setVisible(true);
     }
 
     /**
@@ -30,14 +73,15 @@ public class panelBoleta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableVentas = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        btnGenerarVenta = new javax.swing.JButton();
+        btnAgregarVehiculo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 51, 255));
@@ -45,21 +89,32 @@ public class panelBoleta extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(650, 540));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("DNI");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        txtDni.setText("DNI");
+        txtDni.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDniMouseClicked(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 160, 30));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
+        add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 160, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("CLIENTE");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 560, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 570, 50));
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("+");
+        jButton1.setBorder(null);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -70,9 +125,13 @@ public class panelBoleta extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 110, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 140, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableVentas.getTableHeader().setBackground(Color.gray);
+        tableVentas.getTableHeader().setForeground(Color.white);
+        tableVentas.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 16));
+        tableVentas.setFont(new java.awt.Font("Segoe UI", 0, 14));
+        tableVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,28 +142,56 @@ public class panelBoleta extends javax.swing.JPanel {
                 "ID", "DNI", "Fecha", "Empleado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 600, 230));
-
-        jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 600, 20));
-
-        jTextField3.setText("NOMBRE");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+        tableVentas.setGridColor(new java.awt.Color(218, 218, 218));
+        tableVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableVentasMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableVentasMousePressed(evt);
             }
         });
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 180, 30));
+        jScrollPane1.setViewportView(tableVentas);
 
-        jButton2.setText("GENERAR BOLETA");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 170, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 600, 250));
+
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 600, 20));
+
+        txtNombre.setText("NOMBRE");
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 210, 30));
+
+        btnGenerarVenta.setText("GENERAR VENTA");
+        btnGenerarVenta.setBorder(null);
+        btnGenerarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarVentaActionPerformed(evt);
+            }
+        });
+        add(btnGenerarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 170, 30));
+
+        btnAgregarVehiculo.setBackground(new java.awt.Color(160, 178, 251));
+        btnAgregarVehiculo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarVehiculo.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarVehiculo.setText("Agregar Vehiculo");
+        btnAgregarVehiculo.setBorder(null);
+        btnAgregarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarVehiculoActionPerformed(evt);
+            }
+        });
+        add(btnAgregarVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 143, 140, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+
+            
+    }//GEN-LAST:event_txtDniActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
@@ -113,26 +200,137 @@ public class panelBoleta extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
               
-        popCliente cliente = new popCliente();
-         cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
+        popCliente cliente = new popCliente(this);
 
+         cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
         cliente.setVisible(true);
+cliente.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
  // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnGenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVentaActionPerformed
+
+        String dni = txtDni.getText();
+        LocalDate fecha = LocalDate.now();
+        String dniEmpleado = empleadoEnUso.getDniEmpleado();
+        
+        Venta nuevaVenta = new Venta();
+        nuevaVenta.setDni(dni);
+        nuevaVenta.setFecha(fecha);
+        nuevaVenta.setDniEmpleado(dniEmpleado);
+        
+          Cliente clienteExistente = clienteService.obtenerClientePorDni(dni);
+
+        if (clienteExistente != null){
+                    String idVenta = ventaService.guardarVenta(nuevaVenta);
+
+                        panelVenta pv = new panelVenta(idVenta);
+                        ((framePrincipal) SwingUtilities.getWindowAncestor(this)).mostrarPanelVenta(pv);
+
+        }else{
+                        JOptionPane.showMessageDialog(this, "Seleccione un cliente válido para generar la venta");
+
+            
+        }
+        
+        txtDni.setText("");
+        txtNombre.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerarVentaActionPerformed
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+          char c = evt.getKeyChar();
+    
+    if (!(Character.isDigit(c) || txtDni.getText().length() < 8)) {
+        evt.consume();
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniKeyTyped
+
+    private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableVentasMouseClicked
+
+    private void tableVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMousePressed
+        if (evt.getClickCount() == 2){   
+                  int filaSeleccionada = tableVentas.getSelectedRow();
+                  if (filaSeleccionada != -1)
+                  {
+                      
+                Object valor = tableVentas.getValueAt(filaSeleccionada, 0);
+                String idVenta = valor != null ? valor.toString() : "";
+                        DialogMostrarDetalleVenta dmv = new DialogMostrarDetalleVenta((JFrame) SwingUtilities.getWindowAncestor(this), true, idVenta);
+                        dmv.setVisible(true);
+                        dmv.setLocationRelativeTo(null); 
+                        
+                        GeneradorTicket generadorTicket = new GeneradorTicket();
+                        generadorTicket.generarTicket(idVenta);
+                  }
+                  
+}
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableVentasMousePressed
+
+    private void btnAgregarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVehiculoActionPerformed
+              String dni = txtDni.getText();
+
+        popVehiculo vehiculo = new popVehiculo((Oyente) this, dni);
+        vehiculo.setVisible(true);
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarVehiculoActionPerformed
+
+    private void txtDniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDniMouseClicked
+               // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniMouseClicked
 
 
+     
+    public void actualizarTabla(){
+        
+
+            List<Venta> ListaDetalleVenta = ventaService.obtenerTodasLasVentas();
+            DefaultTableModel model = (DefaultTableModel) tableVentas.getModel();
+            model.setRowCount(0);
+            
+            
+            for (Venta venta : ListaDetalleVenta) {
+                
+                Empleado empleado = empleadoService.obtenerEmpleadoDni(venta.getDniEmpleado());
+                
+                 model.addRow(new Object[]{
+                    venta.getIdVenta(),
+                    venta.getDni(),
+                    venta.getFecha(),
+                    empleado.getNombreEmpleado(),
+
+                     });
+                }
+
+        }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarVehiculo;
+    private javax.swing.JButton btnGenerarVenta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tableVentas;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void anadido() {
+        
+    }
 }

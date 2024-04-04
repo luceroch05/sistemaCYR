@@ -5,6 +5,7 @@
 package peaches.proyectoalejo.service;
 
 import java.util.List;
+import java.util.Optional;
 import peaches.proyectoalejo.DAO.RepuestoDAO;
 import peaches.proyectoalejo.model.Repuesto;
 import peaches.proyectoalejo.util.Conexion;
@@ -33,6 +34,7 @@ public class RepuestoService {
         return this.repuestoDAO.getAll();
     }
     
+    
     public void eliminarRepuesto(Repuesto repuesto){
         this.repuestoDAO.delete(repuesto);
     }
@@ -40,6 +42,15 @@ public class RepuestoService {
         public void actualizarRepuesto(Repuesto repuesto){
         this.repuestoDAO.update(repuesto);
     }
+        
+        public Repuesto obtenerRepuestoPorId(int id){
+               Optional<Repuesto> repuesto = repuestoDAO.get(id);
+        return repuesto.orElse(null);
+        }
+        
+        public void actualizarStock(int idRepuesto, int cantidad){
+            this.repuestoDAO.actualizarStockRepuesto(idRepuesto, cantidad);
+        }
     
     
 }

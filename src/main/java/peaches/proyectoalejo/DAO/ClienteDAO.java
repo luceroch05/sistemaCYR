@@ -38,8 +38,8 @@ public class ClienteDAO implements DAO<Cliente>{
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
                 cliente = new Cliente();
-                cliente.setNombre(resultSet.getString("nombre"));
-                cliente.setApellido(resultSet.getString("apellido"));
+                cliente.setNombre(resultSet.getString("nombreCliente"));
+                cliente.setApellido(resultSet.getString("apellidoCliente"));
                 cliente.setTelefono(resultSet.getString("telefono"));
 
             }

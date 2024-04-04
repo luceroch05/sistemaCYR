@@ -4,6 +4,7 @@
  */
 package peaches.proyectoalejo.agregar;
 
+import peaches.proyectoalejo.dialog.DialogBuscarProveedor;
 import peaches.proyectoalejo.model.Repuesto;
 import peaches.proyectoalejo.service.RepuestoService;
 import peaches.proyectoalejo.util.Oyente;
@@ -13,7 +14,8 @@ import peaches.proyectoalejo.util.Oyente;
  * @author Lucero
  */
 public class popRepuesto extends javax.swing.JFrame {
-    
+            int xMouse;
+        int yMouse;
     private Oyente oyente;
     
     RepuestoService repuestoService = new RepuestoService();
@@ -50,8 +52,12 @@ public class popRepuesto extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         txtStock = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
+        panelBarra = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,24 +95,64 @@ public class popRepuesto extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("DESCRIPCION");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
-
-        txtProveedor.setText("jTextField1");
-        jPanel1.add(txtProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 160, -1));
-
-        txtPrecio.setText("jTextField1");
+        jPanel1.add(txtProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 80, -1));
         jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, -1));
-
-        txtStock.setText("jTextField1");
         jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 160, -1));
-
-        txtDescripcion.setText("jTextField1");
         jPanel1.add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 160, -1));
+
+        panelBarra.setBackground(new java.awt.Color(228, 228, 228));
+        panelBarra.setPreferredSize(new java.awt.Dimension(920, 18));
+        panelBarra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelBarraMouseDragged(evt);
+            }
+        });
+        panelBarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelBarraMousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("X");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBarraLayout = new javax.swing.GroupLayout(panelBarra);
+        panelBarra.setLayout(panelBarraLayout);
+        panelBarraLayout.setHorizontalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarraLayout.createSequentialGroup()
+                .addGap(0, 410, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelBarraLayout.setVerticalGroup(
+            panelBarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarraLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel7))
+        );
+
+        jPanel1.add(panelBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 20));
+
+        btnCliente.setText("Seleccionar");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +181,27 @@ public class popRepuesto extends javax.swing.JFrame {
         oyente.anadido();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void panelBarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMouseDragged
+        int x = evt.getXOnScreen();
+        int y  = evt.getYOnScreen();
+
+        this.setLocation(x -xMouse, y- yMouse);
+    }//GEN-LAST:event_panelBarraMouseDragged
+
+    private void panelBarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_panelBarraMousePressed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        DialogBuscarProveedor prov= new DialogBuscarProveedor(this,true);
+        prov.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,16 +239,19 @@ public class popRepuesto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelBarra;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtProveedor;
+    public static javax.swing.JTextField txtProveedor;
     private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

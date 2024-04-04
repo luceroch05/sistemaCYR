@@ -9,7 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import peaches.proyectoalejo.agregar.popRepuesto;
+import peaches.proyectoalejo.model.Proveedor;
 import peaches.proyectoalejo.model.Repuesto;
+import peaches.proyectoalejo.service.ProveedorService;
 import peaches.proyectoalejo.service.RepuestoService;
 import peaches.proyectoalejo.update.upRepuesto;
 import peaches.proyectoalejo.util.Oyente;
@@ -21,6 +23,7 @@ import peaches.proyectoalejo.util.Oyente;
 public class panelRepuesto extends javax.swing.JPanel implements Oyente {
     
     RepuestoService repuestoService = new RepuestoService();
+    ProveedorService proveedorService = new ProveedorService();
 
     /**
      * Creates new form panelRepuesto
@@ -34,16 +37,18 @@ public class panelRepuesto extends javax.swing.JPanel implements Oyente {
     
        public void actualizarTabla(){
         List<Repuesto> ListaDeRepuestos = repuestoService.obtenerTodosLosRepuestos();
-        DefaultTableModel model = (DefaultTableModel) tableRepuesto.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableRepuesto.getModel(); 
         model.setRowCount(0);
         for (Repuesto repuesto : ListaDeRepuestos) {
+            
+            Proveedor proveedor = proveedorService.obtenerProveedorPorId(repuesto.getIdProveedor());
             
             model.addRow(new Object[]{
                 repuesto.getIdRepuesto(),
                 repuesto.getDescripcion(),
                 repuesto.getStock(),
                 repuesto.getPrecio(),
-               repuesto.getIdProveedor(),
+                proveedor.getNombre(),
 
                 
             });
@@ -159,6 +164,8 @@ public class panelRepuesto extends javax.swing.JPanel implements Oyente {
         repuesto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
 
         repuesto.setVisible(true);
+        repuesto.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
@@ -174,6 +181,8 @@ public class panelRepuesto extends javax.swing.JPanel implements Oyente {
             upRepuesto upRe = new upRepuesto(this, idRepuesto);
             upRe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Configurar el comportamiento de cierre
             upRe.setVisible(true);
+            upRe.setLocationRelativeTo(null); // Centra el JFrame en la pantalla
+
         } else {
             JOptionPane.showMessageDialog(null, "No se seleccionó ninguna fila", "Error Actualizar", JOptionPane.INFORMATION_MESSAGE);
 
